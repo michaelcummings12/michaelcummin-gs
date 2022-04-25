@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "isolatedModules": true,
+    "noEmit": true,
+    "incremental": true
+  },
+  "include": [
+    "src",
+    "src/types" ],
+  "exclude": [
+    "node_modules"
+  ],
+  "paths": {
+    "~assets": ["public/assets"],
+  }
+}
