@@ -95,7 +95,7 @@ export const MobileModal: FunctionComponent<PropsWithChildren<MobileModalProps>>
 
 	return (
 		<>
-			<motion.div initial="hidden" animate={isActive ? "visible" : "hidden"} variants={backgroundVariants} className={cc(isActive ? "pointer-events-auto" : "pointer-events-none", "absolute inset-0 bg-overlay backdrop-blur-xl w-full h-full z-50")} onClick={setActive} />
+			<motion.div initial="hidden" animate={isActive ? "visible" : "hidden"} variants={backgroundVariants} className={cc(isActive ? "pointer-events-auto" : "pointer-events-none", "absolute inset-0 bg-overlay w-full h-full z-50")} onClick={setActive} />
 			<div
 				className="left-0 bottom-0 z-50 w-full fixed overflow-hidden rounded-t-xl bg-white-500 shadow-mobile-modal border-white-300 border-t pointer-events-auto"
 				style={

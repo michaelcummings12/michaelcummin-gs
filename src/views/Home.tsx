@@ -16,6 +16,7 @@ import {
 	ShareHouseTileIcon
 } from "../components/Projects";
 import { SpringBoard } from "../components/SpringBoard";
+import { usePrivacyModal } from "../contexts/PrivacyModalContext";
 import { SpringBoardTiles } from "../types/springboard";
 
 const tiles: SpringBoardTiles = [
@@ -47,6 +48,7 @@ export const HomeView: FunctionComponent = () => {
 	const [activeTile, setActiveTile] = useState<TileIds | undefined>();
 	const [disableInitialAnimation, setDisableInitialAnimation] = useState<boolean>(false);
 	const router = useRouter();
+	const { isPrivacyModalVisible, setPrivacyModalVisible } = usePrivacyModal();
 
 	// Update the active tile based on the hash path.
 	const onHashChange = (hash: string) => {
@@ -78,6 +80,11 @@ export const HomeView: FunctionComponent = () => {
 		}
 		checkPath();
 	}, []);
+
+	useEffect(() => {
+		if (!router.asPath || !isPrivacyModalVisible) return;
+		return setPrivacyModalVisible(false);
+	}, [router.asPath]);
 
 	return (
 		<>
