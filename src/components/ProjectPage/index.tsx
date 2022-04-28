@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FunctionComponent, PropsWithChildren } from "react";
 import { Technologies, Technology } from "../../types/project";
 import { cc } from "../../utils/cc";
@@ -39,9 +40,11 @@ export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>>
 							<h2 className="font-bold text-2xl">Overview</h2>
 							<ol className="text-left text-lg flex flex-col gap-4">
 								<li>
-									<a href={url} className="text-primary-500 hover:text-primary-300 hover:underline">
-										{url}
-									</a>
+									<Link href={url}>
+										<a onClick={(e) => e.stopPropagation()} className="text-primary-500 hover:text-primary-300 hover:underline">
+											{url}
+										</a>
+									</Link>
 								</li>
 								<li className="flex flex-row gap-1">
 									<p className="font-medium">Timeline:</p>
