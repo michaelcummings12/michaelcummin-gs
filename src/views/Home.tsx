@@ -18,6 +18,7 @@ import {
 import { SpringBoard } from "../components/SpringBoard";
 import { usePrivacyModal } from "../contexts/PrivacyModalContext";
 import { SpringBoardTiles } from "../types/springboard";
+import { cc } from "../utils/cc";
 
 const tiles: SpringBoardTiles = [
 	{ className: "row-start-1", backgroundColor: "bg-black", shadow: "shadow-be", tileIcon: <BreakingEnteringTileIcon />, projectContent: <BreakingEnteringProjectContent />, id: "be" },
@@ -87,12 +88,12 @@ export const HomeView: FunctionComponent = () => {
 	}, [router.asPath]);
 
 	return (
-		<>
+		<div className={cc(activeTile ? "overflow-hidden" : "", "h-full w-full")}>
 			<Head>
 				<title>Michael Cummings</title>
 				<meta name="theme-color" content="#000000" />
 			</Head>
 			<SpringBoard tiles={tiles} activeTile={activeTile} setActiveTile={setActiveTile} disableInitialAnimation={disableInitialAnimation} />
-		</>
+		</div>
 	);
 };

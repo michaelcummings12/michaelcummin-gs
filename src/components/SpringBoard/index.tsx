@@ -1,6 +1,6 @@
 import { motion, useAnimation, Variants } from "framer-motion";
 import Link from "next/link";
-import { FunctionComponent, PropsWithChildren, useEffect } from "react";
+import { FunctionComponent, PropsWithChildren, useEffect, useState } from "react";
 import { usePrivacyModal } from "../../contexts/PrivacyModalContext";
 import { useMobile } from "../../hooks/useMobile";
 import { SpringBoardTiles } from "../../types/springboard";
@@ -46,12 +46,24 @@ const variants: Variants = {
 
 export const SpringBoard: FunctionComponent<PropsWithChildren<SpringBoardProps>> = ({ activeTile, tiles, disableInitialAnimation, setActiveTile }) => {
 	const { isPrivacyModalVisible } = usePrivacyModal();
+	const [maxWidth, setMaxWidth] = useState<number>();
 	const isMobile = useMobile();
 
 	const controls = useAnimation();
 
-	const onKeyDown = (e: any) => {
+	const onKeyDown = (e: KeyboardEvent) => {
 		if (activeTile && e.key === "Escape") return setActiveTile(-1);
+	};
+
+	const onWindowResize = () => {
+		const height = window.innerHeight;
+		let maxWidth;
+		if (isMobile) {
+			maxWidth = Math.round(height * (3 / 5));
+		} else {
+			maxWidth = Math.round(height * (4 / 3));
+		}
+		setMaxWidth(maxWidth);
 	};
 
 	useEffect(() => {
@@ -64,13 +76,17 @@ export const SpringBoard: FunctionComponent<PropsWithChildren<SpringBoardProps>>
 
 	useEffect(() => {
 		window.addEventListener("keydown", onKeyDown);
-		return () => window.removeEventListener("keydown", onKeyDown);
+		window.addEventListener("resize", onWindowResize);
+		return () => {
+			window.removeEventListener("keydown", onKeyDown);
+			window.removeEventListener("resize", onWindowResize);
+		};
 	});
 
 	return (
 		<div className="w-screen-safe h-screen-safe relative bg-black flex justify-center items-center">
 			<div className="max-w-[1200px] max-h-[900px] lg:max-h-full h-full w-full lg:p-8 p-4 flex justify-center items-center">
-				<motion.div animate={controls} variants={variants} initial="exit" exit="exit" className="grid md:grid-cols-3 grid-cols-2 lg:gap-8 md:gap-6 gap-4 max-w-full max-h-full w-full">
+				<motion.div animate={controls} variants={variants} initial="exit" exit="exit" className="grid sm:grid-cols-3 grid-cols-2 lg:gap-8 md:gap-6 gap-4 max-h-full" style={{ width: maxWidth }}>
 					{tiles.map((tile, key) => {
 						const active: boolean = tile.id === activeTile;
 						const isMobileAndPrivacyModalVisible: boolean = isPrivacyModalVisible && isMobile && tile.id === "contact";
