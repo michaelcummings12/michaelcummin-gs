@@ -58,7 +58,7 @@ export const SpringBoard: FunctionComponent<PropsWithChildren<SpringBoardProps>>
 	const onWindowResize = () => {
 		if (typeof window === undefined) return;
 
-		const height = window.outerHeight;
+		const height = window.innerHeight;
 		let maxWidth;
 		if (isMobile) {
 			maxWidth = Math.round(height * (3 / 5));
@@ -90,7 +90,7 @@ export const SpringBoard: FunctionComponent<PropsWithChildren<SpringBoardProps>>
 	});
 
 	return (
-		<div className="w-screen-safe h-screen-safe relative bg-black flex justify-center items-center">
+		<div className="w-screen-safe h-screen-safe max-w-screen-safe relative bg-black flex justify-center items-center overflow-hidden">
 			<div className="max-w-[1200px] max-h-[900px] lg:max-h-full h-full w-full lg:p-8 p-4 flex justify-center items-center">
 				<motion.div animate={controls} variants={variants} initial="exit" exit="exit" className="grid sm:grid-cols-3 grid-cols-2 lg:gap-8 md:gap-6 gap-4 max-h-full" style={{ width: maxWidth }}>
 					{tiles.map((tile, key) => {

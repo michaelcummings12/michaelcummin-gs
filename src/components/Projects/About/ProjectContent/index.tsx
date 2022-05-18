@@ -25,9 +25,9 @@ export const ProjectContent: FunctionComponent = () => {
 							<Social />
 						</div>
 						<div className="leading-7 tracking-[0.02rem] text-lg flex flex-col gap-2">
-							<p>I am a full-stack engineer with experience working in Amazon and Google clouds and with frameworks such as Express.js, Next.js, Preact, and React.</p>
-							<p>Producing products from the ground up is my specialty. From creating logos and art in Adobe Illustrator and Photoshop to designing the brand guideline and product mockups in Adobe XD and Figma, and lastly, to building the product itself. My skill set is comprehensive.</p>
-							<p>My work places a heavy emphasis on accessibility, meaningful design, and responsiveness across varying devices. Scalability, security, and stability are always a top priority.</p>
+							<p>I am a full-stack engineer with experience working in Amazon and Google clouds and with frameworks such as Express.js, Next.js, and React.</p>
+							<p>I build brands. From creating logos and art in Adobe Illustrator and Photoshop to designing the style guideline and product mockups in Adobe XD and Figma, and lastly, to building the product itself. My skill set is comprehensive.</p>
+							<p>Through my work, I emphasize building accessible interfaces that are meaningfully designed and are adaptive and responsive to the user's device. Scalability, security, and stability are always a top priority.</p>
 							<p>
 								Please feel free to{" "}
 								<Link href="/#contact">
