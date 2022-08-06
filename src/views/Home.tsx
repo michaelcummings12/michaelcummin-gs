@@ -73,11 +73,13 @@ export const HomeView: FunctionComponent = () => {
 			}
 		}
 		checkPath();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
 		if (!router.asPath || !isPrivacyModalVisible) return;
 		return setPrivacyModalVisible(false);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [router.asPath]);
 
 	return (
