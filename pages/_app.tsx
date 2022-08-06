@@ -2,7 +2,8 @@ import Tracker from "@openreplay/tracker/cjs";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import Script from "next/script";
-import React, { useEffect } from "react";
+import React from "react";
+import { useEffect } from "react";
 import { PrivacyModal } from "../src/components/PrivacyModal";
 import { PrivacyModalProvider } from "../src/contexts/PrivacyModalContext";
 import "../styles.css";
@@ -21,7 +22,10 @@ function App({ Component, pageProps }: AppProps) {
 	return (
 		<>
 			<Head>
-				<link rel="icon" type="image/png" href="/favicon.png" />
+				<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+				<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+
 				<meta name="title" content="Michael Cummings" />
 				<meta name="description" content="Explore the work of Michael Cummings on his personal portfolio." />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
