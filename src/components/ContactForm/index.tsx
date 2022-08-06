@@ -80,14 +80,14 @@ const ContactForm: FunctionComponent = () => {
 						/>
 					</ErrorWrapper>
 				</div>
-				<div className="relative">{Object.keys(errors).length > 0 && <div className="font-semibold text-error border-2 border-error rounded p-4 w-full top-0 bg-white-500">Please correct the errors above. Then, try to re-submit your message.</div>}</div>
+				<div className="relative">{Object.keys(errors).length > 0 && <div className="font-semibold text-error border-2 border-error rounded p-4 w-full top-0 bg-white">Please correct the errors above. Then, try to re-submit your message.</div>}</div>
 				<div className="flex flex-col gap-2">
 					<DefaultButton
-						loadingColor="bg-white-500"
+						loadingColor="bg-white"
 						disabled={submitState === SubmitStates.PENDING || !isDirty || Object.keys(errors).length > 0}
 						onClick={(e: any) => e.stopPropagation()}
 						type="submit"
-						className="w-full background-purple-gradient text-white-500 focus:outline-black focus:outline-none"
+						className="w-full background-purple-gradient text-white focus:outline-black focus:outline-none"
 						loading={submitState === SubmitStates.PENDING}>
 						Submit
 					</DefaultButton>
@@ -95,7 +95,7 @@ const ContactForm: FunctionComponent = () => {
 						<LockIcon height="10px" className="fill-black" />
 						<p className="text-sm font-light">
 							Your data is protected under a{" "}
-							<button className="underline hover:text-primary-500 cursor-pointer transition-colors" onClick={() => setPrivacyModalVisible(true)}>
+							<button className="underline hover:text-projects-gcn-500 cursor-pointer transition-colors" onClick={() => setPrivacyModalVisible(true)}>
 								Privacy Notice
 							</button>
 							.
@@ -103,7 +103,7 @@ const ContactForm: FunctionComponent = () => {
 					</div>
 				</div>
 				{submitState === SubmitStates.SUCCESS && (
-					<div className="absolute top-0 left-0 w-full h-full bg-white-300/75 backdrop-blur-xl rounded z-50 flex justify-center items-center gap-4 flex-col">
+					<div className="absolute top-0 left-0 w-full h-full bg-white/75 backdrop-blur-xl rounded z-50 flex justify-center items-center gap-4 flex-col">
 						<Confetti width={formRef.current?.scrollHeight} height={formRef.current?.scrollWidth} recycle={false} />
 						<p className="font-bold text-2xl">Thank you for your message 🙂</p>
 						<p className="font-light text-lg">I will get back to you shortly.</p>

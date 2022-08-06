@@ -19,7 +19,7 @@ export const ProjectContent: FunctionComponent = () => {
 			<Head>
 				<title>ShareHouse | Michael Cummings</title>
 			</Head>
-			<ProjectPage technologies={ProjectTechnologies} iconColor="white-500" iconShadow="shadow-sh" ariaColor="black" url="https://sharehousestorage.com/" timeline="June 2020 - January 2021" language="JavaScript">
+			<ProjectPage technologies={ProjectTechnologies} backgroundColor="bg-white" iconColor="bg-white border border-gray-100" iconShadow="shadow-xl" ariaColor="black" url="https://sharehousestorage.com/" timeline="June 2020 - January 2021" language="JavaScript">
 				<ProjectHeader />
 			</ProjectPage>
 		</>

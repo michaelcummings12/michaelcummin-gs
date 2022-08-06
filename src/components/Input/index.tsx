@@ -27,7 +27,7 @@ const Input: FunctionComponent<PropsWithChildren<InputProps>> = ({ children, typ
 	};
 	return (
 		<div className="relative cursor-text" onClick={() => !focused && innerRef.current?.focus()}>
-			<div className={cc(focused ? "input-outline-black" : error ? "input-outline-error" : "", "px-3 py-2 rounded transition-all flex items-center relative shadow h-[48px] border border-white-500 backdrop-blur-xl bg-white-500/90")}>
+			<div className={cc(focused ? "input-outline-black" : error ? "input-outline-error" : "", "px-3 py-2 rounded transition-all flex items-center relative shadow h-[48px] border border-white backdrop-blur-xl bg-white/90")}>
 				<motion.div className={cc(active ? "font-bold" : "", "absolute px-1 pointer-events-none")} animate={active ? "active" : "inactive"} variants={variants}>
 					<label htmlFor={name} className={error ? "text-error" : "text-black"}>
 						{children}

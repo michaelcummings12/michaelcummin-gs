@@ -1,7 +1,8 @@
 import Tracker from "@openreplay/tracker/cjs";
+import { AppProps } from "next/app";
 import Head from "next/head";
 import Script from "next/script";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { PrivacyModal } from "../src/components/PrivacyModal";
 import { PrivacyModalProvider } from "../src/contexts/PrivacyModalContext";
 import "../styles.css";
@@ -10,17 +11,17 @@ const openReplayProjectKey = process.env.NEXT_PUBLIC_OPENREPLAY_PROJECT_KEY;
 const googleAnalyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 
 const tracker = new Tracker({
-	projectKey: openReplayProjectKey
+	projectKey: openReplayProjectKey!
 });
 
-function App({ Component, pageProps }: any) {
+function App({ Component, pageProps }: AppProps) {
 	useEffect(() => {
 		tracker.start();
 	}, []);
 	return (
 		<>
 			<Head>
-				<link rel="icon" href="/favicon.png" />
+				<link rel="icon" type="image/png" href="/favicon.png" />
 				<meta name="title" content="Michael Cummings" />
 				<meta name="description" content="Explore the work of Michael Cummings on his personal portfolio." />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />

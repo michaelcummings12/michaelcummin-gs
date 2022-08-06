@@ -74,7 +74,7 @@ export const PrivacyView: FunctionComponent = () => {
 			<h2 className="text-lg font-semibold">Contact Us</h2>
 			<p>For any questions or concerns regarding your privacy, you may contact us using the following details:</p>
 			<p>
-				<a href="mailto:hello@michaelcummings" className="underline hover:text-primary-500 transition-colors">
+				<a href="mailto:hello@michaelcummings" className="underline hover:text-projects-gcn-500 transition-colors">
 					hello@michaelcummin.gs
 				</a>
 			</p>

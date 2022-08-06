@@ -4,7 +4,7 @@ import { ButtonProps, DefaultButton } from "../../../Button";
 
 export const Button: FunctionComponent<PropsWithChildren<ButtonProps>> = ({ children, className = "", loading, ...props }) => {
 	return (
-		<DefaultButton className={cc(className, "bg-black text-white border-2 border-white hover:bg-white hover:text-black w-full")} loadingColor="bg-white" {...props}>
+		<DefaultButton className={cc(className, "bg-projects-cc text-white hover:shadow-xl w-full")} {...props}>
 			{children}
 		</DefaultButton>
 	);

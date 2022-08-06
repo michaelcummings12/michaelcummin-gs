@@ -1,20 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FunctionComponent, useEffect, useState } from "react";
-import {
-	AboutProjectContent,
-	AboutTileIcon,
-	BreakingEnteringProjectContent,
-	BreakingEnteringTileIcon,
-	ContactProjectContent,
-	ContactTileIcon,
-	ExperimentalProjectContent,
-	ExperimentalTileIcon,
-	GCNProjectContent,
-	GCNTileIcon,
-	ShareHouseProjectContent,
-	ShareHouseTileIcon
-} from "../components/Projects";
+import { AboutProjectContent, AboutTileIcon, BreakingEnteringProjectContent, BreakingEnteringTileIcon, ChicagoCareProjectContent, ChicagoCareTileIcon, ContactProjectContent, ContactTileIcon, GCNProjectContent, GCNTileIcon, ShareHouseProjectContent, ShareHouseTileIcon } from "../components/Projects";
 import { SpringBoard } from "../components/SpringBoard";
 import { usePrivacyModal } from "../contexts/PrivacyModalContext";
 import { SpringBoardTiles } from "../types/springboard";
@@ -24,23 +11,29 @@ const tiles: SpringBoardTiles = [
 	{ className: "row-start-1", backgroundColor: "bg-black", shadow: "shadow-be", tileIcon: <BreakingEnteringTileIcon />, projectContent: <BreakingEnteringProjectContent />, id: "be" },
 	{
 		className: "row-start-1",
-		backgroundColor: "bg-projects-gcn",
+		backgroundColor: "bg-white",
+		tileIcon: <ChicagoCareTileIcon />,
+		projectContent: <ChicagoCareProjectContent />,
+		id: "cc"
+	},
+	{
+		className: "row-start-1",
+		backgroundColor: "bg-projects-gcn-700",
 		shadow: "shadow-gcn",
 		tileIcon: <GCNTileIcon />,
 		projectContent: <GCNProjectContent />,
 		id: "gcn"
 	},
-	{ className: "row-start-2", backgroundColor: "bg-white-500", tileIcon: <ShareHouseTileIcon />, projectContent: <ShareHouseProjectContent />, id: "sh" },
-	{ className: "row-start-2", backgroundColor: "background-experimental", tileIcon: <ExperimentalTileIcon />, projectContent: <ExperimentalProjectContent />, id: "exp" },
+	{ className: "row-start-2", backgroundColor: "bg-projects-sh", tileIcon: <ShareHouseTileIcon />, projectContent: <ShareHouseProjectContent />, id: "sh" },
 	{ className: "row-start-2", backgroundColor: "background-purple-gradient", tileIcon: <ContactTileIcon />, projectContent: <ContactProjectContent />, id: "contact" },
-	{ className: "row-start-2", backgroundColor: "background-blue-gradient", expandedBackgroundColor: "bg-white-500", tileIcon: <AboutTileIcon />, projectContent: <AboutProjectContent />, id: "about" }
+	{ className: "row-start-2", backgroundColor: "background-blue-gradient", expandedBackgroundColor: "bg-white", tileIcon: <AboutTileIcon />, projectContent: <AboutProjectContent />, id: "about" }
 ];
 
 enum TileIds {
 	About = "about",
 	BreakingEntering = "be",
+	ChicagoCare = "cc",
 	Contact = "contact",
-	Experimental = "exp",
 	GCN = "gcn",
 	ShareHouse = "sh"
 }

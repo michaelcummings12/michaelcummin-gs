@@ -5,35 +5,24 @@ module.exports = {
 			serif: ["Expressway"],
 			sans: ["Expressway"]
 		},
-		colors: {
-			primary: {
-				500: "#096DD9"
-			},
-			white: { 300: "#e2e2e2", 500: "#ffffff" },
-			error: "#e00000",
-			gray: {
-				300: "#EAEAEA",
-				500: "#AAAAAA",
-				700: "#818085"
-			},
-			overlay: "rgba(0, 0, 0, 0.6)",
-			black: "#000000",
-			projects: {
-				be: "#000000",
-				gcn: "#010921",
-				ink: "#f4df4f",
-				sh: "#46beab"
-			},
-			transparent: "transparent"
-		},
 		extend: {
 			borderRadius: {
-				DEFAULT: "12px",
-				full: "100%",
-				sm: "4px",
-				large: "2rem",
-				lg: "48px",
-				0: "0px"
+				DEFAULT: "12px"
+			},
+			colors: {
+				error: "#e00000",
+				gray: {
+					300: "#EAEAEA",
+					500: "#AAAAAA",
+					700: "#818085"
+				},
+				projects: {
+					be: "#000000",
+					gcn: { 500: "#027ef9", 700: "#010921" },
+					ink: "#f4df4f",
+					sh: "#46beab",
+					cc: "#41b6e6"
+				}
 			},
 			transitionTimingFunction: {
 				DEFAULT: "cubic-bezier(0.35, 0, 0.65, 1)"
@@ -63,9 +52,6 @@ module.exports = {
 			maxWidth: {
 				"screen-1/2": "calc(100vw / 2)"
 			},
-			spacing: {
-				full: "100%"
-			},
 			minHeight: { "screen-1/2": "calc(100vh / 2)" }
 		}
 	},
@@ -85,12 +71,12 @@ module.exports = {
 			Object.keys(colors).forEach((color) => {
 				const colorData = colors[color];
 				if (typeof colorData === "string") {
-					newUtilities[`.input-outline-${color}`] = {
+					newUtilities[`.focus-outline-${color}`] = {
 						boxShadow: `0 0 0 2px ${colorData}`
 					};
 				} else {
 					Object.keys(colorData).forEach((colorVariation) => {
-						newUtilities[`.outline-${color}-${colorVariation}`] = {
+						newUtilities[`.focus-${color}-${colorVariation}`] = {
 							boxShadow: `0 0 0 2px ${colorData[colorVariation]}`
 						};
 					});

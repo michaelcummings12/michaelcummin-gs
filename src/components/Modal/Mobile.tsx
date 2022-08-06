@@ -97,7 +97,7 @@ export const MobileModal: FunctionComponent<PropsWithChildren<MobileModalProps>>
 		<>
 			<motion.div initial="hidden" animate={isActive ? "visible" : "hidden"} variants={backgroundVariants} className={cc(isActive ? "pointer-events-auto" : "pointer-events-none", "absolute inset-0 bg-overlay w-full h-full z-50")} onClick={setActive} />
 			<div
-				className="left-0 bottom-0 z-50 w-full fixed overflow-hidden rounded-t-xl bg-white-500 shadow-mobile-modal border-white-300 border-t pointer-events-auto"
+				className="left-0 bottom-0 z-50 w-full fixed overflow-hidden rounded-t-xl bg-white shadow-mobile-modal border-white border-t pointer-events-auto"
 				style={
 					isDragging
 						? { transform: `translate3d(0px, ${posY}px, 0px)` }
@@ -110,8 +110,8 @@ export const MobileModal: FunctionComponent<PropsWithChildren<MobileModalProps>>
 				}
 				ref={modalRef}>
 				<div className="h-full min-h-full relative">
-					<div className="w-full h-[3rem] relative top-0 bg-white-500" style={{ zIndex: 1000 }} ref={dragRef}>
-						<button className="absolute bg-white-300" style={{ height: "5px", width: "44px", borderRadius: "4px", top: "1.25rem", left: "calc(50% - 22px)" }} />
+					<div className="w-full h-[3rem] relative top-0 bg-white" style={{ zIndex: 1000 }} ref={dragRef}>
+						<button className="absolute bg-white" style={{ height: "5px", width: "44px", borderRadius: "4px", top: "1.25rem", left: "calc(50% - 22px)" }} />
 					</div>
 					<div className={cc(!allowScroll ? "overflow-hidden" : "overflow-y-scroll", "relative scrollbar-hide min-h-[75vh] max-h-[75vh]")} id="modal-children" ref={childrenRef}>
 						<div className="z-50">{children}</div>

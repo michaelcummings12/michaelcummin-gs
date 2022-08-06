@@ -29,7 +29,7 @@ export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>>
 								{technologies.map((t: Technology, i: number) => {
 									return (
 										<li className="flex flex-row gap-4 items-center" key={`${t.name}-${i}`}>
-											<div className={cc(`bg-${iconColor}`, iconShadow, "rounded-full p-3 h-[42px] w-[42px] flex items-center justify-center hover:scale-105 transition-all")}>{t.icon}</div>
+											<div className={cc(iconColor, iconShadow, "rounded-full p-3 h-[42px] w-[42px] flex items-center justify-center hover:scale-105 transition-all")}>{t.icon}</div>
 											<label>{t.name}</label>
 										</li>
 									);
@@ -41,7 +41,7 @@ export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>>
 							<ol className="text-left text-lg flex flex-col gap-4">
 								<li>
 									<Link href={url}>
-										<a onClick={(e) => e.stopPropagation()} className="text-primary-500 hover:text-primary-300 hover:underline">
+										<a onClick={(e) => e.stopPropagation()} className="text-projects-gcn-500 hover:text-primary-300 hover:underline">
 											{url}
 										</a>
 									</Link>

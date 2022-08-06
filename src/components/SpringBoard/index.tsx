@@ -1,6 +1,6 @@
 import { motion, useAnimation, Variants } from "framer-motion";
 import Link from "next/link";
-import { FunctionComponent, PropsWithChildren, useEffect, useLayoutEffect, useState } from "react";
+import { FunctionComponent, PropsWithChildren, useEffect, useState } from "react";
 import { usePrivacyModal } from "../../contexts/PrivacyModalContext";
 import { useMobile } from "../../hooks/useMobile";
 import { SpringBoardTiles } from "../../types/springboard";
@@ -68,7 +68,7 @@ export const SpringBoard: FunctionComponent<PropsWithChildren<SpringBoardProps>>
 		setMaxWidth(maxWidth);
 	};
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		onWindowResize();
 	});
 

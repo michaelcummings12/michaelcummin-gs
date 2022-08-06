@@ -7,9 +7,9 @@ export const ProjectHeader: FunctionComponent = () => {
 	return (
 		<div className="flex flex-col gap-12">
 			<Logo className="h-full w-full fill-white max-h-[128px]" />
-			<Link href="https://breaking-entering.com/">
+			<Link href="https://chicago.care/">
 				<a onClick={(e) => e.stopPropagation()}>
-					<Button>Visit Breaking-Entering.com</Button>
+					<Button>Visit Chicago.care</Button>
 				</a>
 			</Link>
 		</div>

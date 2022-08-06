@@ -31,11 +31,11 @@ export const ProjectContent: FunctionComponent = () => {
 							<p>
 								Please feel free to{" "}
 								<Link href="/#contact">
-									<a className="text-primary-500 underline">send me a message</a>
+									<a className="text-projects-gcn-500 underline">send me a message</a>
 								</Link>{" "}
 								or you can email me at
 							</p>
-							<a className="text-primary-500 underline" href="mailto:hello@michaelcummin.gs">
+							<a className="text-projects-gcn-500 underline" href="mailto:hello@michaelcummin.gs">
 								hello@michaelcummin.gs
 							</a>
 						</div>
