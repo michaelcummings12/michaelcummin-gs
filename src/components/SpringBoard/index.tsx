@@ -1,10 +1,10 @@
+import clsx from "clsx";
 import { motion, useAnimation, Variants } from "framer-motion";
 import Link from "next/link";
 import { FunctionComponent, PropsWithChildren, useEffect, useState } from "react";
 import { usePrivacyModal } from "../../contexts/PrivacyModalContext";
 import { useMobile } from "../../hooks/useMobile";
 import { SpringBoardTiles } from "../../types/springboard";
-import { cc } from "../../utils/cc";
 import { ExpandedTile } from "../ExpandedTile";
 import { Signature } from "../Signature";
 import { Tile } from "../Tile";
@@ -99,14 +99,12 @@ export const SpringBoard: FunctionComponent<PropsWithChildren<SpringBoardProps>>
 
 						return (
 							<motion.div variants={tileVariants} initial="exit" animate="enter" exit="exit" className="aspect-square" key={key}>
-								<Link href={`/#${tile.id}`}>
-									<a id={`href-${tile.id}`} className={active ? "cursor-default" : "cursor-pointer"}>
-										<motion.div layoutId={`card-${key}`} animate={{ zIndex: active ? 50 : 0, scale: isMobileAndPrivacyModalVisible ? 0.95 : 1, transition: { zIndex: { delay: active ? 0 : 0.3 } } }} className={cc(active ? "absolute top-0 left-0 p-0" : "relative", "w-full h-full z-0")}>
-											<motion.div className={cc(tile.backgroundColor, active ? "" : tile.shadow || "", active ? "z-50 rounded-b-0" : "hover:scale-105 active:scale-95 cursor-pointer z-0", "w-full h-full transition-all overflow-hidden rounded-3xl")}>
-												{active ? <ExpandedTile backgroundColor={tile.expandedBackgroundColor || tile.backgroundColor}>{tile.projectContent}</ExpandedTile> : <Tile>{tile.tileIcon}</Tile>}
-											</motion.div>
+								<Link href={`/#${tile.id}`} id={`href-${tile.id}`} className={active ? "cursor-default" : "cursor-pointer"}>
+									<motion.div layoutId={`card-${key}`} animate={{ zIndex: active ? 50 : 0, scale: isMobileAndPrivacyModalVisible ? 0.95 : 1, transition: { zIndex: { delay: active ? 0 : 0.3 } } }} className={clsx(active ? "absolute top-0 left-0 p-0" : "relative", "w-full h-full z-0")}>
+										<motion.div className={clsx(tile.backgroundColor, active ? "" : tile.shadow || "", active ? "z-50 rounded-b-0" : "hover:scale-105 active:scale-95 cursor-pointer z-0", "w-full h-full transition-all overflow-hidden rounded-3xl")}>
+											{active ? <ExpandedTile backgroundColor={tile.expandedBackgroundColor || tile.backgroundColor}>{tile.projectContent}</ExpandedTile> : <Tile>{tile.tileIcon}</Tile>}
 										</motion.div>
-									</a>
+									</motion.div>
 								</Link>
 							</motion.div>
 						);

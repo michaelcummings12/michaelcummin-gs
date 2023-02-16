@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { FunctionComponent } from "react";
 import sharehouseHero from "../../../../../public/assets/sharehouse-hero.jpg";
-import { Button } from "../Button";
+import { Link } from "../Link";
 import { Logo } from "../Logo";
 
 export const ProjectHeader: FunctionComponent = () => {
@@ -15,11 +14,7 @@ export const ProjectHeader: FunctionComponent = () => {
 				<div className="flex justify-center">
 					<div className="bg-white border border-gray-100 flex rounded-3xl lg:py-8 lg:px-16 p-8 shadow-xl flex-col gap-12">
 						<Logo className="h-full w-full fill-projects-sh max-h-[128px]" />
-						<Link href="https://sharehousestorage.com/">
-							<a onClick={(e) => e.stopPropagation()}>
-								<Button>Visit ShareHouseStorage.com</Button>
-							</a>
-						</Link>
+						<Link href="https://sharehousestorage.com/" label="Visit ShareHouseStorage.com" />
 					</div>
 				</div>
 			</div>

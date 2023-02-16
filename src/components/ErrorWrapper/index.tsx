@@ -1,6 +1,6 @@
+import clsx from "clsx";
 import { FunctionComponent, PropsWithChildren } from "react";
 import { FieldError, LiteralUnion, RegisterOptions } from "react-hook-form";
-import { cc } from "../../utils/cc";
 
 interface ErrorWrapperProps {
 	className?: string;
@@ -28,7 +28,7 @@ const ErrorMessages: LiteralUnion<keyof RegisterOptions, any> = {
 
 const ErrorWrapper: FunctionComponent<PropsWithChildren<ErrorWrapperProps>> = ({ className = "", children, error, name }) => {
 	return (
-		<div className={cc(className, "flex flex-col w-full gap-1")}>
+		<div className={clsx(className, "flex flex-col w-full gap-1")}>
 			{children}
 			{error && <p className="text-error">{`${name} ${ErrorMessages[error.type]}`}</p>}
 		</div>

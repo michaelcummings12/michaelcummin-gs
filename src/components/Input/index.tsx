@@ -1,6 +1,6 @@
+import clsx from "clsx";
 import { motion, Variants } from "framer-motion";
 import { FunctionComponent, PropsWithChildren, useState } from "react";
-import { cc } from "../../utils/cc";
 
 interface InputProps {
 	type?: string;
@@ -27,8 +27,8 @@ const Input: FunctionComponent<PropsWithChildren<InputProps>> = ({ children, typ
 	};
 	return (
 		<div className="relative cursor-text" onClick={() => !focused && innerRef.current?.focus()}>
-			<div className={cc(focused ? "input-outline-black" : error ? "input-outline-error" : "", "px-3 py-2 rounded transition-all flex items-center relative shadow h-[48px] border border-white backdrop-blur-xl bg-white/90")}>
-				<motion.div className={cc(active ? "font-bold" : "", "absolute px-1 pointer-events-none")} animate={active ? "active" : "inactive"} variants={variants}>
+			<div className={clsx(focused ? "input-outline-black" : error ? "input-outline-error" : "", "px-3 py-2 rounded transition-all flex items-center relative shadow h-[48px] border border-white backdrop-blur-xl bg-white/90")}>
+				<motion.div className={clsx(active ? "font-bold" : "", "absolute px-1 pointer-events-none")} animate={active ? "active" : "inactive"} variants={variants}>
 					<label htmlFor={name} className={error ? "text-error" : "text-black"}>
 						{children}
 					</label>

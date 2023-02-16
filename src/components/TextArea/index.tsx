@@ -1,5 +1,5 @@
+import clsx from "clsx";
 import { FunctionComponent, PropsWithChildren, useState } from "react";
-import { cc } from "../../utils/cc";
 
 interface TextAreaProps {
 	rows?: number;
@@ -17,8 +17,8 @@ const TextArea: FunctionComponent<PropsWithChildren<TextAreaProps>> = ({ childre
 
 	return (
 		<div className="relative cursor-text" onClick={() => !focused && innerRef.current?.focus()}>
-			<div className={cc(focused ? "input-outline-black" : error ? "input-outline-error" : "", "px-3 py-2 rounded transition-all relative shadow border border-white backdrop-blur-xl bg-white/90")}>
-				<div className={cc(active ? "font-bold" : "font-base", "absolute transition-all px-1 pointer-events-none")} style={active ? { transform: "translateY(-32px) scale(0.8) translateX(-12px)" } : {}}>
+			<div className={clsx(focused ? "input-outline-black" : error ? "input-outline-error" : "", "px-3 py-2 rounded transition-all relative shadow border border-white backdrop-blur-xl bg-white/90")}>
+				<div className={clsx(active ? "font-bold" : "font-base", "absolute transition-all px-1 pointer-events-none")} style={active ? { transform: "translateY(-32px) scale(0.8) translateX(-12px)" } : {}}>
 					<label htmlFor={name} className={error ? "text-error" : "text-black"}>
 						{children}
 					</label>

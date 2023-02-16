@@ -1,6 +1,6 @@
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import { FunctionComponent } from "react";
-import { cc } from "../../utils/cc";
 
 const loadingContainerVariants = {
 	start: {
@@ -37,9 +37,9 @@ interface LoadingProps {
 const Loading: FunctionComponent<LoadingProps> = ({ className = "" }) => {
 	return (
 		<motion.div variants={loadingContainerVariants} initial="start" animate="end" className="flex justify-between" style={{ width: "2rem", height: "1.25rem" }}>
-			<motion.span className={cc(className, "rounded-full")} variants={loadingCircleVariants} transition={loadingCircleTransition} style={{ width: "0.5rem", height: "0.5rem" }} />
-			<motion.span className={cc(className, "rounded-full")} variants={loadingCircleVariants} transition={loadingCircleTransition} style={{ width: "0.5rem", height: "0.5rem" }} />
-			<motion.span className={cc(className, "rounded-full")} variants={loadingCircleVariants} transition={loadingCircleTransition} style={{ width: "0.5rem", height: "0.5rem" }} />
+			<motion.span className={clsx(className, "rounded-full")} variants={loadingCircleVariants} transition={loadingCircleTransition} style={{ width: "0.5rem", height: "0.5rem" }} />
+			<motion.span className={clsx(className, "rounded-full")} variants={loadingCircleVariants} transition={loadingCircleTransition} style={{ width: "0.5rem", height: "0.5rem" }} />
+			<motion.span className={clsx(className, "rounded-full")} variants={loadingCircleVariants} transition={loadingCircleTransition} style={{ width: "0.5rem", height: "0.5rem" }} />
 		</motion.div>
 	);
 };

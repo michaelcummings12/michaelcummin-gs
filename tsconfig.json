@@ -23,7 +23,7 @@
   },
   "include": [
     "src",
-    "src/types" ],
+    "src/types", "src/components" ],
   "exclude": [
     "node_modules"
   ],

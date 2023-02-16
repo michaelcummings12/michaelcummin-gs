@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FunctionComponent, useEffect, useState } from "react";
@@ -5,7 +6,6 @@ import { AboutProjectContent, AboutTileIcon, BreakingEnteringProjectContent, Bre
 import { SpringBoard } from "../components/SpringBoard";
 import { usePrivacyModal } from "../contexts/PrivacyModalContext";
 import { SpringBoardTiles } from "../types/springboard";
-import { cc } from "../utils/cc";
 
 const tiles: SpringBoardTiles = [
 	{ className: "row-start-1", backgroundColor: "bg-black", shadow: "shadow-be", tileIcon: <BreakingEnteringTileIcon />, projectContent: <BreakingEnteringProjectContent />, id: "be" },
@@ -83,7 +83,7 @@ export const HomeView: FunctionComponent = () => {
 	}, [router.asPath]);
 
 	return (
-		<div className={cc(activeTile ? "overflow-hidden" : "", "h-full w-full")}>
+		<div className={clsx(activeTile ? "overflow-hidden" : "", "h-full w-full")}>
 			<Head>
 				<title>Michael Cummings</title>
 				<meta name="theme-color" content="#000000" />

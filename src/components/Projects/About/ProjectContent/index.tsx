@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import skyPortrait from "../../../../../public/assets/sky_portrait_resized.jpg";
 import Social from "../../../Social";
 
@@ -30,12 +30,12 @@ export const ProjectContent: FunctionComponent = () => {
 							<p>Through my work, I emphasize building accessible interfaces that are meaningfully designed and are adaptive and responsive to the user&apos;s device. Scalability, security, and stability are always a top priority.</p>
 							<p>
 								Please feel free to{" "}
-								<Link href="/#contact">
-									<a className="text-projects-gcn-500 underline">send me a message</a>
+								<Link href="/#contact" className="text-projects-gcn-500 underline">
+									send me a message
 								</Link>{" "}
 								or you can email me at
 							</p>
-							<a className="text-projects-gcn-500 underline" href="mailto:hello@michaelcummin.gs">
+							<a className="text-projects-gcn-500 underline" href="mailto:hello@michaelcummin.gs" onClick={(e) => e.stopPropagation()}>
 								hello@michaelcummin.gs
 							</a>
 						</div>
