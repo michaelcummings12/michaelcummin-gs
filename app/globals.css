@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  touch-action: manipulation;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}

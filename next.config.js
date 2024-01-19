@@ -1,3 +1,7 @@
-module.exports = {
-	distDir: "build"
+/** @type {import('next').NextConfig} */
+
+const nextConfig = {
+	swcMinify: true
 };
+
+module.exports = nextConfig;

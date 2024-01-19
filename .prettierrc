@@ -1,7 +1,7 @@
 {
   "useTabs": true,
-  "printWidth": 300,
-  "tabWidth": 2,
+  "printWidth": 250,
+  "tabWidth": 1,
   "singleQuote": false,
   "trailingComma": "none",
   "noSemi": false,

@@ -1,9 +1,9 @@
 module.exports = {
-	content: ["./src/**/*.{js,jsx,ts,tsx}"],
+	content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./views/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		fontFamily: {
-			serif: ["Expressway"],
-			sans: ["Expressway"]
+			serif: ["Overpass"],
+			sans: ["Overpass"]
 		},
 		extend: {
 			borderRadius: {
