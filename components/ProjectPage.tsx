@@ -2,6 +2,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { FunctionComponent, PropsWithChildren } from "react";
 import { Technologies, Technology } from "../types/project";
+import { CloseButton } from "./CloseButton";
 import { Github, JavaScript, TypeScript } from "./icons";
 
 interface ProjectPageProps {
@@ -12,14 +13,28 @@ interface ProjectPageProps {
 	iconColor: string;
 	iconShadow: string;
 	backgroundColor?: string;
+	headerColor?: string;
 	textColor?: string;
 	ariaColor?: string;
 }
 
-export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>> = ({ ariaColor, backgroundColor = "", children, language, technologies, iconColor, iconShadow, textColor = "text-black", timeline, url }) => {
+export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>> = ({
+	ariaColor,
+	backgroundColor = "bg-white",
+	headerColor = "bg-white",
+	children,
+	language,
+	technologies,
+	iconColor,
+	iconShadow,
+	textColor = "text-black",
+	timeline,
+	url
+}) => {
 	return (
-		<div className="flex flex-col h-full w-full">
-			<div className="min-h-screen-1/2 max-h-screen-1/2 h-full w-full relative flex items-center justify-center">{children}</div>
+		<div className="flex flex-col h-full w-full relative">
+			<CloseButton />
+			<div className={clsx(headerColor, "min-h-screen-1/2 max-h-screen-1/2 h-full w-full relative flex items-center justify-center")}>{children}</div>
 			<div className={clsx(backgroundColor, "w-full h-full py-8")}>
 				<div className={clsx(textColor, "max-w-[900px] w-full m-auto flex flex-col gap-4 items-center relative")}>
 					<div className="w-full flex md:flex-row flex-col-reverse md:p-0 p-4 md:justify-around justify-between md:gap-0 gap-12">
@@ -40,7 +55,7 @@ export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>>
 							<h2 className="font-bold text-2xl">Overview</h2>
 							<ol className="text-left text-lg flex flex-col gap-4">
 								<li>
-									<Link href={url} className="text-projects-gcn-500 hover:text-primary-300 hover:underline" onClick={(e) => e.stopPropagation()}>
+									<Link href={url} className="text-projects-gcn-500 hover:text-primary-300 hover:underline">
 										{url}
 									</Link>
 								</li>

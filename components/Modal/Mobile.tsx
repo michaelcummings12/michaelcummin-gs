@@ -95,9 +95,15 @@ export const MobileModal: FunctionComponent<PropsWithChildren<MobileModalProps>>
 
 	return (
 		<>
-			<motion.div initial="hidden" animate={isActive ? "visible" : "hidden"} variants={backgroundVariants} className={clsx(isActive ? "pointer-events-auto" : "pointer-events-none", "absolute inset-0 bg-overlay w-full h-full z-50")} onClick={setActive} />
+			<motion.div
+				initial="hidden"
+				animate={isActive ? "visible" : "hidden"}
+				variants={backgroundVariants}
+				className={clsx(isActive ? "pointer-events-auto" : "pointer-events-none", "absolute inset-0 bg-overlay w-full h-full z-40")}
+				onClick={setActive}
+			/>
 			<div
-				className="left-0 bottom-0 z-50 w-full fixed overflow-hidden rounded-t-xl bg-white shadow-mobile-modal border-white border-t pointer-events-auto"
+				className="left-0 bottom-0 z-40 w-full fixed overflow-hidden rounded-t-xl bg-white shadow-mobile-modal border-white border-t pointer-events-auto"
 				style={
 					isDragging
 						? { transform: `translate3d(0px, ${posY}px, 0px)` }
@@ -113,8 +119,8 @@ export const MobileModal: FunctionComponent<PropsWithChildren<MobileModalProps>>
 					<div className="w-full h-[3rem] relative top-0 bg-white" style={{ zIndex: 1000 }} ref={dragRef}>
 						<button className="absolute bg-white" style={{ height: "5px", width: "44px", borderRadius: "4px", top: "1.25rem", left: "calc(50% - 22px)" }} />
 					</div>
-					<div className={clsx(!allowScroll ? "overflow-hidden" : "overflow-y-scroll", "relative scrollbar-hide min-h-[75vh] max-h-[75vh]")} id="modal-children" ref={childrenRef}>
-						<div className="z-50">{children}</div>
+					<div className={clsx(!allowScroll ? "overflow-hidden" : "overflow-y-scroll", "relative scrollbar-none min-h-[75vh] max-h-[75vh]")} id="modal-children" ref={childrenRef}>
+						<div className="z-40">{children}</div>
 					</div>
 				</div>
 			</div>

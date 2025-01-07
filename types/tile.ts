@@ -1,8 +1,8 @@
 export enum TileIds {
 	About = "about",
-	BreakingEntering = "be",
-	ChicagoCare = "cc",
+	BreakingEntering = "breaking-entering",
+	ChicagoCare = "chicago-care",
 	Contact = "contact",
 	GCN = "gcn",
-	ShareHouse = "sh"
+	Rhythm = "rhythm"
 }

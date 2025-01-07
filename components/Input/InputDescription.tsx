@@ -4,7 +4,7 @@ import { FieldError } from "react-hook-form";
 import { CircleExclamation } from "../icons";
 
 interface InputDescriptionProps {
-	description?: string | JSX.Element;
+	description?: string | React.ReactNode;
 	displayMessage?: boolean;
 	error?: FieldError;
 	errors?: (FieldError | undefined)[];

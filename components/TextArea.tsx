@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import React, { FunctionComponent } from "react";
+import React from "react";
 import { TextareaProps } from "../types/textarea";
 import { InputWrapper } from "./Input/InputWrapper";
 
-export const TextArea: FunctionComponent<TextareaProps> = React.forwardRef<HTMLTextAreaElement, TextareaProps>(function TextArea({ description, error, label, ...props }, ref) {
+export const TextArea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(function TextArea({ description, error, label, ...props }, ref) {
 	const background = error ? "bg-error-900 peer-focus:bg-white" : "bg-white/90";
 	const border = error ? "border-red-500 peer-focus:border-red-500" : "border-white/15 peer-focus:border-primary-500";
 	const borderRadius = "rounded-2xl";

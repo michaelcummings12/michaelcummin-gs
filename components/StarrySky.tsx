@@ -1,3 +1,4 @@
+"use client";
 import anime from "animejs";
 import { FunctionComponent, useEffect, useState } from "react";
 

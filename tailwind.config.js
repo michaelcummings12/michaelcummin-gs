@@ -1,4 +1,8 @@
-module.exports = {
+import tailwindScrollbar from "tailwind-scrollbar";
+import tailwindcssSafeArea from "tailwindcss-safe-area";
+
+/** @type {import('tailwindcss').Config} */
+const config = {
 	content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./views/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		fontFamily: {
@@ -21,7 +25,8 @@ module.exports = {
 					gcn: { 500: "#027ef9", 700: "#010921" },
 					ink: "#f4df4f",
 					sh: "#46beab",
-					cc: "#41b6e6"
+					cc: "#41b6e6",
+					rhythm: "#F46D6B"
 				}
 			},
 			transitionTimingFunction: {
@@ -38,7 +43,7 @@ module.exports = {
 				"popup": "0px 2px 6px 2px rgba(170, 170, 170, 0.2)",
 				"gcn": "0px 0px 6px 2px rgba(2, 126, 249, 1)",
 				"gcnInset": "inset 0px 0px 6px 2px rgba(2, 126, 249, 1)",
-				"be": "0px 0px 6px 2px rgba(150, 150, 150, 1)",
+				"rhythm": "0px 0px 6px 2px rgba(244, 109, 107, 1)",
 				"sh": "0px 0px 12px 0px rgba(200, 200, 200, 1)",
 				"inset": "inset 0px 0px 12px 4px rgb(0 0 0 / 0.1)",
 				"mobile-modal": "0px -4px 12px 4px rgba(127, 127, 127, 0.2)"
@@ -57,8 +62,8 @@ module.exports = {
 	},
 	variants: { fill: ["hover", "focus"] },
 	plugins: [
-		require("tailwind-scrollbar-hide"),
-		require("tailwindcss-safe-area"),
+		tailwindcssSafeArea,
+		tailwindScrollbar,
 		function ({ addUtilities, theme }) {
 			const newUtilities = {};
 			newUtilities[`.background-gcn`] = { background: "linear-gradient(90deg, rgba(2, 126, 249, 1) 0%, rgba(3, 160, 252, 1) 33%, rgba(2, 166, 251, 1) 66%, rgba(3, 220, 251, 1) 100%)" };
@@ -87,3 +92,5 @@ module.exports = {
 		}
 	]
 };
+
+export default config;

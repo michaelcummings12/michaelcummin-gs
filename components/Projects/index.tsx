@@ -1,6 +1,6 @@
-export { AboutProjectContent, AboutTileIcon } from "./About";
-export { BreakingEnteringProjectContent, BreakingEnteringTileIcon } from "./BreakingEntering";
-export { ChicagoCareProjectContent, ChicagoCareTileIcon } from "./ChicagoCare";
-export { ContactProjectContent, ContactTileIcon } from "./Contact";
-export { GCNProjectContent, GCNTileIcon } from "./GCN";
-export { ShareHouseProjectContent, ShareHouseTileIcon } from "./ShareHouse";
+export { AboutTileIcon } from "./About";
+export { BreakingEnteringTileIcon } from "./BreakingEntering";
+export { ChicagoCareTileIcon } from "./ChicagoCare";
+export { ContactTileIcon } from "./Contact";
+export { GCNTileIcon } from "./GCN";
+export { RhythmTileIcon } from "./Rhythm";

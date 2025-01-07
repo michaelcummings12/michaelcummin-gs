@@ -64,10 +64,10 @@ const Modal: FunctionComponent<PropsWithChildren<ModalProps>> = ({ isActive, set
 			{children}
 		</MobileModal>
 	) : (
-		<div className="px-8 py-4 z-50 fixed inset-0 flex justify-center items-center max-h-screen-safe">
+		<div className="px-8 py-4 z-40 fixed inset-0 flex justify-center items-center max-h-screen-safe">
 			<motion.div initial="hidden" animate="visible" exit="hidden" variants={backgroundVariants} className="absolute inset-0 bg-overlay backdrop-blur-xl" onClick={setActive} />
 			<motion.div initial="hidden" animate="visible" exit="hidden" variants={modalVariants} className="z-40 h-full shadow-modal">
-				<div className={clsx(isMobile ? "w-full" : "w-[500px]", "bg-white p-4 rounded-xl relative overflow-y-scroll scrollbar-hide h-full")}>{children}</div>
+				<div className={clsx(isMobile ? "w-full" : "w-[500px]", "bg-white p-4 rounded-xl relative overflow-y-scroll scrollbar-none h-full")}>{children}</div>
 			</motion.div>
 		</div>
 	);
