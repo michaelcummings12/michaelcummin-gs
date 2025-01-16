@@ -2,7 +2,6 @@
 import { FunctionComponent, useRef, useState } from "react";
 import Confetti from "react-confetti";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { usePrivacyModal } from "../contexts/PrivacyModalContext";
 import { SubmitStates } from "../types/submitStates";
 import { DefaultButton } from "./Button";
 import { Input } from "./Input";
@@ -21,7 +20,6 @@ const submitFormToApi = async (data: any): Promise<boolean> => {
 };
 
 const ContactForm: FunctionComponent = () => {
-	const { setPrivacyModalVisible } = usePrivacyModal();
 	const [submitState, setSubmitState] = useState<SubmitStates>(SubmitStates.UNKNOWN);
 	const formRef = useRef<HTMLDivElement>(null);
 	const {

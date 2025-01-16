@@ -18,7 +18,8 @@
   "scripts": {
     "start": "next start",
     "build": "next build",
-    "dev": "next dev"
+    "dev": "next dev",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@svgr/cli": "^8.1.0",
