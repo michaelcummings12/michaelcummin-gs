@@ -17,11 +17,11 @@ const tiles: SpringBoardTiles = [
 		id: "chicago-care"
 	},
 	{ backgroundColor: "bg-blue-600", tileIcon: <BreakingEnteringLogo className={clsx("fill-white", iconClass)} />, id: "breaking-entering" },
-	{ backgroundColor: "bg-projects-rhythm-bg", shadow: "shadow-rhythm", tileIcon: <RhythmLogo className={iconClass} />, id: "rhythm" },
+	{ backgroundColor: "bg-zinc-900", shadow: "shadow-rhythm", tileIcon: <RhythmLogo className={iconClass} />, id: "rhythm" },
 	{
-		backgroundColor: "bg-projects-gcn-700",
+		backgroundColor: "bg-slate-900",
 		shadow: "shadow-gcn",
-		tileIcon: <GcnLogo className={clsx("fill-projects-gcn-500", iconClass)} />,
+		tileIcon: <GcnLogo className={clsx("fill-blue-500", iconClass)} />,
 		id: "gcn"
 	},
 	{ backgroundColor: "bg-gradient-to-br from-fuchsia-500 to-purple-700", tileIcon: <ContactLogo className={iconClass} />, id: "contact" },

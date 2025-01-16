@@ -12,7 +12,7 @@ export const SendMessageButton: FunctionComponent = () => {
 		}, 500);
 	};
 	return (
-		<button onClick={onClick} className="text-projects-gcn-500 underline">
+		<button onClick={onClick} className="text-blue-500 hover:text-blue-700 transition-all hover:underline">
 			send me a message
 		</button>
 	);

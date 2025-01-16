@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { FunctionComponent } from "react";
-import { LinkProps } from "../../types/link";
+import { LinkProps } from "../types/link";
 
 export const DefaultLink: FunctionComponent<LinkProps> = ({ className = "", icon, href, ...props }) => {
 	return (

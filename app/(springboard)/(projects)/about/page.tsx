@@ -38,7 +38,7 @@ export default function Page() {
 						<p>
 							Please feel free to <SendMessageButton /> or you can email me at
 						</p>
-						<a className="text-projects-gcn-500 underline" href="mailto:hello@michaelcummin.gs">
+						<a className="text-blue-500 hover:text-blue-700 transition-all hover:underline" href="mailto:hello@michaelcummin.gs">
 							hello@michaelcummin.gs
 						</a>
 					</div>

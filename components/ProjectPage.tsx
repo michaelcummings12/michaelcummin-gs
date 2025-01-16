@@ -15,6 +15,7 @@ interface ProjectPageProps {
 	headerColor?: string;
 	textColor?: string;
 	ariaColor?: string;
+	linkColor?: string;
 }
 
 export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>> = ({
@@ -28,7 +29,8 @@ export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>>
 	iconShadow,
 	textColor = "text-black",
 	timeline,
-	url
+	url,
+	linkColor = "text-blue-500"
 }) => {
 	return (
 		<div className="flex flex-col h-full w-full relative">
@@ -53,7 +55,7 @@ export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>>
 							<h2 className="font-bold text-2xl">Overview</h2>
 							<ol className="text-left text-lg flex flex-col gap-4">
 								<li>
-									<Link href={url} className="text-projects-gcn-500 hover:text-primary-300 hover:underline">
+									<Link href={url} className={clsx(linkColor, "hover:underline transition-all")}>
 										{url}
 									</Link>
 								</li>

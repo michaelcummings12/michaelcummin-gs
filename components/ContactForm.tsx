@@ -1,4 +1,5 @@
 "use client";
+import clsx from "clsx";
 import { FunctionComponent, useRef, useState } from "react";
 import Confetti from "react-confetti";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -18,6 +19,8 @@ const submitFormToApi = async (data: any): Promise<boolean> => {
 	if (res.status === 201) return true;
 	return false;
 };
+
+const buttonBg = "bg-gradient-to-r from-fuchsia-500 to-purple-700";
 
 const ContactForm: FunctionComponent = () => {
 	const [submitState, setSubmitState] = useState<SubmitStates>(SubmitStates.UNKNOWN);
@@ -44,17 +47,16 @@ const ContactForm: FunctionComponent = () => {
 					<Input label="Email" {...register("email", { required: "Email address is required.", pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })} type="email" error={errors.email} disabled={submitState === SubmitStates.PENDING} />
 					<TextArea rows={8} label="Message" {...register("message", { required: "Message is required." })} error={errors.message} disabled={submitState === SubmitStates.PENDING} />
 				</div>
-				<div className="relative">{Object.keys(errors).length > 0 && <div className="font-semibold text-error border-2 border-error rounded p-4 w-full top-0 bg-white">Please correct the errors above. Then, try to re-submit your message.</div>}</div>
 				<div className="flex flex-col gap-2">
 					<DefaultButton
-						loadingColor="bg-white"
+						loadingFill="bg-white"
 						disabled={submitState === SubmitStates.PENDING || !isDirty || Object.keys(errors).length > 0}
-						onClick={(e: any) => e.stopPropagation()}
 						type="submit"
-						className="w-full bg-gradient-to-r from-fuchsia-500 to-purple-700 text-white focus:outline-black focus:outline-none"
-						loading={submitState === SubmitStates.PENDING}>
-						Submit
-					</DefaultButton>
+						className={clsx(buttonBg, "w-full text-white focus:outline-black focus:outline-none")}
+						isLoading={submitState == SubmitStates.PENDING}
+						label="Submit"
+						loadingBg={buttonBg}
+					/>
 				</div>
 				{submitState === SubmitStates.SUCCESS && (
 					<div className="absolute top-0 left-0 w-full h-full bg-white/75 backdrop-blur-xl rounded z-40 flex justify-center items-center gap-4 flex-col">

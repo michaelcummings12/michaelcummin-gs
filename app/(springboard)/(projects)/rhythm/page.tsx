@@ -10,15 +10,16 @@ const SITE_URL = "https://www.rhythm.watch/";
 const Header: FunctionComponent = () => (
 	<div className="flex flex-col gap-12">
 		<RhythmLogo className="h-full w-full fill-white drop-shadow max-h-[128px]" />
-		<DefaultLink icon={<ExternalIcon className="h-full fill-black" />} className="bg-white text-black w-full" href={SITE_URL} label="Visit Rhythm.watch" />
+		<DefaultLink icon={<ExternalIcon className="h-full fill-red-400" />} className="bg-white text-red-400 w-full" href={SITE_URL} label="Visit Rhythm.watch" />
 	</div>
 );
 
+const iconClass = "fill-black h-full w-full";
 const technologies: Technologies = [
-	{ name: "Ffmpeg", icon: <Ffmpeg className="fill-black h-full w-full" /> },
-	{ name: "PostgreSQL", icon: <PostgreSql className="fill-black h-full w-full" /> },
-	{ name: "NextAuth.js", icon: <NextAuth className="h-full w-full" /> },
-	{ name: "Next.js", icon: <Nextjs className="fill-black h-full w-full" /> }
+	{ name: "Ffmpeg", icon: <Ffmpeg className={iconClass} /> },
+	{ name: "PostgreSQL", icon: <PostgreSql className={iconClass} /> },
+	{ name: "NextAuth.js", icon: <NextAuth className={iconClass} /> },
+	{ name: "Next.js", icon: <Nextjs className={iconClass} /> }
 ];
 
 export default function Page() {
@@ -26,14 +27,15 @@ export default function Page() {
 		<ProjectPage
 			ariaColor="white"
 			technologies={technologies}
-			backgroundColor="bg-projects-rhythm-bg"
-			headerColor="bg-projects-rhythm-bg"
+			backgroundColor="bg-black"
+			headerColor="bg-black"
 			iconColor="bg-white"
 			iconShadow="shadow"
 			url={SITE_URL}
 			timeline="December 2022 - Present"
 			language="TypeScript"
-			textColor="text-white">
+			textColor="text-white"
+			linkColor="text-red-400">
 			<Header />
 		</ProjectPage>
 	);
