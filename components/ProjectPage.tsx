@@ -16,6 +16,7 @@ interface ProjectPageProps {
 	textColor?: string;
 	ariaColor?: string;
 	linkColor?: string;
+	headerPadding?: string;
 }
 
 export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>> = ({
@@ -30,12 +31,13 @@ export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>>
 	textColor = "text-black",
 	timeline,
 	url,
-	linkColor = "text-blue-500"
+	linkColor = "text-blue-500",
+	headerPadding = "py-24 md:py-32"
 }) => {
 	return (
 		<div className="flex flex-col h-full w-full relative">
-			<div className={clsx(headerColor, "min-h-screen-1/2 max-h-screen-1/2 h-full w-full relative flex items-center justify-center")}>{children}</div>
-			<div className={clsx(backgroundColor, "w-full h-full py-8")}>
+			<div className={clsx(headerColor, headerPadding, "w-full relative flex items-center justify-center")}>{children}</div>
+			<div className={clsx(backgroundColor, "h-full w-full py-4 md:py-8")}>
 				<div className={clsx(textColor, "max-w-[900px] w-full m-auto flex flex-col gap-4 items-center relative")}>
 					<div className="w-full flex md:flex-row flex-col-reverse md:p-0 p-4 md:justify-around justify-between md:gap-0 gap-12">
 						<div className="flex flex-col gap-4">

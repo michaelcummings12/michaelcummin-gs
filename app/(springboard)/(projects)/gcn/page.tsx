@@ -10,13 +10,14 @@ const SITE_URL = "https://www.generalcomputing.io/";
 
 const Header: FunctionComponent = () => {
 	return (
-		<div className="h-full rounded-3xl shadow-gcnInset w-full border border-blue-500 p-12 flex items-center justify-center overflow-hidden relative">
+		<>
+			<div className="h-full rounded-3xl shadow-gcnInset w-full border border-blue-500 p-12 flex items-center justify-center overflow-hidden absolute inset-0" />
 			<div className="flex flex-col gap-12 z-20">
-				<GcnLogo className="h-full w-full fill-blue-500 max-h-[128px]" />
+				<GcnLogo className="w-full fill-blue-500 h-12 md:h-16" />
 				<DefaultLink icon={<ExternalIcon className="h-full fill-white" />} className="w-full background-gcn text-white" href={SITE_URL} label="Visit GeneralComputing.io" />
 			</div>
 			<StarrySky />
-		</div>
+		</>
 	);
 };
 

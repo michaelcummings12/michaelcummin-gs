@@ -9,7 +9,7 @@ const SITE_URL = "https://www.breaking-entering.com/";
 
 const Header: FunctionComponent = () => (
 	<div className="flex flex-col gap-12">
-		<BreakingEnteringLogo className="h-full w-full fill-white max-h-[128px]" />
+		<BreakingEnteringLogo className="w-full fill-white h-16 md:h-24" />
 		<DefaultLink icon={<ExternalIcon className="h-full fill-blue-600" />} className="bg-white text-blue-600 w-full" href={SITE_URL} label="Visit Breaking-Entering.com" />
 	</div>
 );

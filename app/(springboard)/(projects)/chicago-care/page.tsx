@@ -9,7 +9,7 @@ const SITE_URL = "https://www.chicago.care/";
 
 const Header: FunctionComponent = () => (
 	<div className="flex flex-col gap-12 bg-white">
-		<ChicagoCareLogo className="h-full w-full max-h-[128px] drop-shadow" />
+		<ChicagoCareLogo className="w-full h-12 md:h-16 drop-shadow" />
 		<DefaultLink icon={<ExternalIcon className="h-full fill-white" />} className="bg-sky-400 text-white" href={SITE_URL} label="Visit Chicago.care" />
 	</div>
 );

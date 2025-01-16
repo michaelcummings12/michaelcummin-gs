@@ -11,19 +11,10 @@ import { Signature } from "./Signature";
 const iconClass = "h-full w-full drop-shadow";
 
 const tiles: SpringBoardTiles = [
-	{
-		backgroundColor: "bg-white",
-		tileIcon: <ChicagoCareLogo className={iconClass} />,
-		id: "chicago-care"
-	},
 	{ backgroundColor: "bg-blue-600", tileIcon: <BreakingEnteringLogo className={clsx("fill-white", iconClass)} />, id: "breaking-entering" },
-	{ backgroundColor: "bg-zinc-900", shadow: "shadow-rhythm", tileIcon: <RhythmLogo className={iconClass} />, id: "rhythm" },
-	{
-		backgroundColor: "bg-slate-900",
-		shadow: "shadow-gcn",
-		tileIcon: <GcnLogo className={clsx("fill-blue-500", iconClass)} />,
-		id: "gcn"
-	},
+	{ backgroundColor: "bg-white", tileIcon: <ChicagoCareLogo className={iconClass} />, id: "chicago-care" },
+	{ backgroundColor: "bg-slate-900", tileIcon: <GcnLogo className={clsx("fill-blue-500", iconClass)} />, id: "gcn" },
+	{ backgroundColor: "bg-zinc-900", tileIcon: <RhythmLogo className={iconClass} />, id: "rhythm" },
 	{ backgroundColor: "bg-gradient-to-br from-fuchsia-500 to-purple-700", tileIcon: <ContactLogo className={iconClass} />, id: "contact" },
 	{ backgroundColor: "bg-gradient-to-br from-cyan-400 to-blue-700", expandedBackgroundColor: "bg-white", tileIcon: <AboutLogo className={iconClass} />, id: "about" }
 ];
@@ -72,7 +63,8 @@ export const SpringBoard: FunctionComponent = () => {
 					{tiles.map((tile, key) => (
 						<Link href={`/${tile.id}`} id={`href-${tile.id}`} className="aspect-square relative" key={key}>
 							<motion.div layoutId={`card-${tile.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="relative w-full h-full">
-								<div className={clsx(tile.backgroundColor, "hover:scale-105 active:scale-95 cursor-pointer z-0", "w-full h-full transition-all overflow-hidden rounded-3xl border border-white/5")}>
+								<div className={clsx(tile.backgroundColor, "hover:scale-105 active:scale-95 cursor-pointer z-0", "w-full h-full transition-all overflow-hidden rounded-3xl")}>
+									<div className="absolute inset-0 rounded-3xl h-full w-full pointer-events-none border border-white/10 z-20" />
 									<div className="flex items-center justify-center lg:p-8 p-4 max-w-full aspect-square">{tile.tileIcon}</div>
 								</div>
 							</motion.div>

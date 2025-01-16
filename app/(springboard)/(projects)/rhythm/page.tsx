@@ -9,7 +9,7 @@ const SITE_URL = "https://www.rhythm.watch/";
 
 const Header: FunctionComponent = () => (
 	<div className="flex flex-col gap-12">
-		<RhythmLogo className="h-full w-full fill-white drop-shadow max-h-[128px]" />
+		<RhythmLogo className="w-full fill-white drop-shadow h-12 md:h-16" />
 		<DefaultLink icon={<ExternalIcon className="h-full fill-red-400" />} className="bg-white text-red-400 w-full" href={SITE_URL} label="Visit Rhythm.watch" />
 	</div>
 );
