@@ -1,15 +1,16 @@
-import { ApiGateway, Fargate, Lambda, LightningBolt, MongoDb, Nextjs } from "@/components/icons";
+import { ApiGateway, ExternalIcon, Fargate, Lambda, LightningBolt, MongoDb, Nextjs } from "@/components/Icons";
 import { DefaultLink } from "@/components/Link";
+import { ChicagoCareLogo } from "@/components/Logos";
 import { ProjectPage } from "@/components/ProjectPage";
-import { Logo } from "@/components/Projects/ChicagoCare/Logo";
-import { ExternalIcon } from "@/src/components/icons";
 import { Technologies } from "@/types/project";
 import { FunctionComponent } from "react";
 
+const SITE_URL = "https://www.chicago.care/";
+
 const Header: FunctionComponent = () => (
 	<div className="flex flex-col gap-12 bg-white">
-		<Logo className="h-full w-full max-h-[128px]" />
-		<DefaultLink icon={<ExternalIcon className="h-full fill-white" />} className="bg-projects-cc text-white" href="https://chicago.care/" label="Visit Chicago.care" />
+		<ChicagoCareLogo className="h-full w-full max-h-[128px] drop-shadow" />
+		<DefaultLink icon={<ExternalIcon className="h-full fill-white" />} className="bg-projects-cc text-white" href={SITE_URL} label="Visit Chicago.care" />
 	</div>
 );
 
@@ -24,7 +25,7 @@ const technologies: Technologies = [
 
 export default function Page() {
 	return (
-		<ProjectPage technologies={technologies} backgroundColor="bg-white" iconColor="bg-projects-cc/20" iconShadow="shadow" url="https://chicago.care/" timeline="August 2022 - Present" language="TypeScript">
+		<ProjectPage technologies={technologies} backgroundColor="bg-white" iconColor="bg-projects-cc/20" iconShadow="shadow" url={SITE_URL} timeline="August 2022 - Present" language="TypeScript">
 			<Header />
 		</ProjectPage>
 	);

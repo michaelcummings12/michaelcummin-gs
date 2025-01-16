@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FunctionComponent } from "react";
-import { EnvelopeIcon, Github, LinkedinIcon } from "./icons";
+import { EnvelopeIcon, Github, LinkedinIcon } from "./Icons";
 
 const Social: FunctionComponent = () => {
 	return (

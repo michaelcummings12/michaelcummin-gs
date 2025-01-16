@@ -1,6 +1,6 @@
 import { motion, Variants } from "framer-motion";
 import { FunctionComponent } from "react";
-import { McLogo } from "./icons";
+import { McLogo } from "./Icons";
 
 const variants: Variants = {
 	enter: {

@@ -26,7 +26,7 @@ const config = {
 					ink: "#f4df4f",
 					sh: "#46beab",
 					cc: "#41b6e6",
-					rhythm: "#F46D6B"
+					rhythm: { primary: "#F46D6B", bg: "#050505" }
 				}
 			},
 			transitionTimingFunction: {

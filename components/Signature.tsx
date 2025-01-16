@@ -1,6 +1,6 @@
 import { motion, Variants } from "framer-motion";
 import { FunctionComponent } from "react";
-import { Signature as SignatureIcon } from "./icons";
+import { Signature as SignatureIcon } from "./Icons";
 
 const variants: Variants = {
 	enter: {

@@ -2,8 +2,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { FunctionComponent, PropsWithChildren } from "react";
 import { Technologies, Technology } from "../types/project";
-import { CloseButton } from "./CloseButton";
-import { Github, JavaScript, TypeScript } from "./icons";
+import { Github, JavaScript, TypeScript } from "./Icons";
 
 interface ProjectPageProps {
 	technologies: Technologies;
@@ -33,7 +32,6 @@ export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>>
 }) => {
 	return (
 		<div className="flex flex-col h-full w-full relative">
-			<CloseButton />
 			<div className={clsx(headerColor, "min-h-screen-1/2 max-h-screen-1/2 h-full w-full relative flex items-center justify-center")}>{children}</div>
 			<div className={clsx(backgroundColor, "w-full h-full py-8")}>
 				<div className={clsx(textColor, "max-w-[900px] w-full m-auto flex flex-col gap-4 items-center relative")}>
