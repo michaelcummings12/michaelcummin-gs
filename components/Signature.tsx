@@ -1,6 +1,6 @@
-import { m, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { FunctionComponent } from "react";
-import { Signature as SignatureIcon } from "./icons";
+import { Signature as SignatureIcon } from "./Icons";
 
 const variants: Variants = {
 	enter: {
@@ -16,10 +16,10 @@ const variants: Variants = {
 
 export const Signature: FunctionComponent = () => {
 	return (
-		<m.div variants={variants} initial="exit" animate="enter" className="fixed right-0 bottom-0">
+		<motion.div variants={variants} initial="exit" animate="enter" className="fixed right-0 bottom-0">
 			<div className="lg:p-8 p-4">
 				<SignatureIcon className="fill-white" height="36px" />
 			</div>
-		</m.div>
+		</motion.div>
 	);
 };

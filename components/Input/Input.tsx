@@ -1,10 +1,10 @@
 import { InputProps } from "@/types/input";
 import clsx from "clsx";
-import React, { FunctionComponent } from "react";
+import React from "react";
 import { InputWrapper } from "./InputWrapper";
 
-export const Input: FunctionComponent<InputProps> = React.forwardRef<HTMLInputElement, InputProps>(function Input({ description, error, label, position, ...props }, ref) {
-	const background = error ? "bg-error-900 peer-focus:bg-white/90" : "bg-white/90";
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input({ description, error, label, position, ...props }, ref) {
+	const background = error ? "bg-error/10 peer-focus:bg-white/90" : "bg-white/90";
 	const border = error ? "border-red-500 peer-focus:border-red-500" : "border-white peer-focus:border-black";
 	const borderRadius = position === "top" ? "rounded-t-2xl border-b-0" : position === "bottom" ? "rounded-b-2xl border-t-0" : position === "middle" ? "rounded-none" : "rounded-2xl";
 	const labelColor = error ? "text-red-500 peer-placeholder-shown:text-red-500" : "text-black/60 peer-placeholder-shown:text-black";

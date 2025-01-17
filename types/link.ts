@@ -2,7 +2,7 @@ import { AnchorHTMLAttributes, DetailedHTMLProps, Ref } from "react";
 
 interface Link {
 	label: string;
-	icon?: JSX.Element;
+	icon?: React.ReactNode;
 	href: string;
 	ref?: Ref<HTMLAnchorElement> | undefined;
 }

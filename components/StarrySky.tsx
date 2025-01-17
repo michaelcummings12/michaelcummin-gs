@@ -1,5 +1,6 @@
+"use client";
 import anime from "animejs";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, ReactElement, useEffect, useState } from "react";
 
 const starryNight = () => {
 	anime({
@@ -60,7 +61,7 @@ const StarrySky: FunctionComponent = () => {
 	const [stars, setStars] = useState<Array<any>>();
 
 	const Stars = () => {
-		let components: Array<any> = [];
+		const components: Array<ReactElement> = [];
 		[...Array(num)].map((x, y) => components.push(<circle cx={getRandomX(vw)} cy={getRandomY(vh)} r={randomRadius()} stroke="none" strokeWidth="0" fill="white" key={y} className="star" />));
 		return setStars(components);
 	};

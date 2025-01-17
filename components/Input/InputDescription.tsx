@@ -1,10 +1,10 @@
 "use client";
 import { FunctionComponent, useMemo } from "react";
 import { FieldError } from "react-hook-form";
-import { CircleExclamation } from "../icons";
+import { CircleExclamation } from "../Icons";
 
 interface InputDescriptionProps {
-	description?: string | JSX.Element;
+	description?: string | React.ReactNode;
 	displayMessage?: boolean;
 	error?: FieldError;
 	errors?: (FieldError | undefined)[];

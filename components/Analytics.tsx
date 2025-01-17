@@ -2,23 +2,23 @@
 import { isDev } from "@/utils/environment";
 import Tracker from "@openreplay/tracker/cjs";
 import Script from "next/script";
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useEffect, useRef } from "react";
 
 const googleAnalyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 const openReplayProjectKey = process.env.NEXT_PUBLIC_OPENREPLAY_PROJECT_KEY;
 
-const tracker = new Tracker({
-	projectKey: openReplayProjectKey!
-});
-
-// No need to enable analytics in the dev environment
-// But we still want to set the _uid cookie
 export const Analytics: FunctionComponent = () => {
+	const tracker = useRef<Tracker | null>(null);
 	const dev = isDev();
-
 	useEffect(() => {
+		// No need to enable analytics in the dev environment
 		if (!dev) {
-			tracker.start();
+			if (!tracker.current) {
+				tracker.current = new Tracker({
+					projectKey: openReplayProjectKey!
+				});
+			}
+			tracker.current?.start();
 		}
 	}, [dev]);
 	return dev ? null : (

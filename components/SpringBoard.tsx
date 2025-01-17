@@ -1,121 +1,81 @@
 "use client";
-import { TileIds } from "@/types/tile";
 import clsx from "clsx";
-import { domAnimation, LazyMotion, m, useAnimation, Variants } from "framer-motion";
-import { Dispatch, FunctionComponent, PropsWithChildren, SetStateAction, useEffect, useState } from "react";
-import { usePrivacyModal } from "../contexts/PrivacyModalContext";
-import { useMobile } from "../hooks/useMobile";
+import { motion, Variants } from "framer-motion";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { FunctionComponent, useEffect } from "react";
 import { SpringBoardTiles } from "../types/springboard";
-import { ExpandedTile } from "./ExpandedTile";
+import { AboutLogo, BreakingEnteringLogo, ChicagoCareLogo, ContactLogo, GcnLogo, RhythmLogo } from "./Logos";
 import { Signature } from "./Signature";
-import { Tile } from "./Tile";
 
-interface SpringBoardProps {
-	tiles: SpringBoardTiles;
-	activeTile?: string;
-	disableInitialAnimation?: boolean;
-	setActiveTile: Dispatch<SetStateAction<TileIds | undefined>>;
-}
+const iconClass = "h-full w-full drop-shadow";
 
-const tileVariants: Variants = {
-	enter: {
-		scale: 1
-	},
-	exit: {
-		scale: 1.1
-	}
-};
+const tiles: SpringBoardTiles = [
+	{ backgroundColor: "bg-blue-600", tileIcon: <BreakingEnteringLogo className={clsx("fill-white", iconClass)} />, label: "Breaking & Entering", id: "breaking-entering" },
+	{ backgroundColor: "bg-white", tileIcon: <ChicagoCareLogo className={iconClass} />, label: "Chicago.care", id: "chicago-care" },
+	{ backgroundColor: "bg-slate-900", tileIcon: <GcnLogo className={clsx("fill-blue-500", iconClass)} />, label: "GCN", id: "gcn" },
+	{ backgroundColor: "bg-zinc-900", tileIcon: <RhythmLogo className={iconClass} />, label: "Rhythm", id: "rhythm" },
+	{ backgroundColor: "bg-gradient-to-br from-fuchsia-500 to-purple-700", tileIcon: <ContactLogo className={iconClass} />, label: "Contact", id: "contact" },
+	{ backgroundColor: "bg-gradient-to-br from-cyan-400 to-blue-700", expandedBackgroundColor: "bg-white", tileIcon: <AboutLogo className={iconClass} />, label: "About", id: "about" }
+];
 
 const variants: Variants = {
-	enter: {
+	initial: {
+		opacity: 0,
+		scale: 0.5,
+		transition: {
+			duration: 1,
+			type: "spring"
+		}
+	},
+	animate: {
+		opacity: 1,
 		scale: 1,
 		transition: {
 			duration: 1,
 			type: "spring"
 		}
 	},
-	enterReducedMotion: {
-		scale: 1,
-		transition: { duration: 0 }
-	},
 	exit: {
-		scale: 2
+		opacity: 0,
+		scale: 0.5
 	}
 };
 
-export const SpringBoard: FunctionComponent<PropsWithChildren<SpringBoardProps>> = ({ activeTile, tiles, disableInitialAnimation, setActiveTile }) => {
-	const { isPrivacyModalVisible } = usePrivacyModal();
-	const [maxWidth, setMaxWidth] = useState<number>();
-	const isMobile = useMobile();
-
-	const controls = useAnimation();
-
+export const SpringBoard: FunctionComponent = () => {
+	const pathname = usePathname();
+	const router = useRouter();
 	const onKeyDown = (e: KeyboardEvent) => {
-		if (activeTile && e.key === "Escape") return setActiveTile(undefined);
-	};
-
-	const onWindowResize = () => {
-		if (typeof window === undefined) return;
-
-		const height = window.innerHeight;
-		let maxWidth;
-		if (isMobile) {
-			maxWidth = Math.round(height * (3 / 5));
-		} else {
-			maxWidth = Math.round(height * (4 / 3));
+		if (e.key === "Escape" && pathname !== "/") {
+			router.push("/");
 		}
-		setMaxWidth(maxWidth);
 	};
-
-	useEffect(() => {
-		onWindowResize();
-	});
-
-	useEffect(() => {
-		if (!disableInitialAnimation) {
-			controls.start("enter");
-		} else {
-			controls.start("enterReducedMotion");
-		}
-	}, [disableInitialAnimation, controls]);
-
 	useEffect(() => {
 		window.addEventListener("keydown", onKeyDown);
-		window.addEventListener("resize", onWindowResize);
 		return () => {
 			window.removeEventListener("keydown", onKeyDown);
-			window.removeEventListener("resize", onWindowResize);
 		};
 	});
-
 	return (
-		<LazyMotion features={domAnimation}>
-			<div className="w-screen-safe h-screen-safe max-w-screen-safe relative bg-black flex justify-center items-center overflow-hidden">
-				<div className="max-w-[1200px] max-h-[900px] lg:max-h-full h-full w-full lg:p-8 p-4 flex justify-center items-center">
-					<m.div animate={controls} variants={variants} initial="exit" exit="exit" className="grid sm:grid-cols-3 grid-cols-2 lg:gap-8 md:gap-6 gap-4 max-h-full" style={{ width: maxWidth }}>
-						{tiles.map((tile, key) => {
-							const active: boolean = tile.id === activeTile;
-							const isMobileAndPrivacyModalVisible: boolean = isPrivacyModalVisible && isMobile && tile.id === "contact";
-
-							return (
-								<m.div variants={tileVariants} initial="exit" animate="enter" exit="exit" className="aspect-square" key={key}>
-									<a href={`/#${tile.id}`} id={`href-${tile.id}`} className={active ? "cursor-default" : "cursor-pointer"}>
-										<m.div
-											layoutId={`card-${key}`}
-											animate={{ zIndex: active ? 50 : 0, scale: isMobileAndPrivacyModalVisible ? 0.95 : 1, transition: { zIndex: { delay: active ? 0 : 0.3 } } }}
-											className={clsx(active ? "absolute top-0 left-0 p-0" : "relative", "w-full h-full z-0")}>
-											<m.div className={clsx(tile.backgroundColor, active ? "" : tile.shadow || "", active ? "z-50 rounded-b-0" : "hover:scale-105 active:scale-95 cursor-pointer z-0", "w-full h-full transition-all overflow-hidden rounded-3xl")}>
-												{active ? <ExpandedTile backgroundColor={tile.expandedBackgroundColor || tile.backgroundColor}>{tile.projectContent}</ExpandedTile> : <Tile>{tile.tileIcon}</Tile>}
-											</m.div>
-										</m.div>
-									</a>
-								</m.div>
-							);
-						})}
-					</m.div>
-				</div>
-				<Signature />
+		<div className="w-full h-full max-h-screen relative bg-black flex justify-center items-center overflow-hidden">
+			<div className="max-w-[1200px] max-h-[900px] lg:max-h-full h-full w-full lg:p-8 p-4 flex justify-center items-center">
+				<motion.div variants={variants} initial="initial" animate="animate" exit="exit" className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-4 max-h-full">
+					{tiles.map((tile, index) => (
+						<div key={`tile-${index}`} className="text-center flex flex-col">
+							<Link href={`/${tile.id}`} id={`tile-${tile.id}`} className="aspect-square relative">
+								<motion.div layoutId={`card-${tile.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="relative w-full h-full">
+									<div className={clsx(tile.backgroundColor, "hover:scale-105 active:scale-95 cursor-pointer z-0", "w-full h-full transition-all overflow-hidden rounded-3xl")}>
+										<div className="absolute inset-0 rounded-3xl h-full w-full pointer-events-none border border-white/10 z-20" />
+										<div className="flex items-center justify-center lg:p-8 p-4 max-w-full aspect-square">{tile.tileIcon}</div>
+									</div>
+								</motion.div>
+							</Link>
+							<p className="pt-2 text-xs md:text-sm lg:text-base">{tile.label}</p>
+						</div>
+					))}
+				</motion.div>
 			</div>
-		</LazyMotion>
+			<Signature />
+		</div>
 	);
 };

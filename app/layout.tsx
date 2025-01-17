@@ -1,8 +1,9 @@
 import { Analytics } from "@/components/Analytics";
+import { Metadata, Viewport } from "next";
 import { Overpass } from "next/font/google";
 import "./globals.css";
 
-export const metadata = {
+export const metadata: Metadata = {
 	metadataBase: new URL("https://www.michaelcummin.gs"),
 	openGraph: {
 		locale: "en-US",
@@ -10,15 +11,6 @@ export const metadata = {
 	},
 	robots: "all",
 	referrer: "origin",
-	themeColor: "#000000",
-	colorScheme: "dark",
-	viewport: {
-		initialScale: 1,
-		minimumScale: 1,
-		maximumScale: 1,
-		width: "device-width",
-		height: "device-height"
-	},
 	icons: [
 		{
 			type: "image/png",
@@ -43,6 +35,16 @@ export const metadata = {
 	],
 	title: "Michael Cummings",
 	description: "Explore the work of Michael Cummings on his personal portfolio."
+};
+
+export const viewport: Viewport = {
+	initialScale: 1,
+	minimumScale: 1,
+	maximumScale: 1,
+	width: "device-width",
+	height: "device-height",
+	colorScheme: "dark",
+	themeColor: "#000000"
 };
 
 const overpass = Overpass({
