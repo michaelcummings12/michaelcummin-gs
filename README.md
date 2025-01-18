@@ -1,6 +1,6 @@
 # michaelcummin.gs
 
-Hey there! This is the source-code that powers my personal portfolio, [https://michaelcummin.gs/](michaelcummin.gs) 
+Hey there! This is the source-code that powers my personal portfolio, [https://www.michaelcummin.gs/](https://www.michaelcummin.gs/) 
 
 The site showcases my work, projects, and professional experience in a clean, user-friendly design.
 
