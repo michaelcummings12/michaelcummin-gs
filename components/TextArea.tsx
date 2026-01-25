@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 import React from "react";
 import { TextareaProps } from "../types/textarea";
 import { InputWrapper } from "./Input/InputWrapper";
@@ -22,11 +22,11 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(fun
 				className="peer z-10 block w-full appearance-none bg-transparent p-4 pt-6 pb-0 text-base text-black focus:outline-none"
 			/>
 			;
-			<label htmlFor={props.id} className={clsx(labelColor, labelPosition, "absolute z-20 origin-[0] text-base duration-300")}>
+			<label htmlFor={props.id} className={cn(labelColor, labelPosition, "absolute z-20 origin-[0] text-base duration-300")}>
 				{label}
 			</label>
 			<div
-				className={clsx(background, border, borderRadius, "absolute inset-0 z-0 h-full w-full border shadow transition-all peer-focus:rounded-2xl peer-focus:border-2")}
+				className={cn(background, border, borderRadius, "absolute inset-0 z-0 h-full w-full border shadow transition-all peer-focus:rounded-2xl peer-focus:border-2")}
 			/>
 		</InputWrapper>
 	);

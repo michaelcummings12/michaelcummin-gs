@@ -1,30 +1,40 @@
 "use client";
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
+import { projects } from "@/lib/projects";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { FunctionComponent, useEffect } from "react";
-import { SpringBoardTiles } from "../types/springboard";
-import { AboutLogo, BreakingEnteringLogo, ChicagoCareLogo, ContactLogo, GcnLogo, RhythmLogo } from "./Logos";
+import { SpringBoardTile } from "../types/springboard";
+import { BlogWidget } from "./BlogWidget";
+import { Folder } from "./Folder";
+import { AboutLogo, ContactLogo } from "./Logos";
 import { Signature } from "./Signature";
 
 const iconClass = "h-full w-full drop-shadow";
 
-const tiles: SpringBoardTiles = [
+const tiles: SpringBoardTile[] = [
 	{
-		backgroundColor: "bg-blue-600",
-		tileIcon: <BreakingEnteringLogo className={clsx("fill-white", iconClass)} />,
-		label: "Breaking & Entering",
-		id: "breaking-entering"
+		backgroundColor: "bg-purple-500",
+		children: <BlogWidget />,
+		colSpan: 2,
+		label: "Blog",
+		id: "blog"
 	},
-	{ backgroundColor: "bg-white", tileIcon: <ChicagoCareLogo className={iconClass} />, label: "Chicago.care", id: "chicago-care" },
-	{ backgroundColor: "bg-slate-900", tileIcon: <GcnLogo className={clsx("fill-blue-500", iconClass)} />, label: "GCN", id: "gcn" },
-	{ backgroundColor: "bg-zinc-900", tileIcon: <RhythmLogo className={iconClass} />, label: "Rhythm", id: "rhythm" },
-	{ backgroundColor: "bg-gradient-to-br from-fuchsia-500 to-purple-700", tileIcon: <ContactLogo className={iconClass} />, label: "Contact", id: "contact" },
+	{
+		backgroundColor: "bg-gray-800",
+		children: <Folder tiles={projects} />,
+		label: "Projects",
+		id: "projects"
+	},
+	// { backgroundColor: "bg-white", children: <ChicagoCareLogo className={iconClass} />, label: "Chicago.care", id: "chicago-care" },
+	// { backgroundColor: "bg-slate-900", children: <GcnLogo className={cn("fill-blue-500", iconClass)} />, label: "GCN", id: "gcn" },
+	// { backgroundColor: "bg-zinc-900", children: <RhythmLogo className={iconClass} />, label: "Rhythm", id: "rhythm" },
+	{ backgroundColor: "bg-gradient-to-br from-lime-500 to-green-700", children: <ContactLogo className={iconClass} />, label: "Contact", id: "contact" },
 	{
 		backgroundColor: "bg-gradient-to-br from-cyan-400 to-blue-700",
 		expandedBackgroundColor: "bg-white",
-		tileIcon: <AboutLogo className={iconClass} />,
+		children: <AboutLogo className={iconClass} />,
 		label: "About",
 		id: "about"
 	}
@@ -68,16 +78,24 @@ export const SpringBoard: FunctionComponent = () => {
 		};
 	});
 	return (
-		<div className="relative flex h-full max-h-screen w-full items-center justify-center overflow-hidden bg-black">
-			<div className="flex h-full max-h-[900px] w-full max-w-[1200px] items-center justify-center p-4 lg:max-h-full lg:p-8">
+		<div className="relative flex h-full max-h-screen w-full items-center justify-center bg-black">
+			<div className="flex h-full max-h-225 w-full max-w-300 items-center justify-center p-4 lg:max-h-full lg:p-8">
 				<motion.div variants={variants} initial="initial" animate="animate" exit="exit" className="grid max-h-full grid-cols-2 gap-x-8 gap-y-4 md:grid-cols-3">
 					{tiles.map((tile, index) => (
-						<div key={`tile-${index}`} className="flex flex-col text-center">
-							<Link href={`/${tile.id}`} id={`tile-${tile.id}`} className="relative aspect-square">
-								<motion.div layoutId={`card-${tile.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="relative h-full w-full">
-									<div className={clsx(tile.backgroundColor, "z-0 cursor-pointer hover:scale-105 active:scale-95", "h-full w-full overflow-hidden rounded-3xl transition-all")}>
+						<div key={`tile-${index}`} className={cn("flex flex-col text-center", tile.colSpan === 2 ? "col-span-2" : "")}>
+							<Link
+								href={`/${tile.id}`}
+								id={`tile-${tile.id}`}
+								className={cn("relative", tile.colSpan === 2 ? "h-0 w-full pb-[calc(50%-1rem)] md:h-full md:pb-0" : "aspect-square")}>
+								<motion.div
+									layoutId={`card-${tile.id}`}
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									exit={{ opacity: 0 }}
+									className={cn("h-full w-full", tile.colSpan === 2 ? "absolute inset-0" : "relative")}>
+									<div className={cn(tile.backgroundColor, "z-0 cursor-pointer hover:scale-105 active:scale-95", "h-full w-full overflow-hidden rounded-3xl transition-all")}>
 										<div className="pointer-events-none absolute inset-0 z-20 h-full w-full rounded-3xl border border-white/10" />
-										<div className="flex aspect-square max-w-full items-center justify-center p-4 lg:p-8">{tile.tileIcon}</div>
+										<div className="flex h-full max-w-full items-center justify-center p-4 lg:p-8">{tile.children}</div>
 									</div>
 								</motion.div>
 							</Link>

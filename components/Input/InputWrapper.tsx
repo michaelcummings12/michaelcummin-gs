@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 import { FunctionComponent, PropsWithChildren } from "react";
 import { FieldError } from "react-hook-form";
 import { InputDescription } from "./InputDescription";
@@ -21,7 +21,7 @@ export const InputWrapper: FunctionComponent<PropsWithChildren<InputWrapperProps
 }) => {
 	return (
 		<div className="flex flex-col gap-2">
-			<div className={clsx(cursor, height, "relative z-20 flex w-full items-center rounded-2xl")}>{children}</div>
+			<div className={cn(cursor, height, "relative z-20 flex w-full items-center rounded-2xl")}>{children}</div>
 			<InputDescription description={description} error={error} displayMessage={displayMessage} />
 		</div>
 	);

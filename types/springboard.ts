@@ -1,9 +1,8 @@
 export interface SpringBoardTile {
 	backgroundColor: string;
+	colSpan?: number;
 	expandedBackgroundColor?: string;
 	id: string;
 	label: string;
-	tileIcon: React.ReactElement;
+	children: React.ReactNode;
 }
-
-export type SpringBoardTiles = SpringBoardTile[];

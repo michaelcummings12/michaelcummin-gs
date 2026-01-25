@@ -38,7 +38,7 @@ const animateShootingStars = () => {
 		],
 		easing: "linear",
 		loop: true,
-		delay: (_, i) => 2000 * i,
+		delay: (_, i) => 2000 * i
 	});
 };
 
@@ -84,7 +84,7 @@ const StarrySky: FunctionComponent = () => {
 		return Array.from({ length: numStars / 4 }).map((_, i) => (
 			<div
 				key={i}
-				className="rounded-full wish absolute h-0.5 bg-linear-to-br from-blue-500 to-indigo-500 drop-shadow-white"
+				className="wish absolute h-0.5 rounded-full bg-linear-to-br from-blue-500 to-indigo-500 drop-shadow-white"
 				style={{
 					left: `${randomY(dimensions.width)}px`,
 					top: `${randomX(dimensions.height)}px`

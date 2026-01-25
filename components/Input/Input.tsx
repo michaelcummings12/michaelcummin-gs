@@ -1,5 +1,5 @@
+import { cn } from "@/lib/cn";
 import { InputProps } from "@/types/input";
-import clsx from "clsx";
 import React from "react";
 import { InputWrapper } from "./InputWrapper";
 
@@ -22,11 +22,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(function Inp
 				placeholder={placeholder}
 				className="peer z-10 block w-full appearance-none bg-transparent p-4 pb-0 text-base text-black focus:outline-none"
 			/>
-			<label htmlFor={props.id} className={clsx(labelColor, labelPosition, "absolute z-20 origin-[0] text-base duration-300")}>
+			<label htmlFor={props.id} className={cn(labelColor, labelPosition, "absolute z-20 origin-[0] text-base duration-300")}>
 				{label}
 			</label>
 			<div
-				className={clsx(background, border, borderRadius, "absolute inset-0 z-0 h-full w-full border shadow transition-all peer-focus:rounded-2xl peer-focus:border-2")}
+				className={cn(background, border, borderRadius, "absolute inset-0 z-0 h-full w-full border shadow transition-all peer-focus:rounded-2xl peer-focus:border-2")}
 			/>
 		</InputWrapper>
 	);

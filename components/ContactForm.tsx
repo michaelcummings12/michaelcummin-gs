@@ -1,5 +1,5 @@
 "use client";
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 import { FunctionComponent, useRef, useState } from "react";
 import Confetti from "react-confetti";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -69,7 +69,7 @@ const ContactForm: FunctionComponent = () => {
 						loadingFill="bg-white"
 						disabled={submitState === SubmitStates.PENDING || !isDirty || Object.keys(errors).length > 0}
 						type="submit"
-						className={clsx(buttonBg, "w-full text-white focus:outline-black focus:outline-none")}
+						className={cn(buttonBg, "w-full text-white focus:outline-black focus:outline-none")}
 						isLoading={submitState == SubmitStates.PENDING}
 						label="Submit"
 						loadingBg={buttonBg}
