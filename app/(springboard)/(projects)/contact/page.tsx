@@ -3,9 +3,9 @@ import ContactForm from "@/components/ContactForm";
 
 export default function Page() {
 	return (
-		<div className="h-full w-full px-2 py-2 relative bg-gradient-to-br from-fuchsia-500 to-purple-700 flex flex-col items-center justify-center">
+		<div className="relative flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-fuchsia-500 to-purple-700 px-2 py-2">
 			<CloseButton />
-			<div className="bg-white/60 rounded-3xl md:max-w-[680px] w-full h-full md:h-auto shadow-inset m-auto">
+			<div className="shadow-inset m-auto h-full w-full rounded-3xl bg-white/60 md:h-auto md:max-w-[680px]">
 				<ContactForm />
 			</div>
 		</div>

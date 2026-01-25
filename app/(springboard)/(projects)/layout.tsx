@@ -7,7 +7,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 	const pathname = usePathname();
 	const layoutId = pathname.split("/").pop();
 	return (
-		<motion.div layoutId={`card-${layoutId}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="absolute h-full w-full inset-0 z-50">
+		<motion.div
+			layoutId={`card-${layoutId}`}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+			transition={{ duration: 0.3 }}
+			className="absolute inset-0 z-50 h-full w-full">
 			<CloseButton />
 			{children}
 		</motion.div>

@@ -1,93 +1,136 @@
 "use client";
-import anime from "animejs";
-import { FunctionComponent, ReactElement, useEffect, useState } from "react";
+import { animate } from "animejs";
+import { FunctionComponent, useEffect, useMemo, useRef, useState } from "react";
 
-const starryNight = () => {
-	anime({
-		targets: ["#sky .star"],
-		opacity: [
-			{
-				duration: 700,
-				value: "0"
-			},
-			{
-				duration: 700,
-				value: "1"
-			}
+/**
+ * Animates the stars to fade in and out.
+ */
+const animateStars = () => {
+	const targets = ["#sky .star"];
+	if (document.querySelectorAll(targets[0]).length === 0) {
+		return;
+	}
+
+	animate(targets, {
+		keyframes: [
+			{ opacity: 0, duration: 1000 },
+			{ opacity: 1, duration: 1000 }
 		],
 		easing: "linear",
 		loop: true,
-		delay: (el: any, i: any) => 50 * i
+		delay: (_, i) => 500 * i
 	});
 };
-const shootingStars = () => {
-	anime({
-		targets: ["#shootingstars .wish"],
+
+/**
+ * Animates the shooting stars across the sky.
+ */
+const animateShootingStars = () => {
+	const targets = ["#shootingstars .wish"];
+	if (document.querySelectorAll(targets[0]).length === 0) {
+		return;
+	}
+
+	animate(targets, {
+		keyframes: [
+			{ opacity: 0.67, width: "150px", translateX: 100, duration: 400 },
+			{ opacity: 0, width: "0px", translateX: 350, duration: 800 }
+		],
 		easing: "linear",
 		loop: true,
-		delay: (el: any, i: any) => 2000 * i,
-		opacity: [
-			{
-				duration: 2000,
-				value: "1"
-			}
-		],
-		width: [
-			{
-				value: "150px"
-			},
-			{
-				value: "0px"
-			}
-		],
-		translateX: 350
+		delay: (_, i) => 2000 * i,
 	});
 };
-const randomRadius = () => {
-	return Math.random() * 0.7 + 0.6;
-};
-const getRandomX = (vw: number) => {
-	return Math.floor(Math.random() * Math.floor(vw)).toString();
-};
-const getRandomY = (vh: number) => {
-	return Math.floor(Math.random() * Math.floor(vh)).toString();
-};
+
+/**
+ * Generates a random radius for a star.
+ */
+const randomRadius = () => Math.random() * 0.7 + 0.6;
+
+/**
+ * Generates a random x coordinate for a star.
+ */
+const randomX = (vw: number) => Math.floor(Math.random() * Math.floor(vw)).toString();
+
+/**
+ * Generates a random y coordinate for a star.
+ */
+const randomY = (vh: number) => Math.floor(Math.random() * Math.floor(vh)).toString();
 
 const StarrySky: FunctionComponent = () => {
-	const [num, setNum] = useState(0);
-	const [vw, setVw] = useState(0);
-	const [vh, setVh] = useState(0);
+	const containerRef = useRef<HTMLDivElement>(null);
+	const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+	const numStars = useMemo(() => Math.round(Math.max(dimensions.width || 0) / 10), [dimensions.width]);
+	/**
+	 * Generates the stars.
+	 */
+	const stars = useMemo(() => {
+		if (dimensions.width === 0 || dimensions.height === 0) {
+			return [];
+		}
 
-	const [stars, setStars] = useState<Array<any>>();
+		return Array.from({ length: numStars }).map((_, i) => (
+			<circle cx={randomX(dimensions.width)} cy={randomY(dimensions.height)} r={randomRadius()} stroke="none" strokeWidth="0" fill="white" key={i} className="star" />
+		));
+	}, [numStars, dimensions.width, dimensions.height]);
+	/**
+	 * Generates the shooting stars.
+	 */
+	const shootingStars = useMemo(() => {
+		if (dimensions.width === 0 || dimensions.height === 0) {
+			return [];
+		}
 
-	const Stars = () => {
-		const components: Array<ReactElement> = [];
-		[...Array(num)].map((x, y) => components.push(<circle cx={getRandomX(vw)} cy={getRandomY(vh)} r={randomRadius()} stroke="none" strokeWidth="0" fill="white" key={y} className="star" />));
-		return setStars(components);
-	};
-
+		return Array.from({ length: numStars / 4 }).map((_, i) => (
+			<div
+				key={i}
+				className="rounded-full wish absolute h-0.5 bg-linear-to-br from-blue-500 to-indigo-500 drop-shadow-white"
+				style={{
+					left: `${randomY(dimensions.width)}px`,
+					top: `${randomX(dimensions.height)}px`
+				}}
+			/>
+		));
+	}, [numStars, dimensions.width, dimensions.height]);
+	/**
+	 * Animates the stars and shooting stars.
+	 */
 	useEffect(() => {
-		setNum(Math.round(Math.max(document.documentElement.clientWidth || 0) / 10));
-		setVw(Math.max(document.documentElement.clientWidth || 0));
-		setVh(Math.max(document.documentElement.clientHeight || 0));
+		if (stars.length > 0) {
+			animateStars();
+		}
+		if (shootingStars.length > 0) {
+			animateShootingStars();
+		}
+	}, [stars, shootingStars]);
+	/**
+	 * Updates the dimensions of the container when the window is resized.
+	 */
+	useEffect(() => {
+		if (!containerRef.current) {
+			return;
+		}
+
+		const handleResize = (entries: ResizeObserverEntry[]) => {
+			for (const entry of entries) {
+				const { width, height } = entry.contentRect;
+				setDimensions({ width, height });
+			}
+		};
+		const observer = new ResizeObserver(handleResize);
+		observer.observe(containerRef.current);
+		return () => {
+			observer.disconnect();
+		};
 	}, []);
-
-	useEffect(() => {
-		starryNight();
-		shootingStars();
-	}, []);
-
-	useEffect(() => {
-		Stars();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [vw, vh]);
 	return (
-		<div className="h-full w-full top-0 left-0 absolute z-0 translate-x-0 translate-y-0">
-			<svg id="sky" className="h-full w-full absolute top-0 left-0 ">
-				{stars?.map((e) => {
-					return e;
-				})}
+		<div ref={containerRef} className="absolute inset-0 z-0 h-full w-full overflow-hidden">
+			<svg id="sky" className="absolute inset-0 h-full w-full">
+				{stars}
 			</svg>
+			<div id="shootingstars" className="absolute inset-0 h-full w-full rotate-45">
+				{shootingStars}
+			</div>
 		</div>
 	);
 };

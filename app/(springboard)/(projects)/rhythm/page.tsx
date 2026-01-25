@@ -9,8 +9,8 @@ const SITE_URL = "https://www.rhythm.watch/";
 
 const Header: FunctionComponent = () => (
 	<div className="flex flex-col gap-12">
-		<RhythmLogo className="w-full fill-white drop-shadow h-12 md:h-16" />
-		<DefaultLink icon={<ExternalIcon className="h-full fill-red-400" />} className="bg-white text-red-400 w-full" href={SITE_URL} label="Visit Rhythm.watch" />
+		<RhythmLogo className="h-12 w-full fill-white drop-shadow md:h-16" />
+		<DefaultLink icon={<ExternalIcon className="h-full fill-red-400" />} className="w-full bg-white text-red-400" href={SITE_URL} label="Visit Rhythm.watch" />
 	</div>
 );
 

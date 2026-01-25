@@ -35,18 +35,20 @@ export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>>
 	headerPadding = "py-24 md:py-32"
 }) => {
 	return (
-		<div className="flex flex-col h-full w-full relative">
-			<div className={clsx(headerColor, headerPadding, "w-full relative flex items-center justify-center")}>{children}</div>
+		<div className="relative flex h-full w-full flex-col">
+			<div className={clsx(headerColor, headerPadding, "relative flex w-full items-center justify-center")}>{children}</div>
 			<div className={clsx(backgroundColor, "h-full w-full py-4 md:py-8")}>
-				<div className={clsx(textColor, "max-w-[900px] w-full m-auto flex flex-col gap-4 items-center relative")}>
-					<div className="w-full flex md:flex-row flex-col-reverse md:p-0 p-4 md:justify-around justify-between md:gap-0 gap-12">
+				<div className={clsx(textColor, "relative m-auto flex w-full max-w-[900px] flex-col items-center gap-4")}>
+					<div className="flex w-full flex-col-reverse justify-between gap-12 p-4 md:flex-row md:justify-around md:gap-0 md:p-0">
 						<div className="flex flex-col gap-4">
-							<h2 className="font-bold text-2xl">Technologies Used</h2>
-							<ol className="text-left text-lg flex flex-col gap-4">
+							<h2 className="text-2xl font-bold">Technologies Used</h2>
+							<ol className="flex flex-col gap-4 text-left text-lg">
 								{technologies.map((t: Technology, i: number) => {
 									return (
-										<li className="flex flex-row gap-4 items-center" key={`${t.name}-${i}`}>
-											<div className={clsx(iconColor, iconShadow, "rounded-full p-3 h-[42px] w-[42px] flex items-center justify-center hover:scale-105 transition-all")}>{t.icon}</div>
+										<li className="flex flex-row items-center gap-4" key={`${t.name}-${i}`}>
+											<div className={clsx(iconColor, iconShadow, "flex h-[42px] w-[42px] items-center justify-center rounded-full p-3 transition-all hover:scale-105")}>
+												{t.icon}
+											</div>
 											<label>{t.name}</label>
 										</li>
 									);
@@ -54,10 +56,10 @@ export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>>
 							</ol>
 						</div>
 						<div className="flex flex-col gap-4">
-							<h2 className="font-bold text-2xl">Overview</h2>
-							<ol className="text-left text-lg flex flex-col gap-4">
+							<h2 className="text-2xl font-bold">Overview</h2>
+							<ol className="flex flex-col gap-4 text-left text-lg">
 								<li>
-									<Link href={url} className={clsx(linkColor, "hover:underline transition-all")}>
+									<Link href={url} className={clsx(linkColor, "transition-all hover:underline")}>
 										{url}
 									</Link>
 								</li>

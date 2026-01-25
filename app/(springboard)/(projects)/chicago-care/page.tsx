@@ -9,7 +9,7 @@ const SITE_URL = "https://www.chicago.care/";
 
 const Header: FunctionComponent = () => (
 	<div className="flex flex-col gap-12 bg-white">
-		<ChicagoCareLogo className="w-full h-12 md:h-16 drop-shadow" />
+		<ChicagoCareLogo className="h-12 w-full drop-shadow md:h-16" />
 		<DefaultLink icon={<ExternalIcon className="h-full fill-white" />} className="bg-sky-400 text-white" href={SITE_URL} label="Visit Chicago.care" />
 	</div>
 );
@@ -26,7 +26,14 @@ const technologies: Technologies = [
 
 export default function Page() {
 	return (
-		<ProjectPage technologies={technologies} backgroundColor="bg-white" iconColor="bg-sky-400/20" iconShadow="shadow" url={SITE_URL} timeline="August 2022 - Present" language="TypeScript">
+		<ProjectPage
+			technologies={technologies}
+			backgroundColor="bg-white"
+			iconColor="bg-sky-400/20"
+			iconShadow="shadow"
+			url={SITE_URL}
+			timeline="August 2022 - Present"
+			language="TypeScript">
 			<Header />
 		</ProjectPage>
 	);

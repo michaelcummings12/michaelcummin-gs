@@ -17,7 +17,7 @@ const variants: Variants = {
 export const Signature: FunctionComponent = () => {
 	return (
 		<motion.div variants={variants} initial="exit" animate="enter" className="fixed right-0 bottom-0">
-			<div className="lg:p-8 p-4">
+			<div className="p-4 lg:p-8">
 				<SignatureIcon className="fill-white" height="36px" />
 			</div>
 		</motion.div>

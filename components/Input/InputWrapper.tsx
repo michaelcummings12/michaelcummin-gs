@@ -11,10 +11,17 @@ interface InputWrapperProps {
 	height?: string;
 }
 
-export const InputWrapper: FunctionComponent<PropsWithChildren<InputWrapperProps>> = ({ children, cursor, displayMessage, description, error, height = "h-[56px]" }) => {
+export const InputWrapper: FunctionComponent<PropsWithChildren<InputWrapperProps>> = ({
+	children,
+	cursor,
+	displayMessage,
+	description,
+	error,
+	height = "h-[56px]"
+}) => {
 	return (
 		<div className="flex flex-col gap-2">
-			<div className={clsx(cursor, height, "rounded-2xl z-20 flex items-center relative w-full")}>{children}</div>
+			<div className={clsx(cursor, height, "relative z-20 flex w-full items-center rounded-2xl")}>{children}</div>
 			<InputDescription description={description} error={error} displayMessage={displayMessage} />
 		</div>
 	);
