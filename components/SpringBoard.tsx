@@ -26,6 +26,22 @@ const tiles: SpringBoardTile[] = [
 		label: "Projects",
 		id: "projects"
 	},
+	{
+		backgroundColor: "bg-sky-400",
+		children: (
+			<div className="flex h-full w-full items-center justify-center">
+				<div className="relative h-12 w-12 rounded-full border-2 border-black bg-yellow-400">
+					<div className="absolute top-1 right-1 h-3 w-3 rounded-full border border-black bg-white">
+						<div className="absolute top-1 right-0.5 h-1 w-1 rounded-full bg-black" />
+					</div>
+					<div className="absolute top-4 left-1 h-2 w-4 rounded-full bg-white/50" />
+					<div className="absolute top-4 -right-2 h-2 w-3 rounded-r-md border border-black bg-orange-500" />
+				</div>
+			</div>
+		),
+		label: "Flappy Bird",
+		id: "flappy-bird"
+	},
 	// { backgroundColor: "bg-white", children: <ChicagoCareLogo className={iconClass} />, label: "Chicago.care", id: "chicago-care" },
 	// { backgroundColor: "bg-slate-900", children: <GcnLogo className={cn("fill-blue-500", iconClass)} />, label: "GCN", id: "gcn" },
 	// { backgroundColor: "bg-zinc-900", children: <RhythmLogo className={iconClass} />, label: "Rhythm", id: "rhythm" },
