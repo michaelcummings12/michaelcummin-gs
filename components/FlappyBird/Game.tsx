@@ -20,10 +20,10 @@ interface PipeData {
 
 /**
  * Flappy Bird Game
- * Slightly less infuriating than the original
+ * Slightly less infuriating than the original ;)
  *
- * Game logic generated with Gemini
- * UI generated using v0.app
+ * Game logic generated with Google Gemini
+ * UI generated using v0 by Vercel
  */
 export const FlappyBirdGame = () => {
 	// Game Dimensions State

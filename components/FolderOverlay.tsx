@@ -30,7 +30,12 @@ export const FolderOverlay: FunctionComponent<FolderOverlayProps> = ({ items, is
 						onClick={(e) => e.stopPropagation()}>
 						<h2 className="mb-4 text-2xl font-semibold text-white md:text-3xl">Projects</h2>
 						<div className="rounded-3xl border border-white/20 bg-white/10 p-6 backdrop-blur-md md:p-8">
-							<motion.div initial={{ scale: 0.5 }} animate={{ scale: 1 }} exit={{ scale: 0.5 }} className="grid grid-cols-3 gap-4 md:gap-6">
+							<motion.div
+								initial={{ scale: 0.5 }}
+								animate={{ scale: 1 }}
+								exit={{ scale: 0.5 }}
+								transition={{ type: "spring", duration: 0.5, bounce: 0 }}
+								className="grid grid-cols-3 gap-4 md:gap-6">
 								{items.map((tile) => (
 									<SpringBoardItem key={tile.id} tile={tile} pathPrefix={pathPrefix} />
 								))}
