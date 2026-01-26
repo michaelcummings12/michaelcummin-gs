@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 			exit={{ opacity: 0 }}
 			transition={{ duration: 0.3 }}
 			className="absolute inset-0 z-50 h-full w-full">
-			<CloseButton />
+			<CloseButton returnTo="/projects" />
 			{children}
 		</motion.div>
 	);

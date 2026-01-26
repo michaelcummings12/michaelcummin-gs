@@ -1,8 +1,6 @@
 "use client";
-import { cn } from "@/lib/cn";
 import { projects } from "@/lib/projects";
 import { motion, Variants } from "framer-motion";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { FunctionComponent, useEffect } from "react";
 import { SpringBoardTile } from "../types/springboard";
@@ -10,6 +8,7 @@ import { BlogWidget } from "./BlogWidget";
 import { Folder } from "./Folder";
 import { AboutLogo, ContactLogo } from "./Logos";
 import { Signature } from "./Signature";
+import { SpringBoardItem } from "./SpringBoardItem";
 
 const iconClass = "h-full w-full drop-shadow";
 
@@ -78,29 +77,11 @@ export const SpringBoard: FunctionComponent = () => {
 		};
 	});
 	return (
-		<div className="relative flex h-full max-h-screen w-full items-center justify-center bg-black">
-			<div className="flex h-full max-h-225 w-full max-w-300 items-center justify-center p-4 lg:max-h-full lg:p-8">
+		<div className="relative h-full max-h-screen w-full bg-black">
+			<div className="m-auto flex h-full max-h-225 w-full max-w-300 items-start justify-center p-4 md:items-center lg:max-h-full lg:p-8">
 				<motion.div variants={variants} initial="initial" animate="animate" exit="exit" className="grid max-h-full grid-cols-2 gap-x-8 gap-y-4 md:grid-cols-3">
-					{tiles.map((tile, index) => (
-						<div key={`tile-${index}`} className={cn("flex flex-col text-center", tile.colSpan === 2 ? "col-span-2" : "")}>
-							<Link
-								href={`/${tile.id}`}
-								id={`tile-${tile.id}`}
-								className={cn("relative", tile.colSpan === 2 ? "h-0 w-full pb-[calc(50%-1rem)] md:h-full md:pb-0" : "aspect-square")}>
-								<motion.div
-									layoutId={`card-${tile.id}`}
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									exit={{ opacity: 0 }}
-									className={cn("h-full w-full", tile.colSpan === 2 ? "absolute inset-0" : "relative")}>
-									<div className={cn(tile.backgroundColor, "z-0 cursor-pointer hover:scale-105 active:scale-95", "h-full w-full overflow-hidden rounded-3xl transition-all")}>
-										<div className="pointer-events-none absolute inset-0 z-20 h-full w-full rounded-3xl border border-white/10" />
-										<div className="flex h-full max-w-full items-center justify-center p-4 lg:p-8">{tile.children}</div>
-									</div>
-								</motion.div>
-							</Link>
-							<p className="pt-2 text-xs md:text-sm lg:text-base">{tile.label}</p>
-						</div>
+					{tiles.map((tile) => (
+						<SpringBoardItem key={`card-${tile.id}`} tile={tile} />
 					))}
 				</motion.div>
 			</div>
