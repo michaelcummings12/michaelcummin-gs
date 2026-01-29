@@ -4,8 +4,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const posts = [
-	{ title: "Automating Soho House Pool Bed Reservations", id: 1 },
-	{ title: "Digital Security of a Major City's Infrastructure", id: 2 }
+	{ title: "Automating Pool Bed Reservations at a Private Members Club", id: 1 },
+	{ title: "Exploring the Security of a Major City's Digital Infrastructure", id: 2 },
+	{ title: "Building a GPU Cryptocurrency Mining Rig", id: 3 }
 ];
 
 export const BlogWidget = () => {

@@ -33,7 +33,10 @@ export const metadata: Metadata = {
 			url: "/favicon-192.png"
 		}
 	],
-	title: "Michael Cummings",
+	title: {
+		template: "%s | Michael Cummings",
+		default: "Michael Cummings"
+	},
 	description: "Explore the work of Michael Cummings on his personal portfolio."
 };
 

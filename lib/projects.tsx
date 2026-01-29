@@ -30,7 +30,7 @@ export const projects: SpringBoardTile[] = [
 	},
 	{
 		id: "nodro",
-		label: "Nodro",
+		label: "Nødro",
 		backgroundColor: "bg-orange-50",
 		children: <NodroLogo className="h-full w-full drop-shadow" />
 	},

@@ -27,7 +27,7 @@ const tiles: SpringBoardTile[] = [
 		id: "projects"
 	},
 	{
-		backgroundColor: "bg-sky-400",
+		backgroundColor: "bg-gradient-to-br from-yellow-500 to-orange-700",
 		children: (
 			<div className="flex h-full w-full items-center justify-center">
 				<div className="relative h-12 w-12 rounded-full border-2 border-black bg-yellow-400">

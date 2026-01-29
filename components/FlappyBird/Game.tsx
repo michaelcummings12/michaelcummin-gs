@@ -6,7 +6,7 @@ import { ControlsOverlay } from "./ControlsOverlay";
 // Game Constants
 const GRAVITY = 0.25;
 const JUMP_STRENGTH = -5.5;
-const PIPE_SPEED = 3;
+const PIPE_SPEED = 3.33;
 const PIPE_SPACING = 300; // px distance between pipes
 const BIRD_SIZE = 30;
 const MAX_DELTA = 333;
