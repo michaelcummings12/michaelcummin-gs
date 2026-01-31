@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 const posts = [
 	{ title: "Automating Pool Bed Reservations at a Private Members Club", id: 1 },
 	{ title: "Exploring the Security of a Major City's Digital Infrastructure", id: 2 },
-	{ title: "Building a GPU Cryptocurrency Mining Rig", id: 3 }
+	{ title: "Building a GPU Cryptocurrency Mining Rig", id: 3 },
+	{ title: "My First Published Open Source Package", id: 4 }
 ];
 
 export const BlogWidget = () => {

@@ -12,7 +12,7 @@ export const ControlsOverlay: FunctionComponent<ControlsOverlayProps> = ({ onSta
 
 	return (
 		<div
-			className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black/60 text-white backdrop-blur-sm"
+			className="absolute inset-0 z-40 flex flex-col items-center justify-center bg-black/60 text-white backdrop-blur-sm"
 			onClick={(e) => {
 				e.stopPropagation();
 				onStart();

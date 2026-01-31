@@ -2,7 +2,7 @@ import { cn } from "@/lib/cn";
 import Image from "next/image";
 import { FunctionComponent, PropsWithChildren } from "react";
 import { ChallengeAndSolution, ProjectImage, Technologies, Technology } from "../types/project";
-import { CalendarDay, ExternalIcon, Github, JavaScript, TypeScript } from "./Icons";
+import { CalendarDay, External, Github, JavaScript, TypeScript } from "./Icons";
 import { DefaultLink } from "./Link";
 
 interface CaseStudyProps {
@@ -75,7 +75,7 @@ export const CaseStudy: FunctionComponent<CaseStudyProps> = ({
 }) => {
 	return (
 		<div className={cn(backgroundColor, textColor, "min-h-full w-full")}>
-			<div className="mx-auto max-w-6xl px-6 py-8 md:px-8">
+			<div className="mx-auto max-w-6xl px-4 py-8 md:px-6">
 				{/* Hero */}
 				{heroImage && (
 					<div className="mb-16">
@@ -94,7 +94,7 @@ export const CaseStudy: FunctionComponent<CaseStudyProps> = ({
 							target="_blank"
 							rel="noopener noreferrer"
 							className={urlClassName ?? cn("bg-white", accentColorText)}
-							icon={<ExternalIcon className="h-full fill-current" />}
+							icon={<External className="h-full fill-current" />}
 							label={urlLabel}
 						/>
 					</div>

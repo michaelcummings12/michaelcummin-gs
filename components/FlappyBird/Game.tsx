@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { FlappyBirdLogo } from "../Logos/FlappyBird";
 import { ControlsOverlay } from "./ControlsOverlay";
 
 // Game Constants
@@ -8,15 +9,111 @@ const GRAVITY = 0.25;
 const JUMP_STRENGTH = -5.5;
 const PIPE_SPEED = 3.33;
 const PIPE_SPACING = 300; // px distance between pipes
-const BIRD_SIZE = 30;
+const BIRD_SIZE = 50;
 const MAX_DELTA = 333;
+const PIPE_WIDTH = 67;
+const PIPE_CAP_HEIGHT = 33;
+const PIPE_GAP = 212;
 
 interface PipeData {
 	x: number;
 	topHeight: number;
-	gap: number;
 	passed: boolean;
 }
+
+// Pipe Component with classic green styling
+const Pipe = ({ x, topHeight, gameHeight }: Pick<PipeData, "x" | "topHeight"> & { gameHeight: number }) => {
+	const bottomPipeTop = topHeight + PIPE_GAP;
+	const bottomPipeHeight = gameHeight - bottomPipeTop;
+	return (
+		<>
+			{/* Top Pipe */}
+			<div
+				className="absolute"
+				style={{
+					left: x,
+					top: 0,
+					width: PIPE_WIDTH,
+					height: topHeight
+				}}>
+				{/* Pipe body */}
+				<div
+					className="absolute w-full"
+					style={{
+						top: 0,
+						height: topHeight - PIPE_CAP_HEIGHT,
+						background: "linear-gradient(to right, #73bf2e 0%, #73bf2e 15%, #8ed43a 30%, #afe366 50%, #8ed43a 70%, #73bf2e 85%, #5a9c24 100%)",
+						borderLeft: "3px solid #2a5510",
+						borderRight: "3px solid #2a5510"
+					}}
+				/>
+				{/* Pipe cap */}
+				<div
+					className="absolute w-full"
+					style={{
+						bottom: 0,
+						height: PIPE_CAP_HEIGHT,
+						left: -3,
+						width: PIPE_WIDTH + 6,
+						background: "linear-gradient(to right, #73bf2e 0%, #73bf2e 10%, #8ed43a 25%, #afe366 45%, #8ed43a 65%, #73bf2e 80%, #5a9c24 100%)",
+						border: "3px solid #2a5510",
+						borderRadius: "2px"
+					}}
+				/>
+			</div>
+			{/* Bottom Pipe */}
+			<div
+				className="absolute"
+				style={{
+					left: x,
+					top: bottomPipeTop,
+					width: PIPE_WIDTH,
+					height: bottomPipeHeight
+				}}>
+				{/* Pipe cap */}
+				<div
+					className="absolute w-full"
+					style={{
+						top: 0,
+						height: PIPE_CAP_HEIGHT,
+						left: -3,
+						width: PIPE_WIDTH + 6,
+						background: "linear-gradient(to right, #73bf2e 0%, #73bf2e 10%, #8ed43a 25%, #afe366 45%, #8ed43a 65%, #73bf2e 80%, #5a9c24 100%)",
+						border: "3px solid #2a5510",
+						borderRadius: "2px"
+					}}
+				/>
+				{/* Pipe body */}
+				<div
+					className="absolute w-full"
+					style={{
+						top: PIPE_CAP_HEIGHT,
+						bottom: 0,
+						background: "linear-gradient(to right, #73bf2e 0%, #73bf2e 15%, #8ed43a 30%, #afe366 50%, #8ed43a 70%, #73bf2e 85%, #5a9c24 100%)",
+						borderLeft: "3px solid #2a5510",
+						borderRight: "3px solid #2a5510"
+					}}
+				/>
+			</div>
+		</>
+	);
+};
+
+const Bird = ({ x, y, velocity }: { x: number; y: number; velocity: number }) => {
+	return (
+		<div
+			className="absolute"
+			style={{
+				left: x,
+				top: y,
+				width: BIRD_SIZE,
+				height: BIRD_SIZE,
+				transform: `rotate(${Math.max(-20, Math.min(90, velocity * 3))}deg)`
+			}}>
+			<FlappyBirdLogo className="h-full w-full object-contain" />
+		</div>
+	);
+};
 
 /**
  * Flappy Bird Game
@@ -73,10 +170,9 @@ export const FlappyBirdGame = () => {
 		if (stored) setHighScore(parseInt(stored));
 	}, []);
 
-	const spawnPipe = (time: number, height: number, width: number) => {
+	const spawnPipe = (height: number, width: number) => {
 		const minPipeHeight = 50;
-		const gap = 200; // Larger gap for full screen/easier play
-		const maxTopHeight = height - gap - minPipeHeight - 50; // -50 for ground buffer
+		const maxTopHeight = height - PIPE_GAP - minPipeHeight - 50; // -50 for ground buffer
 
 		if (maxTopHeight < minPipeHeight) return; // Screen too small
 
@@ -91,11 +187,9 @@ export const FlappyBirdGame = () => {
 		}
 
 		const topHeight = Math.floor(Math.random() * (maxH - minH + 1)) + minH;
-
 		pipes.current.push({
 			x: width,
 			topHeight,
-			gap,
 			passed: false
 		});
 	};
@@ -110,81 +204,74 @@ export const FlappyBirdGame = () => {
 		}
 	};
 
-	const gameLoop = useCallback(
-		(time: number) => {
-			if (lastTime.current === 0) lastTime.current = time;
-			// const delta = time - lastTime.current;
-			lastTime.current = time;
+	const gameLoop = useCallback(() => {
+		const { height, width } = dimensions;
+		if (height === 0 || width === 0) {
+			reqRef.current = requestAnimationFrame(gameLoop);
+			return;
+		}
 
-			const { height, width } = dimensions;
-			if (height === 0 || width === 0) {
-				reqRef.current = requestAnimationFrame(gameLoop);
-				return;
-			}
+		// 1. Update Physics
+		velocity.current += GRAVITY;
+		birdY.current += velocity.current;
 
-			// 1. Update Physics
-			velocity.current += GRAVITY;
-			birdY.current += velocity.current;
+		// 2. Check Boundaries
+		const groundLevel = height;
+		if (birdY.current > groundLevel - BIRD_SIZE) {
+			birdY.current = groundLevel - BIRD_SIZE;
+			endGame();
+			return;
+		}
+		if (birdY.current < -BIRD_SIZE) {
+			birdY.current = -BIRD_SIZE;
+			velocity.current = 0;
+		}
 
-			// 2. Check Boundaries
-			const groundLevel = height;
-			if (birdY.current > groundLevel - BIRD_SIZE) {
-				birdY.current = groundLevel - BIRD_SIZE;
-				endGame();
-				return;
-			}
-			if (birdY.current < -BIRD_SIZE) {
-				birdY.current = -BIRD_SIZE;
-				velocity.current = 0;
-			}
+		// 3. Spawn Pipes
+		if (pipes.current.length === 0 || width - pipes.current[pipes.current.length - 1].x >= PIPE_SPACING) {
+			spawnPipe(height, width);
+		}
 
-			// 3. Spawn Pipes
-			if (pipes.current.length === 0 || width - pipes.current[pipes.current.length - 1].x >= PIPE_SPACING) {
-				spawnPipe(time, height, width);
-			}
+		// 4. Update Pipes & Collision
+		pipes.current.forEach((pipe) => {
+			pipe.x -= PIPE_SPEED;
 
-			// 4. Update Pipes & Collision
-			pipes.current.forEach((pipe) => {
-				pipe.x -= PIPE_SPEED;
+			// Collision Detection
+			const birdLeft = 50 + 6;
+			const birdRight = 50 + BIRD_SIZE - 6;
+			const birdTop = birdY.current + 6;
+			const birdBottom = birdY.current + BIRD_SIZE - 6;
 
-				// Collision Detection
-				const birdLeft = 50 + 6;
-				const birdRight = 50 + BIRD_SIZE - 6;
-				const birdTop = birdY.current + 6;
-				const birdBottom = birdY.current + BIRD_SIZE - 6;
+			const pipeLeft = pipe.x;
+			const pipeRight = pipe.x + PIPE_WIDTH;
+			const pipeTopRectBottom = pipe.topHeight;
+			const pipeBottomRectTop = pipe.topHeight + PIPE_GAP;
 
-				const pipeLeft = pipe.x;
-				const pipeRight = pipe.x + 60; // Fixed pipe width
-				const pipeTopRectBottom = pipe.topHeight;
-				const pipeBottomRectTop = pipe.topHeight + pipe.gap;
-
-				if (birdRight > pipeLeft && birdLeft < pipeRight) {
-					if (birdTop < pipeTopRectBottom || birdBottom > pipeBottomRectTop) {
-						endGame();
-					}
+			if (birdRight > pipeLeft && birdLeft < pipeRight) {
+				if (birdTop < pipeTopRectBottom || birdBottom > pipeBottomRectTop) {
+					endGame();
 				}
-
-				if (!pipe.passed && birdLeft > pipeRight) {
-					pipe.passed = true;
-					setScore((s) => s + 1);
-				}
-			});
-
-			// Cleanup off-screen pipes
-			if (pipes.current.length > 0 && pipes.current[0].x < -100) {
-				pipes.current.shift();
 			}
 
-			// 5. Render
-			setRenderBirdY(birdY.current);
-			setRenderPipes([...pipes.current]);
-
-			if (gameState === "PLAYING") {
-				reqRef.current = requestAnimationFrame(gameLoop);
+			if (!pipe.passed && birdLeft > pipeRight) {
+				pipe.passed = true;
+				setScore((s) => s + 1);
 			}
-		},
-		[gameState, score, highScore, dimensions]
-	);
+		});
+
+		// Cleanup off-screen pipes
+		if (pipes.current.length > 0 && pipes.current[0].x < -100) {
+			pipes.current.shift();
+		}
+
+		// 5. Render
+		setRenderBirdY(birdY.current);
+		setRenderPipes([...pipes.current]);
+
+		if (gameState === "PLAYING") {
+			reqRef.current = requestAnimationFrame(gameLoop);
+		}
+	}, [gameState, score, highScore, dimensions]);
 
 	useEffect(() => {
 		if (gameState === "PLAYING") {
@@ -235,56 +322,20 @@ export const FlappyBirdGame = () => {
 
 			{/* Pipes */}
 			{renderPipes.map((pipe, i) => (
-				<div key={`pipe-${i}`}>
-					{/* Top Pipe */}
-					<div
-						className="absolute w-15 border-x-2 border-b-2 border-green-800 bg-green-500"
-						style={{
-							left: pipe.x,
-							top: 0,
-							height: pipe.topHeight,
-							transition: "left 0 linear"
-						}}>
-						<div className="absolute bottom-0 -left-0.5 h-6 w-16 border-2 border-green-800 bg-green-500" />
-					</div>
-
-					{/* Bottom Pipe */}
-					<div
-						className="absolute w-15 border-x-2 border-t-2 border-green-800 bg-green-500"
-						style={{
-							left: pipe.x,
-							top: pipe.topHeight + pipe.gap,
-							bottom: 0,
-							transition: "left 0 linear"
-						}}>
-						<div className="absolute top-0 -left-0.5 h-6 w-16 border-2 border-green-800 bg-green-500" />
-					</div>
-				</div>
+				<Pipe key={`pipe-${i}`} x={pipe.x} topHeight={pipe.topHeight} gameHeight={dimensions.height} />
 			))}
 
 			{/* Ground */}
 			<div className="absolute bottom-0 z-20 h-4 w-full border-t-4 border-[#d4ce8c] bg-[#ded895]" />
 
 			{/* Bird */}
-			<div
-				className="absolute z-10 flex items-center justify-center rounded-full border-2 border-black bg-yellow-400"
-				style={{
-					left: 50,
-					top: renderBirdY,
-					width: BIRD_SIZE,
-					height: BIRD_SIZE,
-					transform: `rotate(${Math.max(-20, Math.min(90, velocity.current * 3))}deg)`
-				}}>
-				<div className="absolute top-1 right-1 h-3 w-3 rounded-full border border-black bg-white">
-					<div className="absolute top-1 right-0.5 h-1 w-1 rounded-full bg-black" />
-				</div>
-				<div className="absolute top-4 left-1 h-2 w-4 rounded-full bg-white/50" />
-				<div className="absolute top-4 -right-2 h-2 w-3 rounded-r-md border border-black bg-orange-500" />
-			</div>
+			<Bird x={50} y={renderBirdY} velocity={velocity.current} />
 
 			{/* Score */}
 			<div className="pointer-events-none absolute top-10 right-0 left-0 z-30 text-center">
-				<span className="font-mono text-5xl font-bold text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">{score}</span>
+				<span className="text-6xl font-bold text-white" style={{ WebkitTextStroke: "2px black" }}>
+					{score}
+				</span>
 			</div>
 
 			{/* Overlays */}

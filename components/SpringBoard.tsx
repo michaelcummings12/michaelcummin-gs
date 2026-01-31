@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/lib/cn";
 import { projects } from "@/lib/projects";
 import { motion, Variants } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
@@ -7,6 +8,7 @@ import { SpringBoardTile } from "../types/springboard";
 import { BlogWidget } from "./BlogWidget";
 import { Folder } from "./Folder";
 import { AboutLogo, ContactLogo } from "./Logos";
+import { FlappyBirdLogo } from "./Logos/FlappyBird";
 import { Signature } from "./Signature";
 import { SpringBoardItem } from "./SpringBoardItem";
 
@@ -28,17 +30,7 @@ const tiles: SpringBoardTile[] = [
 	},
 	{
 		backgroundColor: "bg-gradient-to-br from-yellow-500 to-orange-700",
-		children: (
-			<div className="flex h-full w-full items-center justify-center">
-				<div className="relative h-12 w-12 rounded-full border-2 border-black bg-yellow-400">
-					<div className="absolute top-1 right-1 h-3 w-3 rounded-full border border-black bg-white">
-						<div className="absolute top-1 right-0.5 h-1 w-1 rounded-full bg-black" />
-					</div>
-					<div className="absolute top-4 left-1 h-2 w-4 rounded-full bg-white/50" />
-					<div className="absolute top-4 -right-2 h-2 w-3 rounded-r-md border border-black bg-orange-500" />
-				</div>
-			</div>
-		),
+		children: <FlappyBirdLogo className={cn(iconClass, "object-contain p-4")} />,
 		label: "Flappy Bird",
 		id: "flappy-bird"
 	},
