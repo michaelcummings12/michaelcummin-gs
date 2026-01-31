@@ -75,7 +75,9 @@ export const SpringBoard: FunctionComponent = () => {
 	const router = useRouter();
 	const onKeyDown = (e: KeyboardEvent) => {
 		if (e.key === "Escape" && pathname !== "/") {
-			router.push("/");
+			// Goes up one level in the URL
+			const path = pathname.slice(0, pathname.lastIndexOf("/")) || "/";
+			router.push(path);
 		}
 	};
 	useEffect(() => {

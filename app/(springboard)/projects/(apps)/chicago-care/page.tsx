@@ -1,5 +1,5 @@
 import { CaseStudy } from "@/components/CaseStudy";
-import { ApiGateway, ExternalIcon, Fargate, Lambda, LightningBolt, MongoDb, Nextjs } from "@/components/Icons";
+import { ApiGateway, External, Fargate, Lambda, LightningBolt, MongoDb, Nextjs } from "@/components/Icons";
 import { DefaultLink } from "@/components/Link";
 import { ChicagoCareLogo } from "@/components/Logos";
 import { Metadata } from "next";
@@ -15,7 +15,7 @@ const SITE_URL = "https://www.chicago.care/";
 const Header: FunctionComponent = () => (
 	<div className="flex flex-col gap-12 bg-white">
 		<ChicagoCareLogo className="h-12 w-full drop-shadow md:h-16" />
-		<DefaultLink icon={<ExternalIcon className="h-full fill-white" />} className="bg-sky-400 text-white" href={SITE_URL} label="Visit Chicago.care" />
+		<DefaultLink icon={<External className="h-full fill-white" />} className="bg-sky-400 text-white" href={SITE_URL} label="Visit Chicago.care" />
 	</div>
 );
 
