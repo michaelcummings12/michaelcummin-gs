@@ -1,0 +1,49 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "@next/third-parties": "^16.1.6",
+    "@openreplay/tracker": "^17.1.6",
+    "animejs": "^4.3.5",
+    "firebase": "^12.9.0",
+    "framer-motion": "^12.34.0",
+    "next": "^16.1.6",
+    "react": "^19.2.4",
+    "react-confetti": "^6.4.0",
+    "react-dom": "^19.2.4",
+    "react-hook-form": "^7.71.1"
+  },
+  "scripts": {
+    "start": "next start",
+    "build": "next build",
+    "dev": "next dev --turbo",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@svgr/cli": "^8.1.0",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.24",
+    "clsx": "^2.1.1",
+    "eslint-config-next": "^16.1.6",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.18",
+    "tailwindcss-text-box-trim": "^1.0.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

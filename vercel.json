@@ -2,6 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "installCommand": "yarn install --immutable",
-  "buildCommand": "yarn build",
-  "outputDirectory": ".next"
+  "buildCommand": "yarn workspace web build",
+  "outputDirectory": "packages/web/.next"
 }
