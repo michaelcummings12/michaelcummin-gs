@@ -18,12 +18,12 @@ export const InputDescription: FunctionComponent<InputDescriptionProps> = ({ des
 		if (filteredErrors.length > 0) {
 			return filteredErrors?.map((error, i) => (
 				<div className="flex flex-row items-center gap-2" key={`combo-input-error-${i}`}>
-					<CircleExclamation className="h-[16px] fill-red-500" />
+					<CircleExclamation className="h-4 fill-red-500" />
 					<span className="text-xs text-red-500 md:text-sm">{error?.message}</span>
 				</div>
 			));
 		} else if (description) {
-			return <span className="dark:text-dark-100 text-xs text-gray-400 md:text-sm">{description}</span>;
+			return <span className="text-xs text-gray-400 md:text-sm">{description}</span>;
 		}
 		return null;
 	}, [description, displayMessage, filteredErrors]);

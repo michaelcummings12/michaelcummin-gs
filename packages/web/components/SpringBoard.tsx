@@ -20,13 +20,15 @@ const tiles: SpringBoardTile[] = [
 		children: <BlogWidget />,
 		colSpan: 2,
 		label: "Blog",
-		id: "blog"
+		id: "blog",
+		padding: "p-2 md:p-4"
 	},
 	{
 		backgroundColor: "bg-gray-800",
 		children: <Folder tiles={projects} />,
 		label: "Projects",
-		id: "projects"
+		id: "projects",
+		padding: "p-2 md:p-4"
 	},
 	{
 		backgroundColor: "bg-gradient-to-br from-yellow-500 to-orange-700",
@@ -34,9 +36,6 @@ const tiles: SpringBoardTile[] = [
 		label: "Flappy Bird",
 		id: "flappy-bird"
 	},
-	// { backgroundColor: "bg-white", children: <ChicagoCareLogo className={iconClass} />, label: "Chicago.care", id: "chicago-care" },
-	// { backgroundColor: "bg-slate-900", children: <GcnLogo className={cn("fill-blue-500", iconClass)} />, label: "GCN", id: "gcn" },
-	// { backgroundColor: "bg-zinc-900", children: <RhythmLogo className={iconClass} />, label: "Rhythm", id: "rhythm" },
 	{ backgroundColor: "bg-gradient-to-br from-lime-500 to-green-700", children: <ContactLogo className={iconClass} />, label: "Contact", id: "contact" },
 	{
 		backgroundColor: "bg-gradient-to-br from-cyan-400 to-blue-700",

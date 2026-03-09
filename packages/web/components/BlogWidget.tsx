@@ -1,34 +1,30 @@
 "use client";
-
+import { getAllPosts } from "@web/lib/blog";
+import { prettyDate } from "@web/lib/prettyDate";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const posts = [
-	{ title: "Automating Pool Bed Reservations at a Private Members Club", id: 1 },
-	{ title: "Exploring the Security of a Major City's Digital Infrastructure", id: 2 },
-	{ title: "Building a GPU Cryptocurrency Mining Rig", id: 3 },
-	{ title: "My First Published Open Source Package", id: 4 }
-];
+const DISPLAY_INTERVAL = 6700;
 
 export const BlogWidget = () => {
+	const posts = getAllPosts();
 	const [index, setIndex] = useState(0);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setIndex((prev) => (prev + 2) % posts.length);
-		}, 5000);
+		}, DISPLAY_INTERVAL);
 		return () => clearInterval(interval);
 	}, []);
-
 	const currentPosts = [posts[index % posts.length], posts[(index + 1) % posts.length]];
-
 	return (
 		<div className="flex h-full w-full flex-col text-left text-white">
-			<div className="relative flex min-h-0 flex-1 flex-col gap-4">
+			<div className="relative flex min-h-0 flex-1 flex-col gap-2 md:gap-4">
 				<AnimatePresence mode="popLayout">
 					{currentPosts.map((post, i) => (
 						<motion.div
-							key={post.id}
+							key={post.slug}
 							initial={{ rotateX: 90, opacity: 0 }}
 							animate={{ rotateX: 0, opacity: 1 }}
 							exit={{ rotateX: -90, opacity: 0 }}
@@ -38,9 +34,13 @@ export const BlogWidget = () => {
 								type: "spring",
 								stiffness: 100
 							}}
-							className="flex flex-1 flex-col justify-center rounded-xl bg-white/10 p-4 backdrop-blur-sm"
+							className="relative flex flex-1 flex-row items-center gap-2 truncate rounded-2xl bg-white/10 p-2 md:rounded-3xl md:p-4"
 							style={{ transformOrigin: "top" }}>
-							<h3 className="line-clamp-3 truncate text-lg leading-tight font-bold md:text-xl">{post.title}</h3>
+							<Image src={post.heroImage!} alt={post.title} width={1200} height={630} className="aspect-square h-full w-auto rounded-xl object-cover" />
+							<div className="flex flex-col">
+								<p className="line-clamp-3 text-sm leading-tight font-bold md:text-xl">{post.title}</p>
+								<p className="text-xs text-white/50 md:text-base">{prettyDate(post.publishedAt)}</p>
+							</div>
 						</motion.div>
 					))}
 				</AnimatePresence>

@@ -33,9 +33,8 @@ export default function Page() {
 						<div className="mt-8">
 							<iframe
 								src="https://www.nodro.com/embed/cummingsdmichael"
-								style={{ width: "100%", maxWidth: "400px", height: "74px" }}
+								style={{ width: "100%", maxWidth: "400px", height: "72px", borderRadius: "1.5rem", overflow: "hidden" }}
 								title="Schedule with Nodro"
-								className="overflow-hidden rounded-3xl bg-zinc-900"
 							/>
 						</div>
 					</div>

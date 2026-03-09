@@ -5,4 +5,5 @@ export interface SpringBoardTile {
 	id: string;
 	label: string;
 	children: React.ReactNode;
+	padding?: string;
 }

@@ -20,7 +20,7 @@ const submitFormToApi = async (data: any): Promise<boolean> => {
 	return false;
 };
 
-const buttonBg = "bg-gradient-to-r from-fuchsia-500 to-purple-700";
+const buttonBg = "bg-gradient-to-br from-lime-500 to-green-700";
 
 const ContactForm: FunctionComponent = () => {
 	const [submitState, setSubmitState] = useState<SubmitStates>(SubmitStates.UNKNOWN);
@@ -42,7 +42,7 @@ const ContactForm: FunctionComponent = () => {
 	return (
 		<div ref={formRef} className="relative z-10 h-full w-full overflow-hidden rounded px-4 py-6 md:px-10 md:py-12">
 			<form onSubmit={handleSubmit(onSubmit)} action="/api/contact_form" method="post" id="contact" className="flex h-full flex-col justify-between md:h-auto md:gap-16">
-				<div className="flex flex-col gap-8">
+				<div className="flex flex-col gap-4">
 					<Input
 						label="Name"
 						{...register("name", { required: "Name is required.", pattern: /^[a-zA-Z\s]*$/ })}
