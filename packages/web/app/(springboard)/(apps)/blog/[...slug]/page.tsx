@@ -184,7 +184,6 @@ export default async function BlogPostPage({ params }: Props) {
 			<article>
 				{/* Header */}
 				<header className="mx-auto max-w-3xl px-6 pt-16 pb-10">
-					<p className="mb-4 text-sm font-semibold tracking-wider text-purple-500 uppercase">{post.category}</p>
 					<h1 className="text-4xl leading-tight font-bold tracking-tight text-white md:text-5xl lg:text-[3.5rem] lg:leading-[1.1]">{post.title}</h1>
 					<p className="mt-6 text-xl leading-relaxed text-zinc-400">{post.excerpt}</p>
 					<div className="mt-8 flex items-center gap-4">

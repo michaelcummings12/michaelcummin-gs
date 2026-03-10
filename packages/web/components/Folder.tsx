@@ -15,7 +15,7 @@ interface FolderProps {
 export const Folder: FunctionComponent<FolderProps> = ({ tiles }) => {
 	const previewTiles = [...tiles.slice(0, 2), ...tiles.slice(3, 5)];
 	return (
-		<div className="grid h-full w-full grid-cols-2 gap-4">
+		<div className="grid h-full w-full grid-cols-2 gap-2 md:gap-4">
 			{previewTiles.map(({ backgroundColor, children }, index) => (
 				<motion.div layoutId="card-projects" key={index} className={cn(backgroundColor, "aspect-square h-full w-full rounded-2xl p-2 shadow-sm")}>
 					{children}

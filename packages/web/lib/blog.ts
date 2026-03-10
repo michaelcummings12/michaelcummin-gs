@@ -10,7 +10,7 @@ export interface BlogPost {
 	tags: string[];
 	category: string;
 	imageDescription: string;
-	heroImage?: string;
+	heroImage: string;
 	featured?: boolean;
 }
 
