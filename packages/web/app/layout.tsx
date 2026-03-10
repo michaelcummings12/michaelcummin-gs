@@ -51,14 +51,16 @@ export const viewport: Viewport = {
 };
 
 const overpass = Overpass({
-	subsets: ["latin"]
+	subsets: ["latin"],
+	variable: "--font-overpass",
+	display: "swap"
 });
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en">
+		<html lang="en" className={overpass.variable}>
 			<Analytics />
-			<body style={overpass.style} id="body" className="bg-black">
+			<body id="body" className="bg-black font-sans">
 				{children}
 			</body>
 		</html>

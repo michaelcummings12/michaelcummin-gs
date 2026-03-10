@@ -25,7 +25,7 @@ export const Post = ({ post, featured }: PostProps) => {
 				</div>
 				<div className="flex flex-col justify-center px-8 py-6">
 					<div>
-						<Heading className={cn("font-bold text-white transition-colors", featured ? "text-lg md:text-3xl" : "text-lg md:text-xl")}>{post.title}</Heading>
+						<Heading className={cn("font-heading font-bold text-white transition-colors", featured ? "text-lg md:text-3xl" : "text-lg md:text-xl")}>{post.title}</Heading>
 						<p className="mt-4 text-base text-zinc-400">{post.excerpt}</p>
 					</div>
 					<time className={cn("mt-4 text-sm text-zinc-500", featured ? "flex items-center gap-1.5" : "block")} dateTime={post.publishedAt.toString()}>

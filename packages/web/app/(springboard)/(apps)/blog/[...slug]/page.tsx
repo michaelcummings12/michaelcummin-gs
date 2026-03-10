@@ -1,137 +1,13 @@
 import { BackButton } from "@web/components/BackButton";
+import { Post } from "@web/components/Post";
 import Social from "@web/components/Social";
 import { getAllPosts, getPostBySlug } from "@web/lib/blog";
 import { prettyDate } from "@web/lib/prettyDate";
 import { readingTime } from "@web/utils/readingTime";
 import { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
-
-function renderContent(content: string) {
-	const lines = content.split("\n");
-	const elements: React.ReactNode[] = [];
-	let inCodeBlock = false;
-	let codeLines: string[] = [];
-	let codeKey = 0;
-
-	for (let i = 0; i < lines.length; i++) {
-		const line = lines[i];
-		const trimmed = line.trim();
-
-		if (!trimmed && !inCodeBlock) continue;
-
-		// Code block toggle
-		if (trimmed.startsWith("```")) {
-			if (inCodeBlock) {
-				elements.push(
-					<div key={`code-${codeKey++}`} className="-mx-6 my-8 md:-mx-12 lg:-mx-20">
-						<pre className="overflow-x-auto rounded-xl bg-black p-6">
-							<code className="text-sm leading-relaxed text-zinc-300">{codeLines.join("\n")}</code>
-						</pre>
-					</div>
-				);
-				codeLines = [];
-				inCodeBlock = false;
-			} else {
-				inCodeBlock = true;
-			}
-			continue;
-		}
-
-		if (inCodeBlock) {
-			codeLines.push(line);
-			continue;
-		}
-
-		// Images
-		if (trimmed.startsWith("![") && trimmed.includes("](") && trimmed.endsWith(")")) {
-			const altMatch = trimmed.match(/!\[(.*?)\]/);
-			const urlMatch = trimmed.match(/\]\((.*?)\)/);
-			if (altMatch && urlMatch) {
-				elements.push(
-					<figure key={i} className="my-10">
-						{/* eslint-disable-next-line @next/next/no-img-element */}
-						<img src={urlMatch[1]} alt={altMatch[1]} className="w-full rounded-2xl bg-zinc-800 object-cover" />
-						{altMatch[1] && <figcaption className="mt-4 text-center text-sm text-zinc-500">{altMatch[1]}</figcaption>}
-					</figure>
-				);
-				continue;
-			}
-		}
-
-		// Headings
-		if (trimmed.startsWith("### ")) {
-			elements.push(
-				<h3 key={i} className="mt-10 mb-4 text-xl font-bold text-white">
-					{trimmed.replace("### ", "")}
-				</h3>
-			);
-			continue;
-		}
-		if (trimmed.startsWith("## ")) {
-			elements.push(
-				<h2 key={i} className="mt-14 mb-4 text-2xl font-bold text-white">
-					{trimmed.replace("## ", "")}
-				</h2>
-			);
-			continue;
-		}
-
-		// Bold list items
-		if (trimmed.startsWith("- **")) {
-			const match = trimmed.match(/- \*\*(.+?)\*\*:?\s*(.*)/);
-			if (match) {
-				elements.push(
-					<li key={i} className="my-1.5 ml-5 list-disc text-lg leading-relaxed text-zinc-400">
-						<strong className="text-white">{match[1]}</strong>
-						{match[2] && `: ${match[2]}`}
-					</li>
-				);
-				continue;
-			}
-		}
-
-		// Regular list items
-		if (trimmed.startsWith("- ")) {
-			elements.push(
-				<li key={i} className="my-1.5 ml-5 list-disc text-lg leading-relaxed text-zinc-400">
-					{trimmed.replace("- ", "")}
-				</li>
-			);
-			continue;
-		}
-
-		// Numbered list items
-		if (/^\d+\.\s/.test(trimmed)) {
-			const content = trimmed.replace(/^\d+\.\s/, "");
-			const boldMatch = content.match(/\*\*(.+?)\*\*:?\s*(.*)/);
-			if (boldMatch) {
-				elements.push(
-					<li key={i} className="my-1.5 ml-5 list-decimal text-lg leading-relaxed text-zinc-400">
-						<strong className="text-white">{boldMatch[1]}</strong>
-						{boldMatch[2] && `: ${boldMatch[2]}`}
-					</li>
-				);
-			} else {
-				elements.push(
-					<li key={i} className="my-1.5 ml-5 list-decimal text-lg leading-relaxed text-zinc-400">
-						{content}
-					</li>
-				);
-			}
-			continue;
-		}
-
-		// Regular paragraph
-		elements.push(
-			<p key={i} className="my-5 text-lg leading-relaxed text-zinc-400">
-				{trimmed}
-			</p>
-		);
-	}
-
-	return elements;
-}
+import ReactMarkdown from "react-markdown";
 
 interface Props {
 	params: {
@@ -184,7 +60,7 @@ export default async function BlogPostPage({ params }: Props) {
 			<article>
 				{/* Header */}
 				<header className="mx-auto max-w-3xl px-6 pt-16 pb-10">
-					<h1 className="text-4xl leading-tight font-bold tracking-tight text-white md:text-5xl lg:text-[3.5rem] lg:leading-[1.1]">{post.title}</h1>
+					<h1 className="font-heading text-4xl leading-tight font-bold tracking-tight text-white md:text-5xl lg:text-[3.5rem] lg:leading-[1.1]">{post.title}</h1>
 					<p className="mt-6 text-xl leading-relaxed text-zinc-400">{post.excerpt}</p>
 					<div className="mt-8 flex items-center gap-4">
 						<div className="h-12 w-12 overflow-hidden rounded-full bg-zinc-800">
@@ -199,32 +75,49 @@ export default async function BlogPostPage({ params }: Props) {
 					</div>
 				</header>
 
-				{/* Hero Image */}
 				<div className="mx-auto max-w-5xl px-6">
-					{post.heroImage ? (
-						<div className="aspect-video w-full overflow-hidden rounded-2xl bg-zinc-800">
-							{/* eslint-disable-next-line @next/next/no-img-element */}
-							<img src={post.heroImage} alt={post.imageDescription} className="h-full w-full object-cover" />
+					<div>
+						<div className="aspect-video w-full overflow-hidden rounded-3xl bg-zinc-800">
+							<Image
+								src={post.heroImage}
+								width={1200}
+								height={630}
+								alt={post.imageDescription}
+								className="ease-default h-full w-full object-cover duration-400 hover:scale-105"
+							/>
 						</div>
-					) : (
-						<div className="aspect-video w-full overflow-hidden rounded-2xl bg-zinc-800">
-							<div className="flex h-full w-full flex-col items-center justify-center gap-3 p-8 text-center">
-								<svg className="h-10 w-10 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth={1}
-										d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-									/>
-								</svg>
-								<p className="max-w-md text-sm text-zinc-500">{post.imageDescription}</p>
-							</div>
-						</div>
-					)}
+						<figcaption className="p-2 text-slate-400">{post.imageDescription}</figcaption>
+					</div>
 				</div>
 
 				{/* Body Content */}
-				<div className="mx-auto max-w-3xl px-6 pt-12 pb-16">{renderContent(post.content)}</div>
+				<div className="mx-auto max-w-3xl px-6 pt-12 pb-16">
+					<ReactMarkdown
+						components={{
+							h2: ({ node: _, ...props }: any) => <h2 className="font-heading mt-14 mb-4 text-2xl font-bold text-white" {...props} />,
+							h3: ({ node: _, ...props }: any) => <h3 className="font-heading mt-10 mb-4 text-xl font-bold text-white" {...props} />,
+							p: ({ node: _, ...props }: any) => <p className="my-5 text-lg leading-relaxed font-normal text-white" {...props} />,
+							strong: ({ node: _, ...props }: any) => <strong className="font-bold" {...props} />,
+							ul: ({ node: _, ...props }: any) => <ul className="my-5 ml-5 list-disc text-lg leading-relaxed font-normal text-white marker:text-white" {...props} />,
+							ol: ({ node: _, ...props }: any) => <ol className="my-5 ml-5 list-decimal text-lg leading-relaxed font-normal text-white marker:text-white" {...props} />,
+							li: ({ node: _, ...props }: any) => <li className="my-1.5" {...props} />,
+							img: ({ node: _, alt, ...props }: any) => (
+								<figure className="my-10">
+									{/* eslint-disable-next-line @next/next/no-img-element */}
+									<img alt={alt} className="w-full rounded-2xl bg-zinc-800 object-cover" {...props} />
+									{alt && <figcaption className="mt-4 text-center text-sm text-zinc-500">{alt}</figcaption>}
+								</figure>
+							),
+							pre: ({ node: _, ...props }: any) => (
+								<div className="-mx-6 my-8 md:-mx-12 lg:-mx-20">
+									<pre className="overflow-x-auto rounded-xl bg-black p-6" {...props} />
+								</div>
+							),
+							code: ({ node: _, className, ...props }: any) => <code className={`text-sm leading-relaxed text-zinc-300 ${className || ""}`} {...props} />
+						}}>
+						{post.content}
+					</ReactMarkdown>
+				</div>
 
 				{/* Divider */}
 				<div className="mx-auto max-w-3xl px-6">
@@ -246,30 +139,15 @@ export default async function BlogPostPage({ params }: Props) {
 					</div>
 				</div>
 
-				{/* More Posts */}
-				<div className="border-t border-zinc-800 bg-zinc-950">
+				<div className="bg-zinc-950">
 					<div className="mx-auto max-w-5xl px-6 py-16">
-						<h2 className="mb-8 text-2xl font-bold text-white">You might also like</h2>
+						<h2 className="font-heading mb-8 text-2xl font-bold text-white">You might also like</h2>
 						<div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
 							{getAllPosts()
 								.filter((p) => p.slug !== slug)
 								.slice(0, 3)
-								.map((relatedPost) => (
-									<Link key={relatedPost.slug} href={`/blog/${relatedPost.slug}`} className="group">
-										<div className="aspect-4/3 w-full overflow-hidden rounded-xl bg-zinc-800">
-											{relatedPost.heroImage ? (
-												/* eslint-disable-next-line @next/next/no-img-element */
-												<img src={relatedPost.heroImage} alt={relatedPost.imageDescription} className="h-full w-full object-cover" />
-											) : (
-												<div className="flex h-full w-full items-center justify-center p-4 text-center">
-													<p className="text-xs text-zinc-500">{relatedPost.imageDescription}</p>
-												</div>
-											)}
-										</div>
-										<p className="mt-3 text-xs font-semibold tracking-wider text-purple-500 uppercase">{relatedPost.category}</p>
-										<h3 className="mt-1 font-bold text-white transition-colors group-hover:text-purple-500">{relatedPost.title}</h3>
-										<p className="mt-1 text-sm text-zinc-500">{prettyDate(relatedPost.publishedAt)}</p>
-									</Link>
+								.map((post) => (
+									<Post key={post.slug} post={post} />
 								))}
 						</div>
 					</div>

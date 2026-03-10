@@ -2,8 +2,8 @@
 @import "tailwindcss-text-box-trim";
 
 @theme {
-  --font-serif: "Overpass";
-  --font-sans: "Overpass";
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-heading: var(--font-overpass), sans-serif;
 
   --color-error: #e00000;
 
