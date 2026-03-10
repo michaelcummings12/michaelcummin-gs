@@ -43,7 +43,7 @@ export default function Page() {
 				<div className="mx-auto max-w-4xl px-6 pt-16 pb-12">
 					<div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
 						{/* Portrait */}
-						<div className="relative mx-auto h-48 w-48 flex-shrink-0 overflow-hidden rounded-2xl md:mx-0 md:h-56 md:w-56">
+						<div className="relative mx-auto h-48 w-48 shrink-0 overflow-hidden rounded-2xl md:mx-0 md:h-56 md:w-56">
 							<Image
 								src={skyPortrait}
 								fill
@@ -59,7 +59,7 @@ export default function Page() {
 						<div className="flex flex-col gap-4">
 							<div>
 								<p className="text-sm font-medium tracking-wide text-neutral-500">Full-Stack Engineer & Designer</p>
-								<h1 className="mt-1 text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl">Michael Cummings</h1>
+								<h1 className="font-heading mt-1 text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl">Michael Cummings</h1>
 							</div>
 							<p className="max-w-xl text-lg leading-relaxed text-neutral-600">
 								I build products at the intersection of design and engineering. With over six years of experience, I specialize in crafting scalable serverless architectures
@@ -74,7 +74,7 @@ export default function Page() {
 			{/* About Section */}
 			<section className="w-full border-t border-neutral-200">
 				<div className="mx-auto max-w-4xl px-6 py-12">
-					<h2 className="text-sm font-medium tracking-wider text-neutral-400 uppercase">About</h2>
+					<h2 className="font-heading text-sm font-medium tracking-wider text-neutral-400 uppercase">About</h2>
 					<div className="mt-6 flex flex-col gap-6 text-base leading-relaxed text-neutral-700">
 						<p>
 							I&apos;m a full-stack engineer with deep expertise in <strong className="text-neutral-900">AWS</strong>, <strong className="text-neutral-900">Next.js</strong>,{" "}
@@ -98,10 +98,10 @@ export default function Page() {
 			{/* Skills Section */}
 			<section className="w-full border-t border-neutral-200 bg-neutral-50">
 				<div className="mx-auto max-w-4xl px-6 py-12">
-					<h2 className="text-sm font-medium tracking-wider text-neutral-400 uppercase">Skills & Expertise</h2>
+					<h2 className="font-heading text-sm font-medium tracking-wider text-neutral-400 uppercase">Skills & Expertise</h2>
 					<div className="mt-8 grid gap-8 sm:grid-cols-2">
 						<div>
-							<h3 className="text-xs font-semibold tracking-wider text-neutral-500 uppercase">Frontend</h3>
+							<h3 className="font-heading text-xs font-semibold tracking-wider text-neutral-500 uppercase">Frontend</h3>
 							<div className="mt-3 flex flex-wrap gap-2">
 								{skills.frontend.map((skill) => (
 									<span key={skill} className="rounded-full bg-white px-3 py-1.5 text-sm text-neutral-700 ring-1 ring-neutral-200">
@@ -111,7 +111,7 @@ export default function Page() {
 							</div>
 						</div>
 						<div>
-							<h3 className="text-xs font-semibold tracking-wider text-neutral-500 uppercase">Backend</h3>
+							<h3 className="font-heading text-xs font-semibold tracking-wider text-neutral-500 uppercase">Backend</h3>
 							<div className="mt-3 flex flex-wrap gap-2">
 								{skills.backend.map((skill) => (
 									<span key={skill} className="rounded-full bg-white px-3 py-1.5 text-sm text-neutral-700 ring-1 ring-neutral-200">
@@ -121,7 +121,7 @@ export default function Page() {
 							</div>
 						</div>
 						<div>
-							<h3 className="text-xs font-semibold tracking-wider text-neutral-500 uppercase">Cloud & DevOps</h3>
+							<h3 className="font-heading text-xs font-semibold tracking-wider text-neutral-500 uppercase">Cloud & DevOps</h3>
 							<div className="mt-3 flex flex-wrap gap-2">
 								{skills.cloud.map((skill) => (
 									<span key={skill} className="rounded-full bg-white px-3 py-1.5 text-sm text-neutral-700 ring-1 ring-neutral-200">
@@ -131,7 +131,7 @@ export default function Page() {
 							</div>
 						</div>
 						<div>
-							<h3 className="text-xs font-semibold tracking-wider text-neutral-500 uppercase">Design</h3>
+							<h3 className="font-heading text-xs font-semibold tracking-wider text-neutral-500 uppercase">Design</h3>
 							<div className="mt-3 flex flex-wrap gap-2">
 								{skills.design.map((skill) => (
 									<span key={skill} className="rounded-full bg-white px-3 py-1.5 text-sm text-neutral-700 ring-1 ring-neutral-200">
@@ -147,7 +147,7 @@ export default function Page() {
 			{/* Contact CTA */}
 			<section className="w-full border-t border-neutral-200 bg-neutral-900">
 				<div className="mx-auto max-w-4xl px-6 py-16">
-					<p className="mt-4 text-2xl font-medium text-white md:text-3xl">Have a project in mind? Let&apos;s build something great together.</p>
+					<p className="font-heading mt-4 text-2xl font-medium text-white md:text-3xl">Have a project in mind? Let&apos;s build something great together.</p>
 					<div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
 						<DefaultLink
 							href="/contact"

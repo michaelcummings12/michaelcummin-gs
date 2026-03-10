@@ -38,17 +38,15 @@ export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>>
 		<div className="relative flex h-full w-full flex-col">
 			<div className={cn(headerColor, headerPadding, "relative flex w-full items-center justify-center")}>{children}</div>
 			<div className={cn(backgroundColor, "h-full w-full py-4 md:py-8")}>
-				<div className={cn(textColor, "relative m-auto flex w-full max-w-[900px] flex-col items-center gap-4")}>
+				<div className={cn(textColor, "relative m-auto flex w-full max-w-225 flex-col items-center gap-4")}>
 					<div className="flex w-full flex-col-reverse justify-between gap-12 p-4 md:flex-row md:justify-around md:gap-0 md:p-0">
 						<div className="flex flex-col gap-4">
-							<h2 className="text-2xl font-bold">Technologies Used</h2>
+							<h2 className="font-heading text-2xl font-bold">Technologies Used</h2>
 							<ol className="flex flex-col gap-4 text-left text-lg">
 								{technologies.map((t: Technology, i: number) => {
 									return (
 										<li className="flex flex-row items-center gap-4" key={`${t.name}-${i}`}>
-											<div className={cn(iconColor, iconShadow, "flex h-[42px] w-[42px] items-center justify-center rounded-full p-3 transition-all hover:scale-105")}>
-												{t.icon}
-											</div>
+											<div className={cn(iconColor, iconShadow, "flex h-10.5 w-10.5 items-center justify-center rounded-full p-3 transition-all hover:scale-105")}>{t.icon}</div>
 											<label>{t.name}</label>
 										</li>
 									);
@@ -56,7 +54,7 @@ export const ProjectPage: FunctionComponent<PropsWithChildren<ProjectPageProps>>
 							</ol>
 						</div>
 						<div className="flex flex-col gap-4">
-							<h2 className="text-2xl font-bold">Overview</h2>
+							<h2 className="font-heading text-2xl font-bold">Overview</h2>
 							<ol className="flex flex-col gap-4 text-left text-lg">
 								<li>
 									<Link href={url} className={cn(linkColor, "transition-all hover:underline")}>

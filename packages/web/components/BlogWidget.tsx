@@ -38,7 +38,7 @@ export const BlogWidget = () => {
 							style={{ transformOrigin: "top" }}>
 							<Image src={post.heroImage!} alt={post.title} width={1200} height={630} className="aspect-square h-full w-auto rounded-xl object-cover" />
 							<div className="flex flex-col">
-								<p className="line-clamp-3 text-sm leading-tight font-bold md:text-xl">{post.title}</p>
+								<p className="font-heading line-clamp-3 text-sm leading-tight font-bold md:text-xl">{post.title}</p>
 								<p className="text-xs text-white/50 md:text-base">{prettyDate(post.publishedAt)}</p>
 							</div>
 						</motion.div>
