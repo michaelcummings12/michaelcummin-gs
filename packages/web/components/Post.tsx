@@ -12,7 +12,7 @@ interface PostProps {
 export const Post = ({ post, featured }: PostProps) => {
 	const Heading = featured ? "h2" : "h3";
 	return (
-		<Link href={`/blog/${post.slug}`} className="group block overflow-hidden rounded-3xl bg-zinc-800">
+		<Link href={`/blog/${post.slug}`} className="group block h-full overflow-hidden rounded-3xl bg-zinc-800">
 			<article className={cn(featured && "grid md:grid-cols-2")}>
 				<div className="overflow-hidden">
 					<Image

@@ -1,3 +1,4 @@
+import { FadeInStagger, FadeInStaggerItem } from "@web/components/FadeIn";
 import { Post } from "@web/components/Post";
 import { getAllPosts } from "@web/lib/blog";
 import { Metadata } from "next";
@@ -18,17 +19,25 @@ export default function BlogPage() {
 	return (
 		<div className="min-h-full bg-zinc-900">
 			<div className="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-16 md:py-20">
-				<header className="mb-12">
-					<h1 className="text-3xl font-bold tracking-tight text-white md:text-4xl">Latest Posts</h1>
-				</header>
-				<Post post={featured} featured />
-				{posts.length > 0 && (
-					<div className="mb-12 grid gap-6 md:grid-cols-2">
-						{posts.map((post) => (
-							<Post key={post.slug} post={post} />
-						))}
-					</div>
-				)}
+				<FadeInStagger>
+					<header className="mb-12">
+						<FadeInStaggerItem>
+							<h1 className="text-3xl font-bold tracking-tight text-white md:text-4xl">Latest Posts</h1>
+						</FadeInStaggerItem>
+					</header>
+					<FadeInStaggerItem>
+						<Post post={featured} featured />
+					</FadeInStaggerItem>
+					{posts.length > 0 && (
+						<div className="mt-6 mb-12 grid gap-6 md:grid-cols-2">
+							{posts.map((post) => (
+								<FadeInStaggerItem key={post.slug}>
+									<Post post={post} />
+								</FadeInStaggerItem>
+							))}
+						</div>
+					)}
+				</FadeInStagger>
 			</div>
 		</div>
 	);
