@@ -6,6 +6,7 @@
   --font-heading: var(--font-overpass), sans-serif;
 
   --color-error: #e00000;
+  --color-nodro: #d2b08c;
 
   --ease-default: cubic-bezier(0.4, 0, 0.25, 1);
 

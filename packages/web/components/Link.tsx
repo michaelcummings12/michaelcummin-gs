@@ -10,7 +10,7 @@ export const DefaultLink: FunctionComponent<LinkProps> = ({ className = "", icon
 			{...props}
 			className={cn(
 				className,
-				"relative flex h-14 flex-row items-center justify-center gap-2 overflow-hidden rounded-2xl px-6 transition-all hover:scale-105 hover:shadow-lg active:scale-95 active:shadow"
+				"relative flex h-14 flex-row items-center justify-center gap-2 overflow-hidden rounded-3xl px-12 transition-all hover:scale-105 hover:shadow-lg active:scale-95 active:shadow"
 			)}>
 			{icon ? <span className="relative h-4 w-4">{icon}</span> : null}
 			{props.label ? (
