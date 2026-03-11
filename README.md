@@ -81,6 +81,17 @@ To deploy the AWS CDK backend infrastructure:
     yarn cdk deploy --all
     ```
 
-## License
+# License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) for details.
+This repository is **public for transparency and educational reference**, but it is **NOT open source**.
+
+The code, design, content, and assets in this repository are **proprietary** and remain the intellectual property of **Michael Cummings**.
+
+You may:
+
+- view the source code
+- study the implementation
+- use it for learning or reference
+
+
+See the [LICENSE](LICENSE) for details.

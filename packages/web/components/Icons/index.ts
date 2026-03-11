@@ -1,37 +1,32 @@
-export { default as ApiGateway } from './ApiGateway'
-
-export { default as AppSync } from './AppSync'
-export { default as Braintree } from './Braintree'
-export { default as Cdk } from './Cdk'
-export { default as CalendarDay } from './CalendarDay'
-export { default as ChevronLeft } from './ChevronLeft'
-
-export { default as CircleExclamation } from './CircleExclamation'
-export { default as Close } from './Close'
-export { default as CloudFormation } from './CloudFormation'
-export { default as CloudFunctions } from './CloudFunctions'
-export { default as Docker } from './Docker'
-export { default as DynamoDb } from './DynamoDb'
-export { default as Envelope } from './Envelope'
-
-export { default as External } from './External'
-export { default as Fargate } from './Fargate'
-export { default as Ffmpeg } from './Ffmpeg'
-export { default as Firestore } from './Firestore'
-export { default as Github } from './Github'
-export { default as GraphQl } from './GraphQl'
-export { default as Instagram } from './Instagram'
-
-export { default as Lambda } from './Lambda'
-export { default as LightningBolt } from './LightningBolt'
-export { default as LinkedIn } from './LinkedIn'
-
-export { default as Message } from './Message'
-export { default as MongoDb } from './MongoDb'
-export { default as NextAuth } from './NextAuth'
-export { default as Nextjs } from './Nextjs'
-export { default as OpenAi } from './OpenAi'
-
-export { default as PostgreSql } from './PostgreSql'
-export { default as Signature } from './Signature'
-export { default as TypeScript } from './TypeScript'
+export { default as ApiGateway } from "./ApiGateway";
+export { default as AppSync } from "./AppSync";
+export { default as Braintree } from "./Braintree";
+export { default as CalendarDay } from "./CalendarDay";
+export { default as Cdk } from "./Cdk";
+export { default as ChevronLeft } from "./ChevronLeft";
+export { default as CircleExclamation } from "./CircleExclamation";
+export { default as CircleInfo } from "./CircleInfo";
+export { default as Close } from "./Close";
+export { default as CloudFormation } from "./CloudFormation";
+export { default as CloudFunctions } from "./CloudFunctions";
+export { default as Docker } from "./Docker";
+export { default as DynamoDb } from "./DynamoDb";
+export { default as Envelope } from "./Envelope";
+export { default as External } from "./External";
+export { default as Fargate } from "./Fargate";
+export { default as Ffmpeg } from "./Ffmpeg";
+export { default as Firestore } from "./Firestore";
+export { default as Github } from "./Github";
+export { default as GraphQl } from "./GraphQl";
+export { default as Instagram } from "./Instagram";
+export { default as Lambda } from "./Lambda";
+export { default as LightningBolt } from "./LightningBolt";
+export { default as LinkedIn } from "./LinkedIn";
+export { default as Message } from "./Message";
+export { default as MongoDb } from "./MongoDb";
+export { default as NextAuth } from "./NextAuth";
+export { default as Nextjs } from "./Nextjs";
+export { default as OpenAi } from "./OpenAi";
+export { default as PostgreSql } from "./PostgreSql";
+export { default as Signature } from "./Signature";
+export { default as TypeScript } from "./TypeScript";
