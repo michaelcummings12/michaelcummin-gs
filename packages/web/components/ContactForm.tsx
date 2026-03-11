@@ -6,6 +6,7 @@ import { cn } from "@web/lib/cn";
 import { contactFormSchema } from "@web/lib/schemas/contact";
 import { FunctionComponent, useRef } from "react";
 import Confetti from "react-confetti";
+import { toast } from "sonner";
 import { DefaultButton } from "./Button";
 import { Input } from "./Input";
 import { TextArea } from "./TextArea";
@@ -14,15 +15,22 @@ const buttonBg = "bg-gradient-to-br from-sky-500 to-blue-700";
 
 const ContactForm: FunctionComponent = () => {
 	const formRef = useRef<HTMLDivElement>(null);
-	const { form, action, handleSubmitWithAction } = useHookFormAction(submitContactFormAction, zodResolver(contactFormSchema));
 	const {
-		register,
-		formState: { errors, isDirty }
-	} = form;
-
-	const isExecuting = action.status === "executing";
-	const isSuccess = action.status === "hasSucceeded";
-
+		form: {
+			register,
+			formState: { errors, isDirty }
+		},
+		action: { isExecuting, status },
+		handleSubmitWithAction
+	} = useHookFormAction(submitContactFormAction, zodResolver(contactFormSchema), {
+		actionProps: {
+			onError: ({ error }) => {
+				console.error(error);
+				toast.error("An error occured while submitting your message. Please try again later.");
+			}
+		}
+	});
+	const isSuccess = status === "hasSucceeded";
 	return (
 		<div ref={formRef} className="relative z-10 h-full w-full overflow-hidden rounded px-4 py-6 md:px-10 md:py-12">
 			<form onSubmit={handleSubmitWithAction} className="flex h-full flex-col justify-between md:h-auto md:gap-16">
@@ -34,7 +42,7 @@ const ContactForm: FunctionComponent = () => {
 				<div className="flex flex-col gap-2">
 					<DefaultButton
 						loadingFill="bg-white"
-						disabled={isExecuting || !isDirty || Object.keys(errors).length > 0}
+						disabled={isExecuting || Object.keys(errors).length > 0}
 						type="submit"
 						className={cn(buttonBg, "w-full text-white focus:outline-black focus:outline-none")}
 						isLoading={isExecuting}

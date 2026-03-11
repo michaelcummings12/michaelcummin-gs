@@ -2,6 +2,7 @@ import { Analytics } from "@web/components/Analytics";
 import { Metadata, Viewport } from "next";
 import { Overpass } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://www.michaelcummin.gs"),
@@ -72,6 +73,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 			<Analytics />
 			<body id="body" className="bg-black font-sans">
 				{children}
+				<Toaster position="bottom-right" richColors theme="dark" />
 			</body>
 		</html>
 	);
