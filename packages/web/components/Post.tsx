@@ -20,7 +20,7 @@ export const Post = ({ post, featured }: PostProps) => {
 						alt={post.imageDescription}
 						width={1200}
 						height={630}
-						className={cn("ease-default w-full transition-transform duration-400 group-hover:scale-105", featured ? "aspect-4/3" : "aspect-16/10")}
+						className={cn("ease-default w-full object-cover transition-transform duration-400 group-hover:scale-105", featured ? "aspect-4/3" : "aspect-16/10")}
 					/>
 				</div>
 				<div className="flex flex-col justify-center px-8 py-6">

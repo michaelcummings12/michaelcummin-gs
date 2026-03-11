@@ -2,38 +2,82 @@ import { cn } from "@web/lib/cn";
 import Image from "next/image";
 import { FunctionComponent, PropsWithChildren } from "react";
 import { ChallengeAndSolution, ProjectImage, Technologies, Technology } from "../types/project";
-import { CalendarDay, External, Github, JavaScript, TypeScript } from "./Icons";
+import { CalendarDay, External, Github, TypeScript } from "./Icons";
 import { DefaultLink } from "./Link";
+import { YouTubeEmbed } from "./YouTubeEmbed";
 
 interface CaseStudyProps {
-	// Content
-	title: string;
-	tagline?: string;
-	logo: React.ReactNode;
-	description: string;
-	role: string;
-	timeline: string;
-	url: string;
-	urlLabel: string;
-	urlClassName?: string;
-	language: "JavaScript" | "TypeScript";
-	technologies: Technologies;
-	features: string[];
-	challengesAndSolutions: ChallengeAndSolution[];
-	outcomes: string[];
-	heroImage?: ProjectImage;
-	featureImages?: ProjectImage[];
-	// Styling
+	/** Color applied to highlighted text and secondary accents, such as the "Solution" header */
 	accentColor: string;
+	/** Background color for graphical accents like numbers and bullets */
 	accentColorBg: string;
+	/** Text color that consistently contrasts with the accentColorBg */
 	accentColorText: string;
+	/** Main background color class for the case study container */
 	backgroundColor?: string;
+	/** Custom className applied to feature and challenge cards */
+	cardClassName?: string;
+	/** List of challenges faced and their corresponding solutions */
+	challengesAndSolutions: ChallengeAndSolution[];
+	/** Controls whether inner text/icons use light-on-dark or dark-on-light colors */
+	colorScheme?: "dark" | "light";
+	/** Full paragraph outlining the context and purpose of the project */
+	description: string;
+	/** Additional images highlighting app features or platform views */
+	featureImages?: ProjectImage[];
+	/** List of key features for the product or service */
+	features: string[];
+	/** Primary hero image representing the project shown prominently at the top */
+	heroImage?: ProjectImage;
+	/** Logo rendered at the top of the case study */
+	logo: React.ReactNode;
+	/** Key results achieved after delivering the project */
+	outcomes: string[];
+	/** Summary of my responsibilities and contributions */
+	role: string;
+	/** List of core technologies and their respective icons */
+	technologies: Technologies;
+	/** Main text color class for the entire case study container */
 	textColor?: string;
+	/** Duration or specific timespan during which the project took place */
+	timeline: string;
+	/** Primary project hyperlink */
+	url: string;
+	/** Styling applied to the main project hyperlink button */
+	urlClassName?: string;
+	/** Label for the main project hyperlink button */
+	urlLabel: string;
+	/** YouTube video ID used as a prominent video banner instead of a hero image */
+	youTubeVideoId?: string;
 }
 
-const Section: FunctionComponent<PropsWithChildren<{ title: string; className?: string }>> = ({ title, children, className }) => (
+/** Scheme-aware palette so all secondary elements adapt to the page background */
+const schemeColors = {
+	dark: {
+		sectionTitle: "text-zinc-400",
+		body: "text-zinc-300",
+		muted: "text-zinc-400",
+		cardBg: "bg-zinc-900/30",
+		cardBorder: "border-zinc-800",
+		challengeBg: "bg-zinc-900/50",
+		challengeTitle: "text-zinc-200",
+		githubFill: "fill-white"
+	},
+	light: {
+		sectionTitle: "text-zinc-500",
+		body: "text-zinc-700",
+		muted: "text-zinc-500",
+		cardBg: "bg-black/[0.04]",
+		cardBorder: "border-zinc-200",
+		challengeBg: "bg-black/[0.04]",
+		challengeTitle: "text-zinc-800",
+		githubFill: "fill-black"
+	}
+};
+
+const Section: FunctionComponent<PropsWithChildren<{ title: string; titleColor?: string; className?: string }>> = ({ title, titleColor, children, className }) => (
 	<section className={cn("flex flex-col gap-6", className)}>
-		<h2 className="text-sm font-medium tracking-wider text-zinc-400 uppercase">{title}</h2>
+		<h2 className={cn("font-heading text-sm font-medium tracking-wider uppercase", titleColor)}>{title}</h2>
 		{children}
 	</section>
 );
@@ -52,100 +96,89 @@ const ImageBox: FunctionComponent<{ image: ProjectImage; accentColor: string }> 
 };
 
 export const CaseStudy: FunctionComponent<CaseStudyProps> = ({
-	title,
-	tagline,
-	logo,
-	description,
-	role,
-	timeline,
-	url,
-	urlLabel,
-	urlClassName,
-	language,
-	technologies,
-	features,
-	challengesAndSolutions,
-	outcomes,
-	heroImage,
-	featureImages,
+	accentColor,
 	accentColorBg,
 	accentColorText,
 	backgroundColor = "bg-black",
-	textColor = "text-white"
+	cardClassName,
+	challengesAndSolutions,
+	colorScheme = "dark",
+	description,
+	featureImages,
+	features,
+	heroImage,
+	logo,
+	outcomes,
+	role,
+	technologies,
+	textColor = "text-white",
+	timeline,
+	url,
+	urlClassName,
+	urlLabel,
+	youTubeVideoId
 }) => {
+	const scheme = schemeColors[colorScheme];
 	return (
 		<div className={cn(backgroundColor, textColor, "min-h-full w-full")}>
 			<div className="mx-auto max-w-6xl px-4 py-8 md:px-6">
-				{/* Hero */}
-				{heroImage && (
-					<div className="mb-16">
+				{youTubeVideoId ? (
+					<div className="pt-16">
+						<YouTubeEmbed videoId={youTubeVideoId} />
+					</div>
+				) : heroImage ? (
+					<div className="pt-16">
 						<ImageBox image={heroImage} accentColor={accentColorText} />
 					</div>
-				)}
-				{/* Header */}
-				<div className="mb-16 flex flex-col gap-8">
-					<div className="flex flex-col items-center gap-8">
-						<div className="h-12">{logo}</div>
-						{tagline && <p className={cn("text-xl md:text-2xl", accentColorText)}>{tagline}</p>}
-					</div>
-					<div className="flex justify-center">
-						<DefaultLink
-							href={url}
-							target="_blank"
-							rel="noopener noreferrer"
-							className={urlClassName ?? cn("bg-white", accentColorText)}
-							icon={<External className="h-full fill-current" />}
-							label={urlLabel}
-						/>
-					</div>
+				) : null}
+				<div className="flex flex-col items-center gap-16 py-16">
+					<div className="flex flex-col items-center gap-8">{logo}</div>
+					<DefaultLink href={url} target="_blank" rel="noopener noreferrer" className={urlClassName} icon={<External className="h-full fill-current" />} label={urlLabel} />
 				</div>
-				<Section title="Overview" className="mb-16">
-					<p className="text-lg leading-relaxed text-zinc-300">{description}</p>
+				<Section title="Overview" titleColor={scheme.sectionTitle} className="mb-16">
+					<p className={cn("text-lg leading-relaxed", scheme.body)}>{description}</p>
 				</Section>
-				<Section title="Timeline" className="mb-16">
-					<div className={cn("flex items-center gap-2", accentColorText)}>
-						<CalendarDay className="size-5 fill-current" />
-						<span className="box-trim-both text-lg text-zinc-300">{timeline}</span>
+				<Section title="Timeline" titleColor={scheme.sectionTitle} className="mb-16">
+					<div className="flex items-center gap-2">
+						<CalendarDay className={cn("size-5 fill-current", accentColor)} />
+						<span className={cn("box-trim-both text-lg", scheme.body)}>{timeline}</span>
 					</div>
 				</Section>
-				{/* Role & Tech Stack Grid */}
 				<div className="mb-16 grid gap-12 md:grid-cols-3">
-					<Section title="My Role" className="col-span-2">
-						<p className="text-lg text-zinc-300">{role}</p>
-
+					<Section title="My Role" titleColor={scheme.sectionTitle} className="col-span-2">
+						<p className={cn("text-lg", scheme.body)}>{role}</p>
 						<div className="flex items-center gap-2">
-							{language === "JavaScript" && <JavaScript className="size-5 fill-yellow-400" />}
-							{language === "TypeScript" && <TypeScript className="size-5 fill-blue-400" />}
-							<span className="text-sm text-zinc-400">Written in {language}</span>
+							<TypeScript className="size-5 fill-blue-400" />
+							<span className={cn("text-sm", scheme.muted)}>Written in TypeScript</span>
 						</div>
 						<div className="flex items-center gap-2">
-							<Github className="size-5 fill-white" />
-							<span className="text-sm text-zinc-400">Private repository</span>
+							<Github className={cn("size-5", scheme.githubFill)} />
+							<span className={cn("text-sm", scheme.muted)}>Private repository</span>
 						</div>
 					</Section>
-					<Section title="Tech Stack">
+					<Section title="Tech Stack" titleColor={scheme.sectionTitle}>
 						<ul className="flex flex-col gap-3">
 							{technologies.map((tech: Technology, i: number) => (
 								<li key={`${tech.name}-${i}`} className="flex items-center gap-3">
-									<div className="flex size-10 items-center justify-center rounded-xl p-2">{tech.icon}</div>
-									<span className="text-zinc-300">{tech.name}</span>
+									<div className="flex size-8 items-center justify-center">
+										<tech.icon className={cn("h-full fill-current", accentColor)} />
+									</div>
+									<span className={scheme.body}>{tech.name}</span>
 								</li>
 							))}
 						</ul>
 					</Section>
 				</div>
-				{/* Key Features */}
-				<Section title="Key Features" className="mb-16">
+				<Section title="Key Features" titleColor={scheme.sectionTitle} className="mb-16">
 					<ul className="grid gap-4 md:grid-cols-2">
 						{features.map((feature, i) => (
-							<li key={i} className="flex items-start gap-3 rounded-xl border border-zinc-800 bg-zinc-900/30 p-4">
-								<span className={cn("mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white", accentColorBg)}>{i + 1}</span>
-								<span className="text-zinc-300">{feature}</span>
+							<li key={i} className={cn("flex items-start gap-3 rounded-3xl p-4", cardClassName)}>
+								<span className={cn("mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold", accentColorBg, accentColorText)}>{i + 1}</span>
+								<span className={scheme.body}>{feature}</span>
 							</li>
 						))}
 					</ul>
 				</Section>
-				{/* Feature Images */}
 				{featureImages && featureImages.length > 0 && (
 					<div className="mb-16 grid gap-6">
 						{featureImages.map((img, i) => (
@@ -153,30 +186,28 @@ export const CaseStudy: FunctionComponent<CaseStudyProps> = ({
 						))}
 					</div>
 				)}
-				{/* Challenges & Solutions */}
-				<Section title="Challenges & Solutions" className="mb-16">
+				<Section title="Challenges & Solutions" titleColor={scheme.sectionTitle} className="mb-16">
 					<div className="flex flex-col gap-8">
 						{challengesAndSolutions.map((item, i) => (
-							<div key={i} className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6">
+							<div key={i} className={cn("rounded-3xl p-6", scheme.challengeBg, cardClassName)}>
 								<div className="mb-4">
-									<h3 className="mb-2 font-semibold text-zinc-200">Challenge</h3>
-									<p className="text-zinc-400">{item.challenge}</p>
+									<h3 className={cn("mb-2 font-semibold", scheme.challengeTitle)}>Challenge</h3>
+									<p className={scheme.muted}>{item.challenge}</p>
 								</div>
 								<div>
-									<h3 className={cn("mb-2 font-semibold", accentColorText)}>Solution</h3>
-									<p className="text-zinc-300">{item.solution}</p>
+									<h3 className={cn("mb-2 font-semibold", accentColor)}>Solution</h3>
+									<p className={scheme.body}>{item.solution}</p>
 								</div>
 							</div>
 						))}
 					</div>
 				</Section>
-				{/* Outcomes */}
-				<Section title="Outcomes & Impact">
+				<Section title="Outcomes & Impact" titleColor={scheme.sectionTitle}>
 					<ul className="flex flex-col gap-3">
 						{outcomes.map((outcome, i) => (
 							<li key={i} className="flex items-start gap-3">
 								<span className={cn("mt-1.5 size-2 shrink-0 rounded-full", accentColorBg)} />
-								<span className="text-zinc-300">{outcome}</span>
+								<span className={scheme.body}>{outcome}</span>
 							</li>
 						))}
 					</ul>

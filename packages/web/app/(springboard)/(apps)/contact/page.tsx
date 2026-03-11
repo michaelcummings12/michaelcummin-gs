@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
 	return (
-		<div className="relative flex min-h-full w-full bg-zinc-900">
+		<div className="relative flex min-h-full w-full bg-slate-800">
 			<div className="flex w-full flex-col lg:flex-row">
 				{/* Left side - Info */}
 				<div className="flex flex-col justify-center px-6 py-12 lg:w-1/2 lg:px-16 lg:py-0">

@@ -1,5 +1,5 @@
 import { BreakingEnteringLogo, ChicagoCareLogo, GcnLogo, RhythmLogo } from "@web/components/Logos";
-import { HouseCallsLogo } from "@web/components/Logos/HouseCalls";
+import { HCLogo } from "@web/components/Logos/HC";
 import { NodroLogo } from "@web/components/Logos/Nodro";
 import { SpringBoardTile } from "@web/types/springboard";
 
@@ -26,7 +26,7 @@ export const projects: SpringBoardTile[] = [
 		id: "house-calls",
 		label: "House Calls",
 		backgroundColor: "bg-black",
-		children: <HouseCallsLogo className="h-full w-full fill-white" />
+		children: <HCLogo className="h-full w-full fill-white" />
 	},
 	{
 		id: "nodro",

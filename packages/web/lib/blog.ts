@@ -1,12 +1,9 @@
-import { readingTime } from "../utils/readingTime";
-
 export interface BlogPost {
 	slug: string;
 	title: string;
 	excerpt: string;
 	content: string;
 	publishedAt: Date;
-	readingTime: string;
 	tags: string[];
 	category: string;
 	imageDescription: string;
@@ -14,15 +11,15 @@ export interface BlogPost {
 	featured?: boolean;
 }
 
-const rawPosts: Omit<BlogPost, "readingTime">[] = [
+const blogPosts: BlogPost[] = [
 	{
 		slug: "automating-pool-bed-reservations",
 		title: "Automating Pool Bed Reservations at a Private Members Club",
-		excerpt: "How I reverse engineered a members club reservation API and built a Swift bot that guarantees I always get a pool bed.",
+		excerpt: "How I reverse engineered a members club reservation API and built a bot that guarantees I always get a pool bed.",
 		publishedAt: new Date("2025-06-18"),
 		tags: ["automation", "reverse engineering", "swift", "ios", "bots"],
 		category: "Engineering",
-		imageDescription: "iOS app interface automatically reserving a pool bed",
+		imageDescription: "A perfect summer afternoon by a rooftop pool in Chicago's West Loop.",
 		heroImage: "/assets/blog/automating-pool-bed-reservations/hero.jpg",
 		content: `
 Last summer I developed a slightly ridiculous but very effective solution to a very first-world problem.
@@ -73,12 +70,6 @@ But eventually I wrapped the functionality in a native iOS app written in Swift 
 
 The app basically runs the same automation logic, but with a UI and scheduling.
 
-![App home screen](https://placehold.co/800x450/27272a/71717a?text=App+home+screen)
-
-![Reservation configuration](https://placehold.co/800x450/27272a/71717a?text=Reservation+configuration)
-
-![Successful booking screen](https://placehold.co/800x450/27272a/71717a?text=Successful+booking)
-
 ## Lessons Learned
 
 A few takeaways:
@@ -105,7 +96,7 @@ Also absolutely.
 		publishedAt: new Date("2025-09-14"),
 		tags: ["security", "bug bounty", "web security", "reverse engineering"],
 		category: "Security",
-		imageDescription: "The New York City skyline with the Statue of Liberty in the background",
+		imageDescription: "One World Trade Center rising above Lower Manhattan, photographed on 35mm Fujifilm with my Nikon FE from the West Village.",
 		heroImage: "/assets/blog/exploring-a-building-permit-portal/hero.jpg",
 		content: `
 Earlier this year I went down a bit of a rabbit hole.
@@ -116,80 +107,84 @@ It started with a music venue.
 
 A major electronic music venue in Brooklyn had been undergoing renovations and inspections for months. There were rumors circulating about delayed approvals, failed inspections, and uncertainty about reopening.
 
-If you’ve ever tried to get tickets there, you know the drill — huge lines, sold-out shows, and massive anticipation around reopening.
+At the time, there was a lot of speculation about whether the venue would pass its inspections and reopen on schedule. I got curious about how the inspection process worked and started exploring the city's public building permit portal.
 
-I got curious about the inspection process and started digging into the public building permit portal that cities use to publish construction filings and inspection records.
+These portals exist to provide transparency into construction activity. You can typically see things like:
 
-These systems are designed to make certain information public: permits, approvals, inspection outcomes, and filings.
+- permit filings  
+- inspection results  
+- contractor information  
+- approval history  
 
-But what I found went *far* beyond that.
+But they also host a large number of **documents associated with each job filing**.
 
 ## Discovering the Access Issue
 
-While browsing the portal I noticed that many documents were fetched through predictable URLs. After inspecting the request patterns, it became clear the system relied heavily on sequential document IDs.
+While browsing through a few filings, I noticed something odd.
 
-Changing those IDs in requests returned different files.
+Some documents were clearly intended to be public and downloadable. Others appeared in the interface but displayed an **“unauthorized” message** unless you were a stakeholder on the project.
 
-At first I assumed I was just seeing other public filings.
+Naturally, I assumed those documents were protected properly.
 
-But very quickly it became clear that the system was returning **far more than intended**.
+But while inspecting how the portal handled document downloads, I discovered that the backend wasn’t consistently enforcing the same permissions that the interface was displaying.
 
-Things like:
+In other words:
 
-- full architectural plan sets
-- structural drawings
-- inspection reports
-- internal review documents
+The UI said *“you can’t access this document”*, but the server would still return it under certain conditions.
 
-And not just for one building.
-
-For **every building in the city**.
+Once I realized this, it became clear that the problem was much larger than a single project.
 
 ## Testing the Scope
 
-To confirm this wasn’t limited to the venue renovation, I tried querying a few well-known buildings.
+To confirm whether this was isolated or systemic, I tested the same behavior on a few other filings.
 
-The same access pattern worked.
+It worked.
 
-The portal returned full document packages including structural plans, inspection reports, and filing histories.
+Then I tried different buildings.
 
-This was clearly not intended to be publicly accessible.
+It still worked.
+
+Eventually it became clear that the issue potentially affected **documents across the entire system** — including architectural plans, sketches, and internal filing documents for buildings all over the city.
 
 ## Responsible Disclosure
 
-At this point I stopped further exploration and reported the issue through the city’s bug bounty program.
+Instead of digging deeper, I documented the issue and reported it through the city's bug bounty program.
 
-I provided:
+My report included:
 
-- the endpoint responsible
-- reproduction steps
-- examples of exposed documents
-- recommendations for fixing the access control
+- a clear explanation of the authorization issue  
+- steps to reproduce the problem  
+- examples of documents that could be accessed unintentionally  
+- recommendations for fixing the backend permission checks  
 
-Because the issue still hasn’t been fully resolved, I’m intentionally avoiding publishing technical details or naming the specific system.
+Because the vulnerability involves access control in a live municipal system, I’m intentionally leaving out specific technical details until it is fully resolved.
 
 ## Why This Matters
 
-Municipal software often sits in a strange place between public transparency and sensitive infrastructure.
+Municipal permitting systems sit at an interesting intersection of **public transparency and sensitive infrastructure**.
 
-Building plans can contain:
+Some information should absolutely be public.
 
-- structural layouts
-- security system locations
-- emergency infrastructure
-- engineering calculations
+But detailed construction documents can include things like:
 
-Access control mistakes in systems like this can expose massive amounts of data unintentionally.
+- full architectural plans  
+- structural layouts  
+- building systems diagrams  
+- engineering calculations  
+
+If access controls are implemented incorrectly, systems like this can unintentionally expose far more information than intended.
 
 ## The Original Motivation
 
-Ironically, this entire investigation started because I just wanted to know one thing:
+Ironically, this entire investigation started because I just wanted to answer one simple question:
 
-Would the venue pass inspection?
+Would the venue pass inspection and reopen?
 
-Now months later the story has taken a few more twists — including the venue’s operator filing for bankruptcy — but that’s a story for another time.
+What began as curiosity about a nightclub renovation ended up uncovering a much larger issue in the city’s permitting software.
 
-Sometimes curiosity leads you down unexpected paths.
+Sometimes pulling on a small thread leads somewhere unexpected.
+
+(And in this case, somewhere I definitely wasn&apos;t planning to go.)
 `
 	},
 	{
@@ -199,7 +194,7 @@ Sometimes curiosity leads you down unexpected paths.
 		publishedAt: new Date("2026-03-05"),
 		tags: ["open source", "vercel", "ai", "openai", "typescript"],
 		category: "Open Source",
-		imageDescription: "GitHub pull request page showing contribution",
+		imageDescription: "My old desk setup in my Old Town Chicago apartment, where I built many of my early projects.",
 		heroImage: "/assets/blog/my-first-open-source-contribution/hero.jpg",
 		content: `
 Today I made my first contribution to a major open source project.
@@ -271,7 +266,7 @@ Sometimes the best tools start as personal utilities.
 		publishedAt: new Date("2026-01-30"),
 		tags: ["tailwind", "css", "open source", "typography"],
 		category: "Open Source",
-		imageDescription: "before and after typography alignment comparison",
+		imageDescription: "Doing some work at Doma Café in Chicago. Breakfast place with ćevapi sausage, hashbrown, and an iced americano.",
 		heroImage: "/assets/blog/tailwindcss-textbox-trim/hero.jpg",
 		content: `
 One thing that has bothered me for years in web development is how difficult it is to align text *perfectly*.
@@ -336,10 +331,6 @@ Before: Standard text with excess space.
 
 After: Text with \`text-box-trim\` applied, removing the excess space for perfect alignment.
 
-![Before alignment](https://placehold.co/800x450/27272a/71717a?text=Before+alignment)
-
-![After alignment](https://placehold.co/800x450/27272a/71717a?text=After+alignment)
-
 ## Bonus
 
 I'm even using this package on this portfolio site.
@@ -356,11 +347,6 @@ Hopefully this package makes that a little easier.
 `
 	}
 ];
-
-export const blogPosts: BlogPost[] = rawPosts.map((post) => ({
-	...post,
-	readingTime: readingTime(post.content)
-}));
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
 	return blogPosts.find((post) => post.slug === slug);

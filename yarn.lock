@@ -8130,6 +8130,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-lite-youtube-embed@npm:^3.5.1":
+  version: 3.5.1
+  resolution: "react-lite-youtube-embed@npm:3.5.1"
+  peerDependencies:
+    react: ">=18.2.0"
+    react-dom: ">=18.2.0"
+  checksum: 10c0/5a2ea6dd845fc19fbb84b08d27a8c187439bec8dce78fb81cb7432ed05281178146d56f23dfb97dfb7d41dbdf3b9cd62dbeefaf3c02c07be227405019d176ea8
+  languageName: node
+  linkType: hard
+
 "react-markdown@npm:^10.1.0":
   version: 10.1.0
   resolution: "react-markdown@npm:10.1.0"
@@ -9660,6 +9670,7 @@ __metadata:
     react-confetti: "npm:^6.4.0"
     react-dom: "npm:^19.2.4"
     react-hook-form: "npm:^7.71.2"
+    react-lite-youtube-embed: "npm:^3.5.1"
     react-markdown: "npm:^10.1.0"
     react-wrap-balancer: "npm:^1.1.1"
     tailwind-merge: "npm:^3.5.0"

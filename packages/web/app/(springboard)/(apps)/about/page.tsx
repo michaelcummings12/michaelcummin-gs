@@ -62,7 +62,7 @@ export default function Page() {
 								<h1 className="font-heading mt-1 text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl">Michael Cummings</h1>
 							</div>
 							<p className="max-w-xl text-lg leading-relaxed text-neutral-600">
-								I build products at the intersection of design and engineering. With over six years of experience, I specialize in crafting scalable serverless architectures
+								I build products at the intersection of design and engineering. With over ten years of experience, I specialize in crafting scalable serverless architectures
 								and pixel-perfect user interfaces.
 							</p>
 							<Social />

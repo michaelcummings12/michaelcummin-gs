@@ -1,4 +1,5 @@
 import { BackButton } from "@web/components/BackButton";
+import { Badge } from "@web/components/Badge";
 import { FadeInStagger, FadeInStaggerItem } from "@web/components/FadeIn";
 import { Post } from "@web/components/Post";
 import Social from "@web/components/Social";
@@ -123,6 +124,15 @@ export default async function BlogPostPage({ params }: Props) {
 								}}>
 								{post.content}
 							</ReactMarkdown>
+							{post.tags && post.tags.length > 0 && (
+								<div className="mt-12 flex flex-wrap gap-2">
+									{post.tags.map((tag) => (
+										<Badge key={tag} color="default">
+											{tag}
+										</Badge>
+									))}
+								</div>
+							)}
 						</div>
 					</FadeInStaggerItem>
 					<div className="mx-auto max-w-3xl px-6">

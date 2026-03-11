@@ -20,7 +20,7 @@ const submitFormToApi = async (data: any): Promise<boolean> => {
 	return false;
 };
 
-const buttonBg = "bg-gradient-to-br from-lime-500 to-green-700";
+const buttonBg = "bg-gradient-to-br from-sky-500 to-blue-700";
 
 const ContactForm: FunctionComponent = () => {
 	const [submitState, setSubmitState] = useState<SubmitStates>(SubmitStates.UNKNOWN);

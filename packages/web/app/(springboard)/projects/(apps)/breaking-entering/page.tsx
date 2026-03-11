@@ -5,7 +5,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	title: "Breaking & Entering",
-	description: "Music discovery platform"
+	description: "Digital platform for the advertising industry media company Breaking & Entering."
 };
 
 const SITE_URL = "https://www.breaking-entering.com/";
@@ -13,43 +13,52 @@ const SITE_URL = "https://www.breaking-entering.com/";
 export default function Page() {
 	return (
 		<CaseStudy
-			title="Breaking & Entering"
-			logo={<BreakingEnteringLogo className="h-full w-full fill-white" />}
-			description="Breaking & Entering is a music discovery platform connecting artists with new audiences. It provides a curated experience for listeners to find fresh sounds and for artists to showcase their work."
-			role="Lead Engineer responsible for the full-stack development, implementing real-time database features, and deploying scalable cloud functions."
-			timeline="September 2021 - December 2021"
-			url={SITE_URL}
-			urlLabel="Visit Breaking-Entering.com"
-			urlClassName="bg-blue-600 text-white"
-			language="TypeScript"
-			technologies={[
-				{ name: "Firestore", icon: <Firestore className="h-full w-full fill-white" /> },
-				{ name: "Firebase Cloud Functions", icon: <CloudFunctions className="h-full w-full fill-white" /> },
-				{ name: "Next.js", icon: <Nextjs className="h-full w-full fill-white" /> }
-			]}
-			features={[
-				"Real-time database updates for instant content delivery",
-				"Serverless backend architecture for auto-scaling",
-				"Dynamic artist profiles and music integration",
-				"Optimized static generation for fast page loads"
-			]}
+			accentColor="text-white"
+			accentColorBg="bg-white"
+			accentColorText="text-blue-600"
+			backgroundColor="bg-blue-600"
+			cardClassName="bg-blue-700"
 			challengesAndSolutions={[
 				{
-					challenge: "Managing real-time data synchronization across multiple clients efficiently.",
-					solution: "Leveraged Firestore's real-time listeners to push updates instantly to connected clients without polling."
+					challenge: "The Breaking & Entering team needed a flexible publishing workflow tailored to their editorial style rather than a traditional CMS.",
+					solution:
+						"Developed a custom CMS backed by Firestore that allowed editors to create and manage posts quickly while maintaining structured content for the frontend."
 				},
 				{
-					challenge: "Handling heavy backend logic without managing server infrastructure.",
-					solution: "Implemented Firebase Cloud Functions to execute server-side logic in a serverless environment, reducing operational overhead."
+					challenge: "Podcast listeners needed to seamlessly continue listening while navigating the site.",
+					solution:
+						"Implemented a floating audio miniplayer that persists across page navigation, providing a smooth listening experience similar to modern media platforms."
+				},
+				{
+					challenge: "The platform needed to support rapid content publishing without maintaining traditional server infrastructure.",
+					solution: "Built a serverless backend using Firebase Cloud Functions and Firestore to handle content operations and scale automatically."
 				}
 			]}
-			outcomes={["Successfully deployed a scalable platform capable of handling traffic spikes.", "Improved user engagement through instant content updates."]}
-			accentColor="text-blue-600"
-			accentColorBg="bg-blue-600"
-			accentColorText="text-blue-600"
-			backgroundColor="bg-white"
+			description="Breaking & Entering is a fast-growing advertising industry media company connecting agencies, brands, creatives, and emerging talent. I built their primary web platform, creating a content hub that supports podcasts, editorial content, and community engagement for thousands of advertising professionals following the brand."
+			features={[
+				"Custom content management system allowing the team to publish blog posts and industry updates",
+				"Floating podcast miniplayer enabling listeners to continue playback while browsing the site",
+				"Dynamic article pages designed for fast publishing and easy content updates",
+				"Modern responsive interface optimized for both industry professionals and students",
+				"Serverless backend supporting scalable content delivery"
+			]}
+			logo={<BreakingEnteringLogo className="h-full w-full fill-white drop-shadow" />}
+			outcomes={[
+				"Delivered a modern content platform supporting podcasts, editorial content, and community engagement.",
+				"Enabled the Breaking & Entering team to independently publish and manage content through a custom CMS.",
+				"Created a seamless podcast listening experience directly within the web platform."
+			]}
+			role="Lead Engineer responsible for designing and developing the full web platform, including the content system, podcast integration, and frontend experience."
+			technologies={[
+				{ name: "Next.js", icon: Nextjs },
+				{ name: "Firestore", icon: Firestore },
+				{ name: "Firebase Cloud Functions", icon: CloudFunctions }
+			]}
 			textColor="text-black"
-			// Placeholder images omitted
+			timeline="September 2021 - December 2022"
+			url={SITE_URL}
+			urlClassName="bg-white text-blue-600"
+			urlLabel="Visit Breaking & Entering"
 		/>
 	);
 }

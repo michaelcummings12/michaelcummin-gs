@@ -25,7 +25,7 @@ export const DefaultButton: FunctionComponent<ButtonProps> = ({
 				className,
 				justify,
 				smaller ? "h-9 gap-2 rounded-xl px-4" : "h-13 gap-3 rounded-2xl px-4 md:px-6",
-				"relative flex flex-row items-center overflow-hidden rounded-2xl py-2 font-medium transition-all focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+				"relative flex cursor-pointer flex-row items-center overflow-hidden rounded-2xl py-2 font-medium transition-all focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
 			)}>
 			{children}
 			{isLoading ? (

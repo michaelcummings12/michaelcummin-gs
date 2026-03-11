@@ -1,4 +1,5 @@
 import { CaseStudy } from "@web/components/CaseStudy";
+import { Lambda, Nextjs, PostgreSql } from "@web/components/Icons";
 import { NodroLogo } from "@web/components/Logos/Nodro";
 import { Metadata } from "next";
 
@@ -7,48 +8,62 @@ export const metadata: Metadata = {
 	description: "Social calendar application"
 };
 
-const SITE_URL = "https://www.nodro.com/"; // Placeholder URL
+const SITE_URL = "https://www.nodro.com/";
 
 export default function Page() {
 	return (
 		<CaseStudy
-			title="Nodro"
-			logo={<NodroLogo className="h-full w-full" />}
-			description="Nodro is a social calendar application designed to help friends coordinate plans and discover local events. It simplifies the chaos of group scheduling into a seamless, visual experience."
-			role="Full Stack Developer responsible for building the mobile-first web application, implementing the calendar sync algorithms, and designing the social interaction features."
-			timeline="2023 - Present" // Placeholder
-			url={SITE_URL}
-			urlLabel="Visit Nodro"
-			urlClassName="bg-zinc-800 text-white"
-			language="TypeScript"
-			technologies={
-				[
-					// Placeholders based on typical stack
-				]
-			}
-			features={[
-				"Social calendar sharing with privacy controls",
-				"Event voting and polling for group decisions",
-				"Integration with Google and Apple Calendars",
-				"Location-based event discovery"
-			]}
+			accentColor="text-nodro"
+			accentColorBg="bg-nodro"
+			accentColorText="text-white"
+			backgroundColor="bg-orange-50"
+			cardClassName="shadow-nodro bg-white"
 			challengesAndSolutions={[
 				{
-					challenge: "Managing complex timezone conversions for international friend groups.",
-					solution: "Built a robust timezone handling system using temporal libraries to ensure event times are always accurate relative to the viewer."
+					challenge: "Most scheduling tools overwhelm users with dense interfaces, aggressive UI patterns, and productivity-driven noise.",
+					solution:
+						"Nødro was designed using a subtraction-first philosophy: removing unnecessary controls, reducing copy, and letting typography and spatial hierarchy communicate structure. The result is a scheduling experience that feels calm and intentional rather than transactional."
 				},
 				{
-					challenge: "Optimizing the rendering of dense calendar views on mobile devices.",
-					solution: "Utilized virtualization techniques to render only visible events, ensuring smooth scrolling and performance even with hundreds of entries."
+					challenge:
+						"Scheduling workflows often involve multiple asynchronous actions such as confirmations, reminders, and notifications that must remain reliable at scale.",
+					solution:
+						"Engineered an event-driven backend using AWS Lambda and SQS to process scheduling workflows asynchronously, ensuring reliability while keeping the core application responsive."
+				},
+				{
+					challenge: "Transactional email systems can become fragile when handling invitations, confirmations, and reminders across many scheduling events.",
+					solution:
+						"Designed a dedicated notification pipeline using AWS SES combined with queued message processing to guarantee consistent delivery and graceful retry behavior."
 				}
 			]}
-			outcomes={["Grew to 500+ active beta users within the first month.", "Featured in local tech blog for innovative UX implementation."]}
-			accentColor="text-orange-500"
-			accentColorBg="bg-orange-500"
-			accentColorText="text-orange-500"
-			backgroundColor="bg-white"
-			textColor="text-black"
-			// Placeholder images - omitted to avoid 404s
+			colorScheme="light"
+			description="Nødro is a luxury calendar scheduling experience designed around restraint, clarity, and craftsmanship. It transforms everyday scheduling into a calm, architectural interface where time itself feels carefully sculpted."
+			features={[
+				"Editorial calendar interface designed with architectural typography and luxurious whitespace",
+				"Private scheduling links that feel like invitations rather than booking forms",
+				"Asynchronous scheduling infrastructure using AWS Lambda and SQS",
+				"Elegant email delivery system for confirmations, reminders, and invitations via AWS SES",
+				"Minimalist interaction model focused on clarity, calmness, and frictionless scheduling"
+			]}
+			logo={<NodroLogo className="h-[33vh] w-[33vh]" />}
+			outcomes={[
+				"Created a distinctive scheduling product defined by restraint, warmth, and editorial minimalism.",
+				"Established a scalable event-driven backend architecture capable of supporting high scheduling volume.",
+				"Delivered a product experience that feels closer to a crafted object than a traditional SaaS tool."
+			]}
+			role="Founder & Lead Engineer responsible for product design, system architecture, frontend and backend development, and crafting the interaction model that defines the Nødro experience."
+			technologies={[
+				{ name: "Next.js", icon: Nextjs },
+				{ name: "PostgreSQL", icon: PostgreSql },
+				{ name: "AWS Lambda", icon: Lambda }
+				// { name: "AWS SQS", icon: <AwsSqs className={iconClass} /> },
+				// { name: "AWS SES", icon: <AwsSes className={iconClass} /> }
+			]}
+			textColor="text-zinc-900"
+			timeline="November 2025 - Present"
+			url={SITE_URL}
+			urlClassName="bg-nodro text-white"
+			urlLabel="Visit Nødro.com"
 		/>
 	);
 }
