@@ -13,6 +13,106 @@ export interface BlogPost {
 
 const blogPosts: BlogPost[] = [
 	{
+		slug: "chicago-care-nbc-interview",
+		title: "Getting Chicago.care on NBC",
+		excerpt: "How I cold-pitched reporters across Chicago and ended up being interviewed on NBC about Chicago.care.",
+		publishedAt: new Date("2022-08-17"),
+		tags: ["startup story", "media outreach", "chicago startups", "healthtech", "founder journey"],
+		category: "Startup",
+		imageDescription: "A small interview setup in a WeWork office in Chicago’s River North during my NBC interview about Chicago.care.",
+		heroImage: "/assets/blog/chicago-care-nbc-interview/hero.jpg",
+		content: `
+When I launched **Chicago.care**, I knew it could genuinely help people.
+
+The site made it easier for Chicago residents to find monkeypox vaccines and providers during the outbreak. But building something useful is only half the battle — people still have to **hear about it**.
+
+So I decided to do something I had never done before.
+
+I tried to get the media involved.
+
+## Pitching Reporters
+
+I made a list of reporters in Chicago who covered public health, local news, or technology.
+
+Then I started emailing.
+
+And emailing.
+
+And emailing.
+
+I probably reached out to **10–20 reporters** across different outlets. Most never responded. A few politely declined.
+
+Cold pitching journalists as a random developer with a new website is… intimidating.
+
+But eventually I got a response.
+
+**Lauren Petty from NBC Chicago.**
+
+She was interested in what I had built and wanted to do an interview.
+
+## Preparing for the Interview
+
+This would be my first time doing anything like this.
+
+So naturally I overprepared.
+
+First, I rented a small room at a **WeWork in River North** where we could film the interview. I wanted a clean, professional setting where we could talk about the platform.
+
+Then I did something slightly ridiculous.
+
+I got a **custom Chicago.care t-shirt printed** so I could wear it during the interview.
+
+If I was going to be on camera, I figured I might as well be on brand.
+
+The night before the interview I remember feeling pretty nervous. I had built plenty of software before, but sitting down in front of a camera to talk about it was completely new territory.
+
+## The Interview
+
+Lauren and the NBC team came to the WeWork space and we set everything up.
+
+The interview was surprisingly relaxed. We talked about:
+
+- how the monkeypox outbreak was affecting Chicago
+- how fragmented vaccine information was across providers
+- why I built Chicago.care
+- how the platform helped people find vaccines faster
+
+It felt less like an interrogation and more like a conversation about solving a real problem.
+
+Still — knowing the cameras were rolling definitely made my heart rate spike a bit.
+
+## The Segment
+
+Eventually the piece aired on NBC Chicago.
+
+Seeing something you built get covered on local news is a surreal experience.
+
+What started as a quick project to help people navigate vaccine access had suddenly reached a much larger audience.
+
+Below is the segment from the interview.
+
+![youtube](gTZfKUbvyQs)
+
+## What I Learned
+
+The experience taught me something important:
+
+Sometimes building the product is the easy part.
+
+Getting people to **notice it** is the real challenge.
+
+Cold emailing reporters felt awkward at first, but it worked because the story was simple:
+
+A developer saw a problem during a public health emergency and built something to help.
+
+And sometimes that’s exactly the kind of story journalists are looking for.
+
+Also — if you ever get the chance to go on TV for something you built…
+
+bring a branded t-shirt.
+`
+	},
+	{
 		slug: "automating-pool-bed-reservations",
 		title: "Automating Pool Bed Reservations at a Private Members Club",
 		excerpt: "How I reverse engineered a members club reservation API and built a bot that guarantees I always get a pool bed.",

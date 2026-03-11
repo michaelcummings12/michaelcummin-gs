@@ -6,6 +6,7 @@ import Social from "@web/components/Social";
 import { getAllPosts, getPostBySlug } from "@web/lib/blog";
 import { prettyDate } from "@web/lib/prettyDate";
 import { readingTime } from "@web/utils/readingTime";
+import { YouTubeEmbed } from "@web/components/YouTubeEmbed";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -129,13 +130,18 @@ export default async function BlogPostPage({ params }: Props) {
 									ul: ({ node: _, ...props }: any) => <ul className="my-5 ml-5 list-disc text-lg leading-relaxed font-normal text-white marker:text-white" {...props} />,
 									ol: ({ node: _, ...props }: any) => <ol className="my-5 ml-5 list-decimal text-lg leading-relaxed font-normal text-white marker:text-white" {...props} />,
 									li: ({ node: _, ...props }: any) => <li className="my-1.5" {...props} />,
-									img: ({ node: _, alt, ...props }: any) => (
-										<figure className="my-10">
-											{/* eslint-disable-next-line @next/next/no-img-element */}
-											<img alt={alt} className="w-full rounded-2xl bg-zinc-800 object-cover" {...props} />
-											{alt && <figcaption className="mt-4 text-center text-sm text-zinc-500">{alt}</figcaption>}
-										</figure>
-									),
+									img: ({ node: _, alt, src, ...props }: any) => {
+										if (alt === "youtube" && src) {
+											return <div className="my-8"><YouTubeEmbed videoId={src} /></div>;
+										}
+										return (
+											<figure className="my-10">
+												{/* eslint-disable-next-line @next/next/no-img-element */}
+												<img alt={alt} src={src} className="w-full rounded-2xl bg-zinc-800 object-cover" {...props} />
+												{alt && <figcaption className="mt-4 text-center text-sm text-zinc-500">{alt}</figcaption>}
+											</figure>
+										);
+									},
 									pre: ({ node: _, ...props }: any) => (
 										<div className="-mx-6 my-8 md:-mx-12 lg:-mx-20">
 											<pre className="overflow-x-auto rounded-xl bg-black p-6" {...props} />
