@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 /** The rate at which the bird accelerates downwards (pixels per frame squared) */
-const GRAVITY = 0.5;
+const GRAVITY = 0.4;
 
 /** The initial upward velocity applied when the bird jumps (pixels per frame) */
 const JUMP_STRENGTH = -7;

@@ -18,7 +18,7 @@ export const ControlsOverlay: FunctionComponent<ControlsOverlayProps> = ({ onSta
 			{gameState === "START" && (
 				<div
 					className="absolute inset-0 flex h-full w-full flex-col items-center justify-between py-12"
-					onClick={(e) => {
+					onPointerDown={(e) => {
 						e.stopPropagation();
 						onStart();
 					}}>
@@ -42,7 +42,7 @@ export const ControlsOverlay: FunctionComponent<ControlsOverlayProps> = ({ onSta
 								border: "2px solid white",
 								WebkitTextStroke: "1px #543847"
 							}}
-							onClick={(e) => {
+							onPointerDown={(e) => {
 								e.stopPropagation();
 								onStart();
 							}}>
@@ -55,7 +55,7 @@ export const ControlsOverlay: FunctionComponent<ControlsOverlayProps> = ({ onSta
 			{gameState === "GAME_OVER" && (
 				<div
 					className="absolute inset-0 z-50 flex h-full w-full cursor-pointer flex-col items-center pt-24 pb-12"
-					onClick={(e) => {
+					onPointerDown={(e) => {
 						e.stopPropagation();
 						onStart();
 					}}>
@@ -76,7 +76,7 @@ export const ControlsOverlay: FunctionComponent<ControlsOverlayProps> = ({ onSta
 						animate={{ y: 0, opacity: 1 }}
 						transition={{ duration: 0.4, delay: 0.2, ease: [0.175, 0.885, 0.32, 1.275] }}
 						className="mt-12 flex w-64 flex-col items-center rounded border-[3px] border-[#543847] bg-[#ded895] p-6 shadow-[0_4px_0_#543847]"
-						onClick={(e) => e.stopPropagation()} // Prevent accidental reset when clicking scorecard
+						onPointerDown={(e) => e.stopPropagation()} // Prevent accidental reset when clicking scorecard
 					>
 						<p className="mb-2 text-xl text-[#e45c14] drop-shadow-[0_0_0_#543847] [text-shadow:2px_2px_0_#543847]">Score</p>
 						<p className="mb-6 text-3xl text-white [text-shadow:2px_2px_0_#543847]" style={{ WebkitTextStroke: "2px #543847" }}>
@@ -93,18 +93,18 @@ export const ControlsOverlay: FunctionComponent<ControlsOverlayProps> = ({ onSta
 						animate={{ opacity: 1 }}
 						transition={{ duration: 0.4, delay: 0.4, ease: "easeOut" }}
 						className="mt-auto mb-20 flex w-full cursor-default justify-center gap-4 px-4 sm:gap-8"
-						onClick={(e) => e.stopPropagation()}>
+						onPointerDown={(e) => e.stopPropagation()}>
 						<button
 							className="cursor-pointer bg-[#e45c14] px-6 py-2 text-lg text-white shadow-[0_0_0_2px_#543847,0_4px_0_2px_#543847] transition active:translate-y-1 active:shadow-[0_0_0_2px_#543847,0_2px_0_2px_#543847] sm:px-8 sm:py-3 sm:text-xl"
 							style={{
 								border: "2px solid white",
 								WebkitTextStroke: "1px #543847"
 							}}
-							onClick={(e) => {
+							onPointerDown={(e) => {
 								e.stopPropagation();
 								onStart();
 							}}>
-							START
+							RESTART
 						</button>
 					</motion.div>
 				</div>

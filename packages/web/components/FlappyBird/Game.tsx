@@ -108,7 +108,13 @@ interface FlappyBirdGameProps {
 export const FlappyBirdGame = ({ className }: FlappyBirdGameProps) => {
 	const { containerRef, dimensions, renderPipes, renderBirdY, velocity, score, highScore, gameState, jump } = useFlappyBird();
 	return (
-		<div ref={containerRef} className={`relative h-full w-full overflow-hidden bg-sky-300 select-none ${className}`} onClick={jump}>
+		<div
+			ref={containerRef}
+			className={`relative h-full w-full overflow-hidden bg-sky-300 select-none touch-none ${className}`}
+			onPointerDown={(e) => {
+				e.preventDefault();
+				jump();
+			}}>
 			<div className="absolute bottom-10 left-10 h-12 w-24 rounded-full bg-white/40 blur-xl" />
 			<div className="absolute top-20 right-20 h-16 w-32 rounded-full bg-white/30 blur-xl" />
 			{renderPipes.map((pipe, i) => (
