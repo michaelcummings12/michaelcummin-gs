@@ -1,0 +1,1 @@
+npx @svgr/cli --no-prettier --ignore-existing -d ./components/icons ./icons --typescript

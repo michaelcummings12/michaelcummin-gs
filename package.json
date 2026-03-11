@@ -1,53 +1,18 @@
 {
-  "name": "michaelcummin.gs",
+  "name": "michaelcummin-gs",
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
-  "dependencies": {
-    "@next/third-parties": "^16.1.4",
-    "@openreplay/tracker": "^17.1.6",
-    "animejs": "^4.3.4",
-    "clsx": "^2.1.1",
-    "firebase": "^12.8.0",
-    "framer-motion": "^12.29.0",
-    "next": "^16.1.4",
-    "react": "^19.2.3",
-    "react-confetti": "^6.4.0",
-    "react-dom": "^19.2.3",
-    "react-hook-form": "^7.71.1"
-  },
-  "scripts": {
-    "start": "next start",
-    "build": "next build",
-    "dev": "next dev --turbo",
-    "lint": "eslint ."
-  },
+  "workspaces": [
+    "packages/backend",
+    "packages/web"
+  ],
   "devDependencies": {
-    "@svgr/cli": "^8.1.0",
-    "@tailwindcss/postcss": "^4.1.18",
-    "@types/node": "^25.0.10",
-    "@types/react": "^19.2.9",
-    "@types/react-dom": "^19.2.3",
-    "autoprefixer": "^10.4.23",
-    "eslint": "^9.39.2",
-    "eslint-config-next": "^16.1.4",
+    "@types/node": "^25.4.0",
+    "eslint": "^9.39.4",
     "prettier": "^3.8.1",
     "prettier-plugin-organize-imports": "^4.3.0",
-    "prettier-plugin-tailwindcss": "^0.7.2",
-    "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "packageManager": "yarn@4.12.0"
+  "packageManager": "yarn@4.13.0"
 }
