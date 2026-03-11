@@ -43,7 +43,7 @@ export const LegalModal: FunctionComponent<LegalModalProps> = ({ isOpen, onClose
 						</Link>
 					</div>
 					<div className="border-t border-white/10 bg-zinc-900/50 p-4 text-center">
-						<p className="text-xs text-white/50">&copy; {new Date().getFullYear()} Michael Cummings. All rights reserved.</p>
+						<p className="text-xs text-white/50">&copy; {new Date().getFullYear()} Don&apos;t Stop, LLC. All rights reserved.</p>
 					</div>
 				</motion.div>
 			</div>
