@@ -83,15 +83,14 @@ To deploy the AWS CDK backend infrastructure:
 
 # License
 
-This repository is **public for transparency and educational reference**, but it is **NOT open source**.
-
 The code, design, content, and assets in this repository are **proprietary** and remain the intellectual property of **Michael Cummings**.
+
+Some images, branding, screenshots, and project materials displayed in this repository may represent work created for **clients or employers**. Ownership of those materials remains with their **respective owners** and they are included strictly for **portfolio and demonstration purposes**.
 
 You may:
 
 - view the source code
 - study the implementation
 - use it for learning or reference
-
 
 See the [LICENSE](LICENSE) for details.

@@ -1,20 +1,38 @@
 Copyright (c) 2026 Michael Cummings
 All Rights Reserved.
 
-This repository and all associated files, including but not limited to
-source code, design, layouts, text, graphics, and other materials
-(the "Software") are the exclusive property of Michael Cummings.
+This repository and its source code are the intellectual property
+of Michael Cummings unless otherwise noted.
 
-No permission is granted to copy, modify, distribute, sublicense,
-sell, create derivative works from, or otherwise use the Software
-for any commercial purpose.
-
-You may view the source code for personal reference and educational
+This repository is publicly visible for educational and reference
 purposes only.
 
+You may view and study the source code.
+
+You may NOT:
+
+• copy the code in whole or in part
+• reuse the design or UI
+• create templates, themes, or starter kits
+• redistribute the code
+• create derivative works
+• use the code commercially
+• sell or sublicense any portion of this project
+
+Certain images, branding, screenshots, logos, and project materials
+displayed in this repository may belong to clients, employers,
+or partner organizations and remain the property of their
+respective owners.
+
+Such materials are included solely for portfolio and demonstration
+purposes.
+
+No rights or licenses to those materials are granted.
+
+All rights not expressly granted are reserved.
+
 Unauthorized use, reproduction, redistribution, or commercialization
-of any portion of this repository is strictly prohibited and may
-result in legal action.
+of any portion of this repository is strictly prohibited.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
