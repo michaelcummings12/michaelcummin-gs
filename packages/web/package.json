@@ -8,7 +8,7 @@
     "@openreplay/tracker": "^17.2.4",
     "animejs": "^4.3.6",
     "firebase": "^12.10.0",
-    "framer-motion": "^12.35.1",
+    "framer-motion": "^12.35.2",
     "next": "^16.1.6",
     "react": "^19.2.4",
     "react-confetti": "^6.4.0",
