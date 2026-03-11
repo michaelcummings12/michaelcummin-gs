@@ -4,16 +4,16 @@ import { GcnLogo } from "@web/components/Logos";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "General Computing Network",
+	title: "GCN",
 	description: "Platform enabling accessible participation in Bitcoin mining infrastructure.",
 	keywords: ["Bitcoin", "Mining", "GraphQL", "AWS AppSync", "DynamoDB", "Next.js", "Serverless"],
 	openGraph: {
-		title: "General Computing Network | Michael Cummings",
+		title: "GCN | Michael Cummings",
 		description: "Platform enabling accessible participation in Bitcoin mining infrastructure.",
 		url: "https://www.michaelcummin.gs/projects/gcn"
 	},
 	twitter: {
-		title: "General Computing Network | Michael Cummings",
+		title: "GCN | Michael Cummings",
 		description: "Platform enabling accessible participation in Bitcoin mining infrastructure."
 	}
 };
@@ -42,7 +42,7 @@ export default function Page() {
 					solution: "Structured the platform around DynamoDB and GraphQL to enable flexible schemas and efficient data queries for the frontend."
 				}
 			]}
-			description="General Computing Network (GCN) was a platform designed to make participation in Bitcoin mining infrastructure more accessible. The platform allowed users to contribute computing resources, manage mining participation, and track rewards through a modern web interface backed by scalable cloud infrastructure."
+			description="GCN was a platform designed to make participation in Bitcoin mining infrastructure more accessible. The platform allowed users to contribute computing resources, manage mining participation, and track rewards through a modern web interface backed by scalable cloud infrastructure."
 			features={[
 				"Dashboard for monitoring mining participation and reward activity",
 				"Real-time data synchronization using GraphQL subscriptions",

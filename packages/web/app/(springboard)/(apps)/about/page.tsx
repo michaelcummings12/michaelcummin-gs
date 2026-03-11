@@ -6,7 +6,31 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-	title: "About Me"
+	title: "About",
+	description:
+		"I build products at the intersection of design and engineering. With over ten years of experience, I specialize in crafting scalable serverless architectures and pixel-perfect user interfaces.",
+	keywords: [
+		"Michael Cummings",
+		"Full-Stack Engineer",
+		"Chicago",
+		"React",
+		"Next.js",
+		"TypeScript",
+		"AWS Lambda",
+		"AWS",
+		"Serverless",
+		"Figma",
+		"UI/UX Design"
+	],
+	openGraph: {
+		title: "About Michael Cummings",
+		description: "I build products at the intersection of design and engineering.",
+		url: "https://www.michaelcummin.gs/about"
+	},
+	twitter: {
+		title: "About Michael Cummings",
+		description: "I build products at the intersection of design and engineering."
+	}
 };
 
 const skills = {

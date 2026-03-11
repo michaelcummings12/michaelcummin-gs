@@ -3,12 +3,17 @@ import Social from "@web/components/Social";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Contact | Michael Cummings - Full Stack Engineer",
-	description:
-		"Get in touch with Michael Cummings for freelance projects, job opportunities, or collaborations. Based in Chicago, available for remote work worldwide.",
+	title: "Contact",
+	description: "Get in touch with Michael Cummings for projects, opportunities, or collaborations. Based in Chicago, available for remote work worldwide.",
+	keywords: ["Contact", "Michael Cummings", "Freelance", "Job Opportunities", "Collaborations", "Chicago", "Remote Work", "Software Engineer"],
 	openGraph: {
 		title: "Contact Michael Cummings",
-		description: "Get in touch for freelance projects, job opportunities, or collaborations."
+		description: "Get in touch for projects, opportunities, or collaborations.",
+		url: "https://www.michaelcummin.gs/contact"
+	},
+	twitter: {
+		title: "Contact Michael Cummings",
+		description: "Get in touch for projects, opportunities, or collaborations."
 	}
 };
 

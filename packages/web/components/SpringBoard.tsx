@@ -8,7 +8,7 @@ import { SpringBoardTile } from "../types/springboard";
 import { BlogWidget } from "./BlogWidget";
 import { Folder } from "./Folder";
 import { AboutLogo, ContactLogo } from "./Logos";
-import { FlappyBirdLogo } from "./Logos/FlappyBird";
+import { FlappyBird } from "./Logos/FlappyBird";
 import { Signature } from "./Signature";
 import { SpringBoardItem } from "./SpringBoardItem";
 
@@ -32,7 +32,7 @@ const tiles: SpringBoardTile[] = [
 	},
 	{
 		backgroundColor: "bg-gradient-to-br from-yellow-500 to-orange-700",
-		children: <FlappyBirdLogo className={cn(iconClass, "object-contain p-4")} />,
+		children: <FlappyBird className={cn(iconClass, "object-contain p-4")} />,
 		label: "Flappy Bird",
 		id: "flappy-bird"
 	},
