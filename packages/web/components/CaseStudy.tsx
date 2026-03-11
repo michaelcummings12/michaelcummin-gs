@@ -1,55 +1,10 @@
 import { cn } from "@web/lib/cn";
+import { CaseStudyProps, ProjectImage, Technology } from "@web/types/caseStudy";
 import Image from "next/image";
 import { FunctionComponent, PropsWithChildren } from "react";
-import { ChallengeAndSolution, ProjectImage, Technologies, Technology } from "../types/project";
 import { CalendarDay, External, Github, TypeScript } from "./Icons";
 import { DefaultLink } from "./Link";
 import { YouTubeEmbed } from "./YouTubeEmbed";
-
-interface CaseStudyProps {
-	/** Color applied to highlighted text and secondary accents, such as the "Solution" header */
-	accentColor: string;
-	/** Background color for graphical accents like numbers and bullets */
-	accentColorBg: string;
-	/** Text color that consistently contrasts with the accentColorBg */
-	accentColorText: string;
-	/** Main background color class for the case study container */
-	backgroundColor?: string;
-	/** Custom className applied to feature and challenge cards */
-	cardClassName?: string;
-	/** List of challenges faced and their corresponding solutions */
-	challengesAndSolutions: ChallengeAndSolution[];
-	/** Controls whether inner text/icons use light-on-dark or dark-on-light colors */
-	colorScheme?: "dark" | "light";
-	/** Full paragraph outlining the context and purpose of the project */
-	description: string;
-	/** Additional images highlighting app features or platform views */
-	featureImages?: ProjectImage[];
-	/** List of key features for the product or service */
-	features: string[];
-	/** Primary hero image representing the project shown prominently at the top */
-	heroImage?: ProjectImage;
-	/** Logo rendered at the top of the case study */
-	logo: React.ReactNode;
-	/** Key results achieved after delivering the project */
-	outcomes: string[];
-	/** Summary of my responsibilities and contributions */
-	role: string;
-	/** List of core technologies and their respective icons */
-	technologies: Technologies;
-	/** Main text color class for the entire case study container */
-	textColor?: string;
-	/** Duration or specific timespan during which the project took place */
-	timeline: string;
-	/** Primary project hyperlink */
-	url: string;
-	/** Styling applied to the main project hyperlink button */
-	urlClassName?: string;
-	/** Label for the main project hyperlink button */
-	urlLabel: string;
-	/** YouTube video ID used as a prominent video banner instead of a hero image */
-	youTubeVideoId?: string;
-}
 
 /** Scheme-aware palette so all secondary elements adapt to the page background */
 const schemeColors = {
@@ -99,7 +54,7 @@ export const CaseStudy: FunctionComponent<CaseStudyProps> = ({
 	accentColor,
 	accentColorBg,
 	accentColorText,
-	backgroundColor = "bg-black",
+	backgroundColor,
 	cardClassName,
 	challengesAndSolutions,
 	colorScheme = "dark",
@@ -111,7 +66,6 @@ export const CaseStudy: FunctionComponent<CaseStudyProps> = ({
 	outcomes,
 	role,
 	technologies,
-	textColor = "text-white",
 	timeline,
 	url,
 	urlClassName,
@@ -120,7 +74,7 @@ export const CaseStudy: FunctionComponent<CaseStudyProps> = ({
 }) => {
 	const scheme = schemeColors[colorScheme];
 	return (
-		<div className={cn(backgroundColor, textColor, "min-h-full w-full")}>
+		<div className={cn(backgroundColor, "min-h-full w-full")}>
 			<div className="mx-auto max-w-6xl px-4 py-8 md:px-6">
 				{youTubeVideoId ? (
 					<div className="pt-16">

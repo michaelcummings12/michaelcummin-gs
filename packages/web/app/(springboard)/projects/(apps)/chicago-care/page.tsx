@@ -1,5 +1,5 @@
 import { CaseStudy } from "@web/components/CaseStudy";
-import { ApiGateway, Fargate, Lambda, LightningBolt, MongoDb, Nextjs } from "@web/components/Icons";
+import { ApiGateway, CloudFormation, Fargate, Lambda, LightningBolt, MongoDb, Nextjs } from "@web/components/Icons";
 import { ChicagoCareLogo } from "@web/components/Logos";
 import { Metadata } from "next";
 
@@ -65,11 +65,11 @@ export default function Page() {
 				{ name: "API Gateway", icon: ApiGateway },
 				{ name: "AWS Fargate", icon: Fargate },
 				{ name: "AWS Lambda", icon: Lambda },
+				{ name: "CloudFormation", icon: CloudFormation },
 				{ name: "MongoDB", icon: MongoDb },
 				{ name: "Next.js", icon: Nextjs },
 				{ name: "Server Side Rendering", icon: LightningBolt }
 			]}
-			textColor="text-black"
 			timeline="August 2022 - March 2023"
 			url={SITE_URL}
 			urlClassName="bg-sky-400 text-white"

@@ -355,7 +355,3 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 export function getAllPosts(): BlogPost[] {
 	return blogPosts.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
-
-export function getFeaturedPosts(): BlogPost[] {
-	return blogPosts.filter((post) => post.featured);
-}

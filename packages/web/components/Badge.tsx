@@ -1,11 +1,11 @@
 import { cn } from "@web/lib/cn";
 import { HTMLAttributes } from "react";
 
-export type BadgeColor = "default" | "base" | "blue" | "purple" | "green" | "red" | "yellow" | "gcn" | "experimental" | "blue-gradient" | "purple-gradient";
+type BadgeColor = "default" | "base" | "blue" | "purple" | "green" | "red" | "yellow" | "gcn" | "experimental" | "blue-gradient" | "purple-gradient";
 
-export type BadgeSize = "default" | "sm";
+type BadgeSize = "default" | "sm";
 
-export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
+interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 	color?: BadgeColor;
 	size?: BadgeSize;
 }

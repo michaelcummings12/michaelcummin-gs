@@ -4,22 +4,22 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 /** The rate at which the bird accelerates downwards (pixels per frame squared) */
-export const GRAVITY = 0.5;
+const GRAVITY = 0.5;
 
 /** The initial upward velocity applied when the bird jumps (pixels per frame) */
-export const JUMP_STRENGTH = -7;
+const JUMP_STRENGTH = -7;
 
 /** The horizontal speed at which pipes move leftwards across the screen (pixels per frame) */
-export const PIPE_SPEED = 5;
+const PIPE_SPEED = 5;
 
 /** The horizontal distance between the spawn point of consecutive pipes (in pixels) */
-export const PIPE_SPACING = 300;
+const PIPE_SPACING = 300;
 
 /** The width and height of the bird's bounding box (in pixels) */
 export const BIRD_SIZE = 50;
 
 /** The maximum allowed vertical difference between consecutive pipe gaps to ensure playability */
-export const MAX_DELTA = 333;
+const MAX_DELTA = 333;
 
 /** The width of the vertical pipes (in pixels) */
 export const PIPE_WIDTH = 67;

@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgCdk = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width={1000} height={1000} viewBox="0 0 750 750" {...props}><clipPath id="CDK_svg__a"><path d="M406 229h297.125v521H406zm0 0" /></clipPath><clipPath id="CDK_svg__b"><path d="M46.875 229H344v521H46.875zm0 0" /></clipPath><path d="M576.777 229.098 375 110.898l-201.777 118.2-94.7-55.48L375 0l296.512 173.617zM236.297 502.379l138.676-81.168 138.703 81.262L375 583.648zm0 0" /><path d="m406.555 203.336 138.703 81.215v162.441l-138.703-81.207zM343.414 365.758l-138.637 81.176V284.55l138.637-81.188zm0 0" /><g clipPath="url(#CDK_svg__a)"><path d="M703.031 576.441 406.555 750V639.102l201.875-118.2V284.484l94.695-55.414v347.192zm0 0" /></g><g clipPath="url(#CDK_svg__b)"><path d="M141.602 284.484v236.418L343.414 639.04V750L46.875 576.383V229.07zm0 0" /></g></svg>;
+export default SvgCdk;

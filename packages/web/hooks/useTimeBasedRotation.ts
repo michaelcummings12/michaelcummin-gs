@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
  * Calculates the absolute rotation based on the current time.
  * Includes a slow 20s rotation on top of the actual time of day.
  */
-export function getAbsoluteRotation(offset: number = 0) {
+function getAbsoluteRotation(offset: number = 0) {
 	const now = Date.now();
 	const spin = ((now % 20000) / 20000) * 360;
 	return sundialAngle(new Date(now)) + offset + spin;

@@ -64,7 +64,6 @@ export default function Page() {
 				{ name: "Firestore", icon: Firestore },
 				{ name: "Firebase Cloud Functions", icon: CloudFunctions }
 			]}
-			textColor="text-black"
 			timeline="September 2021 - December 2022"
 			url={SITE_URL}
 			urlClassName="bg-white text-blue-600"

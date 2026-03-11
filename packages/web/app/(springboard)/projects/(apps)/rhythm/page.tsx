@@ -1,5 +1,5 @@
 import { CaseStudy } from "@web/components/CaseStudy";
-import { Ffmpeg, NextAuth, Nextjs, PostgreSql } from "@web/components/Icons";
+import { Cdk, Ffmpeg, NextAuth, Nextjs, PostgreSql } from "@web/components/Icons";
 import { RhythmLogo } from "@web/components/Logos";
 import { Metadata } from "next";
 
@@ -66,9 +66,9 @@ export default function Page() {
 				{ name: "FFmpeg", icon: Ffmpeg },
 				{ name: "PostgreSQL", icon: PostgreSql },
 				{ name: "NextAuth.js", icon: NextAuth },
-				{ name: "Next.js", icon: Nextjs }
+				{ name: "Next.js", icon: Nextjs },
+				{ name: "AWS CDK", icon: Cdk }
 			]}
-			textColor="text-white"
 			timeline="February 2023 - Present"
 			url={SITE_URL}
 			urlClassName="bg-linear-to-br from-orange-400 to-pink-500 text-white"

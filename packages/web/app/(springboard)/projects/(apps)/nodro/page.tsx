@@ -1,5 +1,5 @@
 import { CaseStudy } from "@web/components/CaseStudy";
-import { Lambda, Nextjs, PostgreSql } from "@web/components/Icons";
+import { Cdk, Lambda, Nextjs, PostgreSql } from "@web/components/Icons";
 import { NodroLogo } from "@web/components/Logos/Nodro";
 import { Metadata } from "next";
 
@@ -65,11 +65,11 @@ export default function Page() {
 			technologies={[
 				{ name: "Next.js", icon: Nextjs },
 				{ name: "PostgreSQL", icon: PostgreSql },
-				{ name: "AWS Lambda", icon: Lambda }
+				{ name: "AWS Lambda", icon: Lambda },
+				{ name: "AWS CDK", icon: Cdk }
 				// { name: "AWS SQS", icon: <AwsSqs className={iconClass} /> },
 				// { name: "AWS SES", icon: <AwsSes className={iconClass} /> }
 			]}
-			textColor="text-zinc-900"
 			timeline="November 2025 - Present"
 			url={SITE_URL}
 			urlClassName="bg-nodro text-white"

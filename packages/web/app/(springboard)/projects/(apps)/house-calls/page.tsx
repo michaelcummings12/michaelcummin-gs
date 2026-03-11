@@ -1,5 +1,5 @@
 import { CaseStudy } from "@web/components/CaseStudy";
-import { ApiGateway, Fargate, Nextjs, OpenAi } from "@web/components/Icons";
+import { ApiGateway, Cdk, Docker, Fargate, Nextjs, OpenAi } from "@web/components/Icons";
 import { HouseCallsLogo } from "@web/components/Logos/HouseCalls";
 import { Metadata } from "next";
 
@@ -64,9 +64,10 @@ export default function Page() {
 				{ name: "OpenAI Realtime API", icon: OpenAi },
 				{ name: "Next.js", icon: Nextjs },
 				{ name: "AWS Fargate", icon: Fargate },
+				{ name: "Docker", icon: Docker },
+				{ name: "AWS CDK", icon: Cdk },
 				{ name: "API Gateway", icon: ApiGateway }
 			]}
-			textColor="text-white"
 			timeline="October 2024 - December 2024"
 			url={SITE_URL}
 			urlClassName="bg-white text-black"

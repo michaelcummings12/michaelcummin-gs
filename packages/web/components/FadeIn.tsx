@@ -11,7 +11,7 @@ interface FadeInProps {
 	duration?: number;
 }
 
-export const FadeIn = ({ children, delay = 0, className, y = 20, duration = 0.6 }: FadeInProps) => {
+const FadeIn = ({ children, delay = 0, className, y = 20, duration = 0.6 }: FadeInProps) => {
 	return (
 		<LazyMotion features={domAnimation}>
 			<m.div

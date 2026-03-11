@@ -1,5 +1,5 @@
 import { CaseStudy } from "@web/components/CaseStudy";
-import { AppSync, Braintree, DynamoDb, GraphQl, Nextjs } from "@web/components/Icons";
+import { AppSync, Braintree, CloudFormation, DynamoDb, GraphQl, Nextjs } from "@web/components/Icons";
 import { GcnLogo } from "@web/components/Logos";
 import { Metadata } from "next";
 
@@ -62,9 +62,9 @@ export default function Page() {
 				{ name: "GraphQL", icon: GraphQl },
 				{ name: "AWS AppSync", icon: AppSync },
 				{ name: "AWS DynamoDB", icon: DynamoDb },
-				{ name: "Braintree Payments", icon: Braintree }
+				{ name: "Braintree Payments", icon: Braintree },
+				{ name: "CloudFormation", icon: CloudFormation }
 			]}
-			textColor="text-white"
 			timeline="January 2022 - March 2025"
 			url={SITE_URL}
 			urlClassName="bg-gradient-to-r from-blue-500 to-sky-400 text-white"
