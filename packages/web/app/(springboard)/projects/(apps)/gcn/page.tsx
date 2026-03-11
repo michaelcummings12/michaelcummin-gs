@@ -5,7 +5,17 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	title: "General Computing Network",
-	description: "Platform enabling accessible participation in Bitcoin mining infrastructure."
+	description: "Platform enabling accessible participation in Bitcoin mining infrastructure.",
+	keywords: ["Bitcoin", "Mining", "GraphQL", "AWS AppSync", "DynamoDB", "Next.js", "Serverless"],
+	openGraph: {
+		title: "General Computing Network | Michael Cummings",
+		description: "Platform enabling accessible participation in Bitcoin mining infrastructure.",
+		url: "https://www.michaelcummin.gs/projects/gcn"
+	},
+	twitter: {
+		title: "General Computing Network | Michael Cummings",
+		description: "Platform enabling accessible participation in Bitcoin mining infrastructure."
+	}
 };
 
 const SITE_URL = "https://www.generalcomputing.io/";

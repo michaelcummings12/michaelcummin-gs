@@ -12,11 +12,9 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import Balancer from "react-wrap-balancer";
 
-interface Props {
-	params: {
-		slug: string[];
-	};
-}
+type Props = {
+	params: Promise<{ slug: string[] }>;
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const {
@@ -31,18 +29,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	return {
 		title: `${post.title} | Michael Cummings`,
 		description: post.excerpt,
+		keywords: post.tags,
 		openGraph: {
 			title: post.title,
 			description: post.excerpt,
 			type: "article",
-			publishedTime: post.publishedAt.toString(),
-			authors: ["Michael Cummings"],
-			tags: post.tags
+			publishedTime: post.publishedAt.toISOString(),
+			tags: post.tags,
+			images: [
+				{
+					url: post.heroImage,
+					width: 1200,
+					height: 630,
+					alt: post.imageDescription
+				}
+			]
 		},
 		twitter: {
-			card: "summary_large_image",
 			title: post.title,
-			description: post.excerpt
+			description: post.excerpt,
+			images: [post.heroImage]
 		}
 	};
 }
@@ -57,8 +63,23 @@ export default async function BlogPostPage({ params }: Props) {
 		notFound();
 	}
 
+	const jsonLd = {
+		"@context": "https://schema.org",
+		"@type": "Article",
+		"headline": post.title,
+		"description": post.excerpt,
+		"image": `https://www.michaelcummin.gs${post.heroImage}`,
+		"datePublished": post.publishedAt.toISOString(),
+		"author": {
+			"@type": "Person",
+			"name": "Michael Cummings",
+			"url": "https://www.michaelcummin.gs/"
+		}
+	};
+
 	return (
 		<div className="min-h-full bg-zinc-900">
+			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 			<BackButton />
 			<FadeInStagger>
 				<article>

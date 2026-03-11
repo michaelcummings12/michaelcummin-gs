@@ -6,11 +6,21 @@ import "./globals.css";
 export const metadata: Metadata = {
 	metadataBase: new URL("https://www.michaelcummin.gs"),
 	openGraph: {
+		type: "website",
 		locale: "en-US",
+		siteName: "Michael Cummings",
 		images: [{ url: "/meta_image.jpg", width: 1200, height: 630, type: "image/jpeg" }]
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "Michael Cummings",
+		description: "Explore the work of Michael Cummings on his personal portfolio.",
+		images: ["/meta_image.jpg"]
 	},
 	robots: "all",
 	referrer: "origin",
+	authors: [{ name: "Michael Cummings" }],
+	creator: "Michael Cummings",
 	icons: [
 		{
 			type: "image/png",

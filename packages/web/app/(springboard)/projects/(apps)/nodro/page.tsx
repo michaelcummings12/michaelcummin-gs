@@ -4,8 +4,18 @@ import { NodroLogo } from "@web/components/Logos/Nodro";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Nodro",
-	description: "Social calendar application"
+	title: "Nødro",
+	description: "A minimalist social scheduling platform designed around clarity and restraint.",
+	keywords: ["Scheduling", "Calendar", "Next.js", "PostgreSQL", "AWS Lambda", "Minimalist typography", "Event-driven"],
+	openGraph: {
+		title: "Nødro | Michael Cummings",
+		description: "A minimalist social scheduling platform designed around clarity and restraint.",
+		url: "https://www.michaelcummin.gs/projects/nodro"
+	},
+	twitter: {
+		title: "Nødro | Michael Cummings",
+		description: "A minimalist social scheduling platform designed around clarity and restraint."
+	}
 };
 
 const SITE_URL = "https://www.nodro.com/";
