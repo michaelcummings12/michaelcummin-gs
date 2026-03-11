@@ -29,13 +29,13 @@ export const LegalModal: FunctionComponent<LegalModalProps> = ({ isOpen, onClose
 						</button>
 					</div>
 					<div className="flex flex-col p-2">
-						<Link href="/privacy" onClick={onClose} className="group flex items-center justify-between rounded-2xl p-4 transition-colors hover:bg-white/5">
+						<Link href="/privacy-policy" onClick={onClose} className="group flex items-center justify-between rounded-2xl p-4 transition-colors hover:bg-white/5">
 							<span className="text-white/80 transition-colors group-hover:text-white">Privacy Policy</span>
 							<motion.span className="text-white/30 transition-transform group-hover:translate-x-1 group-hover:text-white" aria-hidden="true">
 								&rarr;
 							</motion.span>
 						</Link>
-						<Link href="/terms" onClick={onClose} className="group flex items-center justify-between rounded-2xl p-4 transition-colors hover:bg-white/5">
+						<Link href="/terms-of-use" onClick={onClose} className="group flex items-center justify-between rounded-2xl p-4 transition-colors hover:bg-white/5">
 							<span className="text-white/80 transition-colors group-hover:text-white">Terms of Use</span>
 							<motion.span className="text-white/30 transition-transform group-hover:translate-x-1 group-hover:text-white" aria-hidden="true">
 								&rarr;

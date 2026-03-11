@@ -77,7 +77,9 @@ export default function PrivacyPolicyPage() {
 					<p>Updates will be posted on this page with a revised "Last updated" date.</p>
 					<h2 className="font-heading mt-12 mb-6 text-2xl font-semibold text-white">11. Contact</h2>
 					<p>If you have questions about this Privacy Policy or how information is handled, you may contact:</p>
-					<p>Michael Cummings</p>
+					<a href="mailto:hello@michaelcummin.gs" className="text-blue-400 underline hover:text-blue-300">
+						hello@michaelcummin.gs
+					</a>
 				</div>
 			</div>
 		</main>

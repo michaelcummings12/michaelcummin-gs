@@ -29,7 +29,8 @@
     "start": "next start",
     "build": "next build",
     "dev": "next dev --turbo",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "db:generate": "prisma generate"
   },
   "devDependencies": {
     "@svgr/cli": "^8.1.0",
