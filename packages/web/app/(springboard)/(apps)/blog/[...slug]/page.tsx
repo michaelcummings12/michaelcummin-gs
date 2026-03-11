@@ -3,10 +3,10 @@ import { Badge } from "@web/components/Badge";
 import { FadeInStagger, FadeInStaggerItem } from "@web/components/FadeIn";
 import { Post } from "@web/components/Post";
 import Social from "@web/components/Social";
+import { YouTubeEmbed } from "@web/components/YouTubeEmbed";
 import { getAllPosts, getPostBySlug } from "@web/lib/blog";
 import { prettyDate } from "@web/lib/prettyDate";
-import { readingTime } from "@web/utils/readingTime";
-import { YouTubeEmbed } from "@web/components/YouTubeEmbed";
+import { readingTime } from "@web/lib/readingTime";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -132,7 +132,11 @@ export default async function BlogPostPage({ params }: Props) {
 									li: ({ node: _, ...props }: any) => <li className="my-1.5" {...props} />,
 									img: ({ node: _, alt, src, ...props }: any) => {
 										if (alt === "youtube" && src) {
-											return <div className="my-8"><YouTubeEmbed videoId={src} /></div>;
+											return (
+												<div className="my-8">
+													<YouTubeEmbed videoId={src} />
+												</div>
+											);
 										}
 										return (
 											<figure className="my-10">
