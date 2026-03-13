@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
 	title: "About",
 	description:
-		"I build products at the intersection of design and engineering. With over ten years of experience, I specialize in crafting scalable serverless architectures and pixel-perfect user interfaces.",
+		"Full Stack Software Engineer with 10+ years of experience building scalable systems and modern web applications. Startup founder, security researcher, and digital nomad.",
 	keywords: [
 		"Michael Cummings",
 		"Full-Stack Engineer",
@@ -19,17 +19,17 @@ export const metadata: Metadata = {
 		"AWS Lambda",
 		"AWS",
 		"Serverless",
-		"Figma",
-		"UI/UX Design"
+		"Security Research",
+		"Startup Founder"
 	],
 	openGraph: {
 		title: "About Michael Cummings",
-		description: "I build products at the intersection of design and engineering.",
+		description: "Full Stack Engineer, startup founder, and digital nomad building scalable web systems.",
 		url: "https://www.michaelcummin.gs/about"
 	},
 	twitter: {
 		title: "About Michael Cummings",
-		description: "I build products at the intersection of design and engineering."
+		description: "Full Stack Engineer, startup founder, and digital nomad building scalable web systems."
 	}
 };
 
@@ -37,7 +37,8 @@ const skills = {
 	frontend: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Framer Motion"],
 	backend: ["Node.js", "AWS Lambda", "API Gateway", "GraphQL", "PostgreSQL", "DynamoDB"],
 	cloud: ["AWS", "CloudFormation", "S3", "CloudFront", "Fargate", "Docker"],
-	design: ["Figma", "Adobe Illustrator", "Adobe Photoshop", "UI/UX Design", "Brand Identity"]
+	design: ["Figma", "Adobe Illustrator", "Adobe Photoshop", "UI/UX Design", "Brand Identity"],
+	video: ["AV1", "H.264", "HEVC (H.265)", "Video Encoding Workflows", "Transcoding Pipelines", "Streaming Optimization"]
 };
 
 const experience = [
@@ -82,12 +83,12 @@ export default function Page() {
 						{/* Intro */}
 						<div className="flex flex-col gap-4">
 							<div>
-								<p className="text-sm font-medium tracking-wide text-neutral-500">Full-Stack Engineer & Designer</p>
+								<p className="text-sm font-medium tracking-wide text-neutral-500">Full-Stack Software Engineer</p>
 								<h1 className="font-heading mt-1 text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl">Michael Cummings</h1>
 							</div>
 							<p className="max-w-xl text-lg leading-relaxed text-neutral-600">
-								I build products at the intersection of design and engineering. With over ten years of experience, I specialize in crafting scalable serverless architectures
-								and pixel-perfect user interfaces.
+								I&apos;m a Full Stack Software Engineer with over ten years of experience building robust, scalable systems and modern web applications. I specialize in
+								creating high-performance platforms using modern frameworks like Next.js and React while designing architectures that scale.
 							</p>
 							<Social />
 						</div>
@@ -101,19 +102,37 @@ export default function Page() {
 					<h2 className="font-heading text-sm font-medium tracking-wider text-neutral-400 uppercase">About</h2>
 					<div className="mt-6 flex flex-col gap-6 text-base leading-relaxed text-neutral-700">
 						<p>
-							I&apos;m a full-stack engineer with deep expertise in <strong className="text-neutral-900">AWS</strong>, <strong className="text-neutral-900">Next.js</strong>,{" "}
-							<strong className="text-neutral-900">React</strong>, and <strong className="text-neutral-900">TypeScript</strong>. From architecting scalable serverless
-							backends to crafting visually engaging interfaces, I bring a holistic approach to every project.
+							I&apos;m a Chicago native and a <strong className="text-neutral-900">Full Stack Software Engineer</strong> with over a decade of experience building reliable,
+							scalable systems and modern web applications. My work focuses on combining strong engineering fundamentals with modern frameworks like{" "}
+							<strong className="text-neutral-900">Next.js</strong> and <strong className="text-neutral-900">React</strong> to build fast, maintainable, and highly performant
+							products.
 						</p>
+
 						<p>
-							My background with design tools like <strong className="text-neutral-900">Figma</strong>, <strong className="text-neutral-900">Adobe Illustrator</strong>, and{" "}
-							<strong className="text-neutral-900">Photoshop</strong> enables me to build brands from the ground up. I&apos;ve created everything from logos and style
-							guidelines to high-fidelity product mockups.
+							I&apos;m also a <strong className="text-neutral-900">startup founder</strong> and conduct <strong className="text-neutral-900">security research</strong>. I
+							enjoy exploring how systems work under the hood and continuously experiment with new technologies and tools that improve productivity, performance, and
+							developer workflows.
 						</p>
+
 						<p>
-							Beyond my professional roles, I&apos;ve collaborated with local Chicago brands to bring unique, cutting-edge digital experiences to life. Whether I&apos;m
-							designing a custom logo, integrating sophisticated payment systems, or architecting secure infrastructure, my goal is to elevate the user experience and help
-							brands stand out.
+							My engineering approach is highly <strong className="text-neutral-900">data-driven</strong>. I use metrics and operational data to guide architectural
+							decisions, prioritize work, and validate whether delivered systems achieve their intended impact. I&apos;m experienced designing serverless architectures,
+							building CI/CD pipelines, and managing infrastructure using infrastructure-as-code practices.
+						</p>
+
+						<p>
+							I&apos;m also familiar with modern <strong className="text-neutral-900">video encoding formats and workflows</strong>, including AV1, H.264, and HEVC (H.265),
+							and understand their tradeoffs across compression efficiency, performance, and compatibility.
+						</p>
+
+						<p>
+							Outside of engineering, I love traveling and experiencing new places. I&apos;m currently living as a <strong className="text-neutral-900">digital nomad</strong>
+							, spending time in cities around the world. When I&apos;m not working, you&apos;ll usually find me at music festivals, outdoors, or spending time with friends.
+						</p>
+
+						<p>
+							I&apos;m passionate about building great software, contributing to open-source projects, and continuously experimenting with emerging technologies that push the
+							boundaries of what&apos;s possible on the web.
 						</p>
 					</div>
 				</div>
@@ -134,6 +153,7 @@ export default function Page() {
 								))}
 							</div>
 						</div>
+
 						<div>
 							<h3 className="font-heading text-xs font-semibold tracking-wider text-neutral-500 uppercase">Backend</h3>
 							<div className="mt-3 flex flex-wrap gap-2">
@@ -144,6 +164,7 @@ export default function Page() {
 								))}
 							</div>
 						</div>
+
 						<div>
 							<h3 className="font-heading text-xs font-semibold tracking-wider text-neutral-500 uppercase">Cloud & DevOps</h3>
 							<div className="mt-3 flex flex-wrap gap-2">
@@ -154,10 +175,22 @@ export default function Page() {
 								))}
 							</div>
 						</div>
+
 						<div>
 							<h3 className="font-heading text-xs font-semibold tracking-wider text-neutral-500 uppercase">Design</h3>
 							<div className="mt-3 flex flex-wrap gap-2">
 								{skills.design.map((skill) => (
+									<span key={skill} className="rounded-full bg-white px-3 py-1.5 text-sm text-neutral-700 ring-1 ring-neutral-200">
+										{skill}
+									</span>
+								))}
+							</div>
+						</div>
+
+						<div>
+							<h3 className="font-heading text-xs font-semibold tracking-wider text-neutral-500 uppercase">Video</h3>
+							<div className="mt-3 flex flex-wrap gap-2">
+								{skills.video.map((skill) => (
 									<span key={skill} className="rounded-full bg-white px-3 py-1.5 text-sm text-neutral-700 ring-1 ring-neutral-200">
 										{skill}
 									</span>
