@@ -14,15 +14,15 @@ export interface BlogPost {
 const blogPosts: BlogPost[] = [
 	{
 		slug: "chicago-care-nbc-interview",
-		title: "Getting Chicago.care on NBC",
-		excerpt: "How I cold-pitched reporters across Chicago and ended up being interviewed on NBC about Chicago.care.",
+		title: "The time that I was on TV",
+		excerpt: "I got interviewed on Chicago's NBC 5 about a project I built.",
 		publishedAt: new Date("2022-08-17"),
 		tags: ["startup story", "media outreach", "chicago startups", "healthtech", "founder journey"],
 		category: "Startup",
-		imageDescription: "A small interview setup in a WeWork office in Chicago’s River North during my NBC interview about Chicago.care.",
+		imageDescription: "The interview setup in a WeWork office in Chicago's River North.",
 		heroImage: "/assets/blog/chicago-care-nbc-interview/hero.jpg",
 		content: `
-When I launched **Chicago.care**, I knew it could genuinely help people.
+When I launched Chicago.care, I knew it could genuinely help people.
 
 The site made it easier for Chicago residents to find monkeypox vaccines and providers during the outbreak. But building something useful is only half the battle — people still have to **hear about it**.
 
@@ -115,24 +115,26 @@ bring a branded t-shirt.
 	{
 		slug: "automating-pool-bed-reservations",
 		title: "Automating Pool Bed Reservations at a Private Members Club",
-		excerpt: "How I reverse engineered a members club reservation API and built a bot that guarantees I always get a pool bed.",
+		excerpt: "How I built a bot that guarantees I always get a pool bed 😎",
 		publishedAt: new Date("2025-06-18"),
-		tags: ["automation", "reverse engineering", "swift", "ios", "bots"],
+		tags: ["automation", "reverse engineering", "swift", "ios", "bots", "api", "python"],
 		category: "Engineering",
 		imageDescription: "A perfect summer afternoon by a rooftop pool in Chicago's West Loop.",
 		heroImage: "/assets/blog/automating-pool-bed-reservations/hero.jpg",
 		content: `
-Last summer I developed a slightly ridiculous but very effective solution to a very first-world problem.
+This summer, I developed a very effective solution to a problem I kept running into.
 
-Pool beds at a certain private members club are extremely difficult to reserve.
+I belong to a club in Chicago that has a rooftop pool. Most of the pool beds are first-come-first-served, but they set aside 10 beds to be booked via a mobile app.
 
-Every morning, reservations open at a specific time. And when I say you have to be fast — I mean *fast*. Beds disappear in seconds. If you’re even a few seconds late, you’re staring at a fully booked calendar.
+You can try to walk-in and get a bed, but on a warm summer day in Chicago, it's very competitive. I don't like standing around waiting for a bed to open up; I'd rather have one reserved in advance.
+
+Reservations open up 24 hours in advance. And when I say you have to be fast — I mean *fast*. The beds get booked in seconds.
 
 After losing the race a few too many times, I decided to automate it.
 
 ## Understanding the System
 
-The club’s mobile app talks to a backend API to check availability and create reservations. Like most modern apps, the client is really just a thin wrapper around HTTP requests.
+The mobile app talks to a backend API to check availability and create reservations. 
 
 So the plan was simple:
 
@@ -141,9 +143,8 @@ So the plan was simple:
 3. Replicate the reservation request
 4. Trigger it exactly when reservations open
 
-I started by intercepting requests from the official mobile app and mapping out the endpoints involved in:
+I started by intercepting requests from the mobile app and mapping out the endpoints involved in:
 
-- authentication
 - checking availability
 - creating reservations
 
@@ -151,41 +152,29 @@ Once I understood the request structure, replicating it was straightforward.
 
 ## The Bot
 
-The bot wakes up a few seconds before reservations open and begins polling the availability endpoint. The moment beds become available, it fires the reservation request.
+The bot starts attempting to book a few seconds before reservations open. The moment beds become available, it fires the reservation request.
 
-Because the API accepts reservations immediately once availability flips, the bot consistently books before humans can even load the page.
+Because the API accepts reservations immediately once availability flips, the bot consistently books before humans can even load the page in the app.
 
 The result: I have never missed a reservation since.
 
 ## Turning it into an iOS App
 
-Originally this was just a command line script.
+Originally this was a simple Python script.
 
-But eventually I wrapped the functionality in a native iOS app written in Swift so I could:
+But eventually I wrapped the functionality in a native iOS app written in Swift so I could run it on the go, without needing my laptop.
 
-- manage authentication
-- configure preferred locations
-- monitor reservation status
-- trigger the bot automatically
+The app runs the same logic, with the addition of a user-friendly UI.
 
-The app basically runs the same automation logic, but with a UI and scheduling.
+## Conclusion
 
-## Lessons Learned
-
-A few takeaways:
-
-- Most mobile apps are thin API clients
-- If you understand the API, you understand the system
-- Timing matters more than speed in reservation systems
-- Automation is extremely satisfying when it solves a personal annoyance
-
-Is this overkill for booking a pool bed?
+Is this overkill for reserving a pool bed?
 
 Absolutely.
 
 Was it worth it?
 
-Also absolutely.
+😄
 `
 	},
 
@@ -290,72 +279,63 @@ Sometimes pulling on a small thread leads somewhere unexpected.
 	{
 		slug: "my-first-open-source-contribution",
 		title: "My First Open Source Contribution",
-		excerpt: "How a small bot that monitors OpenAI API spec changes led to my first open source PR to the Vercel AI package.",
+		excerpt: "How a tiny bot that monitors OpenAI API spec changes led to my first open source contribution.",
 		publishedAt: new Date("2026-03-05"),
 		tags: ["open source", "vercel", "ai", "openai", "typescript"],
 		category: "Open Source",
-		imageDescription: "My old desk setup in my Old Town Chicago apartment, where I built many of my early projects.",
+		imageDescription: "My old desk setup in my apartment in the Old Town neighborhood of Chicago, where I built many of my projects.",
 		heroImage: "/assets/blog/my-first-open-source-contribution/hero.jpg",
 		content: `
-Today I made my first contribution to a major open source project.
+Today I made my first contribution to a major open source project!
 
-It started with a small tool I wrote for myself.
+This wasn't my first attempt at contributing to \`vercel/ai\`, but it was my first successful one.
 
-## The Problem
+The last time I tried to contribute, someone beat me to it by mere minutes.
 
-OpenAI quietly updates their API spec from time to time. New models appear, versions change, and parameters evolve.
+I realized that in order to contribute, I had to be fast. So I built a bot to monitor the OpenAI API spec repository for changes and alert me when something changed.
 
-If you're building AI products, those changes matter.
-
-But there's no official changelog for the raw spec itself.
-
-So I built a small monitoring bot.
-
-## openai-api-spec-monitor
+## [openai-api-spec-monitor](https://www.github.com/michaelcummings12/openai-api-spec-monitor)
 
 The bot watches the OpenAI API spec repository and notifies my Discord whenever something changes.
 
-Repo:  
-https://www.github.com/michaelcummings12/openai-api-spec-monitor
-
 It works by:
 
-1. Fetching the latest spec
-2. Comparing it against the previous version
-3. Detecting model or schema changes
-4. Posting alerts in Discord
+1. Fetching the latest OpenAI API spec
+2. Using native git diff to compare against the previous version
+3. Generating a summary of changes using AI
+4. Sends an alert in my Discord server
 
 Pretty simple, but extremely useful.
 
 ## Catching a Model Update
 
-A few days after running it, the bot detected a change.
+A few months after launching it, the bot detected a major change.
 
 OpenAI had updated the GPT model version from **5.2 to 5.4** in the spec.
 
-The change hadn’t yet been reflected in some SDK tooling — including the model list used in the Vercel AI package.
+I got the alert and quickly pulled up the [\`vercel/ai\`](https://github.com/vercel/ai) package. No open PRs, so far so good.
 
-So I opened a PR updating the model definitions.
+Rapdily, I pulled up Antigravity and instructed Gemini to update the model definitions in the package.
 
-And it got merged.
+At the same time, I tasked my Clawdbot with crawling the [\`vercel/ai\` GitHub page](https://github.com/vercel/ai) to figure out what I had to name my branch, PR, and what description to add.
 
-## Why This Matters
+Everything started coming together all at once. I quickly reviewed Gemini's work and created a branch based on what Openclawd found.
 
-The \`vercel/ai\` package is a popular toolkit for building AI applications. It provides abstractions for:
+I flipped back to GitHub and checked the pull requests page. I breathed a sigh of relief, no one else had opened a PR. I quickly opened one, and then of course had to do my own code review.
 
-- streaming AI responses
-- unified model interfaces
-- easy integration with frameworks like Next.js
+As expected, there were several things I noticed that AI did that I didn't like. I made some tweaks, pushed a few more commits, and marked the PR as ready for review.
 
-Even a small update helps keep the ecosystem aligned with upstream API changes.
+Within a few minutes, I received a review from one of the maintainers from Vercel. They had a few suggestions. I made the changes and pushed a few more commits.
 
-## First PR, Many More Ahead
+About 20 minutes after I opened the [pull request](https://github.com/vercel/ai/pull/13115), it was merged!
 
-This was a small change, but contributing to open source projects that I actually use feels great.
+![](/assets/blog/my-first-open-source-contribution/pull-request.jpg)
 
-Also: monitoring upstream APIs automatically turns out to be surprisingly useful.
+## First PR, But Many More to Come
 
-Sometimes the best tools start as personal utilities.
+This was a small change, but contributing to open source projects that I actually use feels great. 
+
+I'm looking forward to making more contributions in the future 🚀
 `
 	},
 

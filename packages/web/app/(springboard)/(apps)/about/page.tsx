@@ -41,25 +41,6 @@ const skills = {
 	video: ["AV1", "H.264", "HEVC (H.265)", "Video Encoding Workflows", "Transcoding Pipelines", "Streaming Optimization"]
 };
 
-const experience = [
-	{
-		role: "Senior Full-Stack Engineer",
-		company: "Freelance / Contract",
-		period: "2021 - Present",
-		description:
-			"Architecting and building scalable web applications for startups and established brands. Focus on serverless AWS infrastructure and modern React frontends.",
-		technologies: ["Next.js", "AWS", "TypeScript", "React"]
-	},
-	{
-		role: "Full-Stack Developer",
-		company: "Various Chicago Brands",
-		period: "2018 - 2021",
-		description:
-			"Collaborated with local businesses to create digital experiences, from e-commerce platforms to custom web applications. Led both technical implementation and brand design.",
-		technologies: ["React", "Node.js", "PostgreSQL", "Figma"]
-	}
-];
-
 export default function Page() {
 	return (
 		<div className="min-h-full w-full overflow-y-auto bg-white">

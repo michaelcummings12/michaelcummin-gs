@@ -5,6 +5,7 @@ import { Post } from "@web/components/Post";
 import Social from "@web/components/Social";
 import { YouTubeEmbed } from "@web/components/YouTubeEmbed";
 import { getAllPosts, getPostBySlug } from "@web/lib/blog";
+import { cn } from "@web/lib/cn";
 import { prettyDate } from "@web/lib/prettyDate";
 import { readingTime } from "@web/lib/readingTime";
 import { Metadata } from "next";
@@ -151,7 +152,10 @@ export default async function BlogPostPage({ params }: Props) {
 											<pre className="overflow-x-auto rounded-xl bg-black p-6" {...props} />
 										</div>
 									),
-									code: ({ node: _, className, ...props }: any) => <code className={`text-sm leading-relaxed text-zinc-300 ${className || ""}`} {...props} />
+									code: ({ node: _, className, ...props }: any) => (
+										<code className={cn(className, "rounded bg-zinc-800 px-1 py-0.5 text-base leading-relaxed text-blue-500")} {...props} />
+									),
+									a: ({ node: _, className, ...props }: any) => <a className={`hover:underline ${className || ""}`} {...props} />
 								}}>
 								{post.content}
 							</ReactMarkdown>
