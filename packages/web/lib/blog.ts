@@ -15,79 +15,65 @@ const blogPosts: BlogPost[] = [
 	{
 		slug: "chicago-care-nbc-interview",
 		title: "The time that I was on TV",
-		excerpt: "I got interviewed on Chicago's NBC 5 about a project I built.",
+		excerpt: "I was interviewed on Chicago's NBC 5 about a project I built.",
 		publishedAt: new Date("2022-08-17"),
-		tags: ["startup story", "media outreach", "chicago startups", "healthtech", "founder journey"],
+		tags: ["startup story", "chicago startups", "healthcare", "founder journey"],
 		category: "Startup",
 		imageDescription: "The interview setup in a WeWork office in Chicago's River North.",
 		heroImage: "/assets/blog/chicago-care-nbc-interview/hero.jpg",
 		content: `
-When I launched Chicago.care, I knew it could genuinely help people.
+I launched Chicago.care while I was ill with the flu after spending four days at Lollapalooza.
 
-The site made it easier for Chicago residents to find monkeypox vaccines and providers during the outbreak. But building something useful is only half the battle — people still have to **hear about it**.
+While sitting in my apartment, I called my doctor inquiring where I could get the monkeypox vaccine. My doctor's office told me they don't administer it and provided no information on where I could get it. 
 
-So I decided to do something I had never done before.
+This felt eerily similar to the start of the COVID-19 pandemic. I wanted to capitalize on the situation and build something that could go viral.
 
-I tried to get the media involved.
+I built Chicago.care, a website where I aggregated all of the providers in the Chicagoland area adminstering the monkeypox vaccine and overlayed the information on an interactive map.
+
+This was only part one of my plan. Now that I had the product, I needed it to go viral.
 
 ## Pitching Reporters
 
-I made a list of reporters in Chicago who covered public health, local news, or technology.
+I sifted through the staff pages of every major news outlet in Chicago. ABC, CBS, Fox, NBC, and WGN. 
 
-Then I started emailing.
+I made a list of reporters I wanted to contact, highlighting any sort of personal connection I could use to my advantage, like alma mater, hometown, etc.
 
-And emailing.
+Then I started emailing. And emailing. And emailing.
 
-And emailing.
+I must've reached out to 30 reporters across all the different news outlets in Chicago. 
 
-I probably reached out to **10–20 reporters** across different outlets. Most never responded. A few politely declined.
+I only got one response. But that's all I needed.
 
-Cold pitching journalists as a random developer with a new website is… intimidating.
-
-But eventually I got a response.
-
-**Lauren Petty from NBC Chicago.**
-
-She was interested in what I had built and wanted to do an interview.
+Lauren Petty from NBC 5 Chicago was interested in what I had built and wanted to do an interview.
 
 ## Preparing for the Interview
 
 This would be my first time doing anything like this.
 
-So naturally I overprepared.
+I rented a small room at a WeWork in River North where we could film the interview. I wanted a professional setting where we could talk about what I built.
 
-First, I rented a small room at a **WeWork in River North** where we could film the interview. I wanted a clean, professional setting where we could talk about the platform.
+And then of course, I ordered some custom Chicago.care merch that I could wear during the interview. If I was going to be on camera, I might as well be on brand.
 
-Then I did something slightly ridiculous.
-
-I got a **custom Chicago.care t-shirt printed** so I could wear it during the interview.
-
-If I was going to be on camera, I figured I might as well be on brand.
-
-The night before the interview I remember feeling pretty nervous. I had built plenty of software before, but sitting down in front of a camera to talk about it was completely new territory.
+The night before the interview I remember feeling pretty nervous. Sitting down in front of a camera to talk about something I built was completely new to me.
 
 ## The Interview
 
 Lauren and the NBC team came to the WeWork space and we set everything up.
 
-The interview was surprisingly relaxed. We talked about:
+The interview was very relaxed. We talked about:
 
 - how the monkeypox outbreak was affecting Chicago
 - how fragmented vaccine information was across providers
 - why I built Chicago.care
 - how the platform helped people find vaccines faster
 
-It felt less like an interrogation and more like a conversation about solving a real problem.
-
-Still — knowing the cameras were rolling definitely made my heart rate spike a bit.
+When I watch the interview back, I can't help but notice my nervousness. But my friends and family all thought I crushed it.
 
 ## The Segment
 
-Eventually the piece aired on NBC Chicago.
+The next day, the segment aired on NBC Chicago. It was on the 4pm news, the 5pm news, and the 6pm news, the 10pm news. And even on the 5am and 6am news the next day.
 
-Seeing something you built get covered on local news is a surreal experience.
-
-What started as a quick project to help people navigate vaccine access had suddenly reached a much larger audience.
+Seeing yourself on TV is a surreal experience. I got dozens of messages from friends about how they saw me on TV.
 
 Below is the segment from the interview.
 
@@ -97,19 +83,7 @@ Below is the segment from the interview.
 
 The experience taught me something important:
 
-Sometimes building the product is the easy part.
-
-Getting people to **notice it** is the real challenge.
-
-Cold emailing reporters felt awkward at first, but it worked because the story was simple:
-
-A developer saw a problem during a public health emergency and built something to help.
-
-And sometimes that’s exactly the kind of story journalists are looking for.
-
-Also — if you ever get the chance to go on TV for something you built…
-
-bring a branded t-shirt.
+It's only impossible until it's not.
 `
 	},
 	{
@@ -168,24 +142,19 @@ The app runs the same logic, with the addition of a user-friendly UI.
 
 ## Conclusion
 
-Is this overkill for reserving a pool bed?
+Is this overkill for reserving a pool bed? Maybe...
 
-Absolutely.
-
-Was it worth it?
-
-😄
+But it was worth it 😄
 `
 	},
-
 	{
 		slug: "exploring-a-building-permit-portal",
-		title: "Inside the Building Permit Portal of America’s Largest City",
+		title: "Inside the Building Permit Portal of America's Largest City",
 		excerpt: "While trying to understand whether a venue renovation would pass inspection, I discovered a major access control flaw in a municipal building portal.",
 		publishedAt: new Date("2025-09-14"),
 		tags: ["security", "bug bounty", "web security", "reverse engineering"],
 		category: "Security",
-		imageDescription: "One World Trade Center rising above Lower Manhattan, photographed on 35mm Fujifilm with my Nikon FE from the West Village.",
+		imageDescription: "Photographed on 35mm Fujifilm 400 with my Nikon FE.",
 		heroImage: "/assets/blog/exploring-a-building-permit-portal/hero.jpg",
 		content: `
 Earlier this year I went down a bit of a rabbit hole.
@@ -205,21 +174,21 @@ These portals exist to provide transparency into construction activity. You can 
 - contractor information  
 - approval history  
 
-But they also host a large number of **documents associated with each job filing**.
+But they also host a large number of documents associated with each job filing.
 
 ## Discovering the Access Issue
 
 While browsing through a few filings, I noticed something odd.
 
-Some documents were clearly intended to be public and downloadable. Others appeared in the interface but displayed an **“unauthorized” message** unless you were a stakeholder on the project.
+Some documents were clearly intended to be public and downloadable. Others appeared in the interface but displayed an “unauthorized” message unless you were a stakeholder on the project.
 
 Naturally, I assumed those documents were protected properly.
 
-But while inspecting how the portal handled document downloads, I discovered that the backend wasn’t consistently enforcing the same permissions that the interface was displaying.
+But while inspecting how the portal handled document downloads, I discovered that the backend wasn't consistently enforcing the same permissions that the interface was displaying.
 
 In other words:
 
-The UI said *“you can’t access this document”*, but the server would still return it under certain conditions.
+The UI said *“you can't access this document”*, but the server would still return it under certain conditions.
 
 Once I realized this, it became clear that the problem was much larger than a single project.
 
@@ -233,7 +202,7 @@ Then I tried different buildings.
 
 It still worked.
 
-Eventually it became clear that the issue potentially affected **documents across the entire system** — including architectural plans, sketches, and internal filing documents for buildings all over the city.
+Eventually it became clear that the issue potentially affected documents across the entire system — including architectural plans, sketches, and internal filing documents for buildings all over the city.
 
 ## Responsible Disclosure
 
@@ -246,11 +215,11 @@ My report included:
 - examples of documents that could be accessed unintentionally  
 - recommendations for fixing the backend permission checks  
 
-Because the vulnerability involves access control in a live municipal system, I’m intentionally leaving out specific technical details until it is fully resolved.
+Because the vulnerability involves access control in a live municipal system, I'm intentionally leaving out specific technical details until it is fully resolved.
 
 ## Why This Matters
 
-Municipal permitting systems sit at an interesting intersection of **public transparency and sensitive infrastructure**.
+Municipal permitting systems sit at an interesting intersection of public transparency and sensitive infrastructure.
 
 Some information should absolutely be public.
 
@@ -269,7 +238,7 @@ Ironically, this entire investigation started because I just wanted to answer on
 
 Would the venue pass inspection and reopen?
 
-What began as curiosity about a nightclub renovation ended up uncovering a much larger issue in the city’s permitting software.
+What began as curiosity about a nightclub renovation ended up uncovering a much larger issue in the city's permitting software.
 
 Sometimes pulling on a small thread leads somewhere unexpected.
 
@@ -283,7 +252,7 @@ Sometimes pulling on a small thread leads somewhere unexpected.
 		publishedAt: new Date("2026-03-05"),
 		tags: ["open source", "vercel", "ai", "openai", "typescript"],
 		category: "Open Source",
-		imageDescription: "My old desk setup in my apartment in the Old Town neighborhood of Chicago, where I built many of my projects.",
+		imageDescription: "My old desk setup in my apartment in the Old Town neighborhood of Chicago.",
 		heroImage: "/assets/blog/my-first-open-source-contribution/hero.jpg",
 		content: `
 Today I made my first contribution to a major open source project!
@@ -311,7 +280,7 @@ Pretty simple, but extremely useful.
 
 A few months after launching it, the bot detected a major change.
 
-OpenAI had updated the GPT model version from **5.2 to 5.4** in the spec.
+OpenAI had updated the GPT model version from 5.2 to 5.4 in the spec.
 
 I got the alert and quickly pulled up the [\`vercel/ai\`](https://github.com/vercel/ai) package. No open PRs, so far so good.
 
@@ -346,14 +315,14 @@ I'm looking forward to making more contributions in the future 🚀
 		publishedAt: new Date("2026-01-30"),
 		tags: ["tailwind", "css", "open source", "typography"],
 		category: "Open Source",
-		imageDescription: "Doing some work at Doma Café in Chicago. Breakfast place with ćevapi sausage, hashbrown, and an iced americano.",
+		imageDescription: "Doing some work while enjoying breakfast at Doma Cafe in Chicago.",
 		heroImage: "/assets/blog/tailwindcss-textbox-trim/hero.jpg",
 		content: `
 One thing that has bothered me for years in web development is how difficult it is to align text *perfectly*.
 
 Even when text appears visually centered, there is often hidden spacing above and below the glyphs that throws layouts off.
 
-This spacing is called **internal leading**.
+This spacing is called internal leading.
 
 ## The Problem
 
@@ -372,7 +341,7 @@ Even when using flexbox or grid, the text itself contains invisible padding.
 
 ## The Solution: text-box-trim
 
-The CSS **Text Box Trim** specification solves this by allowing the browser to trim the excess space around text glyphs.
+The CSS Text Box Trim specification solves this by allowing the browser to trim the excess space around text glyphs.
 
 This makes text behave more like a normal box model element.
 
@@ -388,7 +357,7 @@ But after doing that a few times I realized:
 
 this should just be a package.
 
-So I built **tailwindcss-textbox-trim**.
+So I built tailwindcss-textbox-trim.
 
 ## What the Package Does
 
