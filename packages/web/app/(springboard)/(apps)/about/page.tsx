@@ -35,9 +35,9 @@ export const metadata: Metadata = {
 
 const skills = {
 	frontend: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Framer Motion"],
-	backend: ["Node.js", "AWS Lambda", "API Gateway", "GraphQL", "PostgreSQL", "DynamoDB"],
+	backend: ["Node.js", "AWS Lambda", "API Gateway", "GraphQL", "PostgreSQL", "DynamoDB", "Postgres"],
 	cloud: ["AWS", "CloudFormation", "S3", "CloudFront", "Fargate", "Docker"],
-	design: ["Figma", "Adobe Illustrator", "Adobe Photoshop", "UI/UX Design", "Brand Identity"],
+	design: ["Figma", "Adobe Illustrator", "Adobe Photoshop", "Adobe Lightroom"],
 	video: ["AV1", "H.264", "HEVC (H.265)", "Video Encoding Workflows", "Transcoding Pipelines", "Streaming Optimization"]
 };
 
@@ -46,7 +46,7 @@ export default function Page() {
 		<div className="min-h-full w-full overflow-y-auto bg-white">
 			{/* Hero Section */}
 			<section className="w-full">
-				<div className="mx-auto max-w-4xl px-6 pt-16 pb-12">
+				<div className="mx-auto max-w-4xl px-6 pt-16 pb-8">
 					<div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
 						{/* Portrait */}
 						<div className="group relative mx-auto size-56 shrink-0 overflow-hidden rounded-3xl md:mx-0 md:size-64">
@@ -75,8 +75,8 @@ export default function Page() {
 			</section>
 
 			{/* About Section */}
-			<section className="w-full border-t border-neutral-200">
-				<div className="mx-auto max-w-4xl px-6 py-12">
+			<section className="w-full">
+				<div className="mx-auto max-w-4xl px-6 py-8">
 					<h2 className="font-heading text-sm font-medium tracking-wider text-neutral-400 uppercase">About</h2>
 					<div className="mt-6 flex flex-col gap-6 text-base leading-relaxed text-neutral-700">
 						<p>
@@ -115,9 +115,9 @@ export default function Page() {
 			</section>
 
 			{/* Skills Section */}
-			<section className="w-full border-t border-neutral-200 bg-neutral-50">
-				<div className="mx-auto max-w-4xl px-6 py-12">
-					<h2 className="font-heading text-sm font-medium tracking-wider text-neutral-400 uppercase">Skills & Expertise</h2>
+			<section className="w-full bg-neutral-100">
+				<div className="mx-auto max-w-4xl px-6 py-8">
+					<h2 className="font-heading text-sm font-medium tracking-wider text-neutral-400 uppercase">Skills</h2>
 					<div className="mt-8 grid gap-8 sm:grid-cols-2">
 						<div>
 							<h3 className="font-heading text-xs font-semibold tracking-wider text-neutral-500 uppercase">Frontend</h3>
