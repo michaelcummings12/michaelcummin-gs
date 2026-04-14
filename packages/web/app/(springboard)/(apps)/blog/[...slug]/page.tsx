@@ -124,38 +124,53 @@ export default async function BlogPostPage({ params }: Props) {
 						<div className="mx-auto max-w-3xl px-6 pt-12 pb-16">
 							<ReactMarkdown
 								components={{
-									h2: ({ node: _, ...props }: any) => <h2 className="font-heading mt-14 mb-4 text-2xl font-bold text-white" {...props} />,
-									h3: ({ node: _, ...props }: any) => <h3 className="font-heading mt-10 mb-4 text-xl font-bold text-white" {...props} />,
-									p: ({ node: _, ...props }: any) => <p className="my-5 text-lg leading-relaxed font-normal text-white" {...props} />,
-									strong: ({ node: _, ...props }: any) => <strong className="font-bold" {...props} />,
-									ul: ({ node: _, ...props }: any) => <ul className="my-5 ml-5 list-disc text-lg leading-relaxed font-normal text-white marker:text-white" {...props} />,
-									ol: ({ node: _, ...props }: any) => <ol className="my-5 ml-5 list-decimal text-lg leading-relaxed font-normal text-white marker:text-white" {...props} />,
-									li: ({ node: _, ...props }: any) => <li className="my-1.5" {...props} />,
-									img: ({ node: _, alt, src, ...props }: any) => {
-										if (alt === "youtube" && src) {
-											return (
-												<div className="my-8">
-													<YouTubeEmbed videoId={src} />
-												</div>
-											);
+									// eslint-disable-next-line @typescript-eslint/no-unused-vars
+									h2: ({ node: _, ...rest }) => <h2 className="font-heading mt-14 mb-4 text-2xl font-bold text-white" {...rest} />,
+									// eslint-disable-next-line @typescript-eslint/no-unused-vars
+									h3: ({ node: _, ...rest }) => <h3 className="font-heading mt-10 mb-4 text-xl font-bold text-white" {...rest} />,
+									p: ({ node, ...props }) => {
+										const hasImage =
+											node &&
+											"children" in node &&
+											Array.isArray(node.children) &&
+											node.children.some((child) => child && typeof child === "object" && "tagName" in child && child.tagName === "img");
+										if (hasImage) {
+											return <div className="my-5 text-lg leading-relaxed font-normal text-white" {...props} />;
 										}
-										return (
-											<figure className="my-10">
-												{/* eslint-disable-next-line @next/next/no-img-element */}
-												<img alt={alt} src={src} className="w-full rounded-2xl bg-zinc-800 object-cover" {...props} />
-												{alt && <figcaption className="mt-4 text-center text-sm text-zinc-500">{alt}</figcaption>}
-											</figure>
-										);
+										return <p className="my-5 text-lg leading-relaxed font-normal text-white" {...props} />;
 									},
-									pre: ({ node: _, ...props }: any) => (
+									// eslint-disable-next-line @typescript-eslint/no-unused-vars
+									strong: ({ node: _, ...rest }) => <strong className="font-bold" {...rest} />,
+									// eslint-disable-next-line @typescript-eslint/no-unused-vars
+									ul: ({ node: _, ...rest }) => <ul className="my-5 ml-5 list-disc text-lg leading-relaxed font-normal text-white marker:text-white" {...rest} />,
+									// eslint-disable-next-line @typescript-eslint/no-unused-vars
+									ol: ({ node: _, ...rest }) => <ol className="my-5 ml-5 list-decimal text-lg leading-relaxed font-normal text-white marker:text-white" {...rest} />,
+									// eslint-disable-next-line @typescript-eslint/no-unused-vars
+									li: ({ node: _, ...rest }) => <li className="my-1.5" {...rest} />,
+									// eslint-disable-next-line @typescript-eslint/no-unused-vars
+									img: ({ node: _, alt, src, ...rest }) =>
+										alt === "youtube" && src ? (
+											<div className="my-8">
+												<YouTubeEmbed videoId={src as string} />
+											</div>
+										) : (
+											<figure className="my-10">
+												<img alt={(alt as string) || ""} src={src as string} className="w-full rounded-2xl bg-zinc-800 object-cover" {...rest} />
+												{alt ? <figcaption className="mt-4 text-center text-sm text-zinc-500">{alt as string}</figcaption> : null}
+											</figure>
+										),
+									// eslint-disable-next-line @typescript-eslint/no-unused-vars
+									pre: ({ node: _, ...rest }) => (
 										<div className="-mx-6 my-8 md:-mx-12 lg:-mx-20">
-											<pre className="overflow-x-auto rounded-xl bg-black p-6" {...props} />
+											<pre className="overflow-x-auto rounded-xl bg-black p-6" {...rest} />
 										</div>
 									),
-									code: ({ node: _, className, ...props }: any) => (
-										<code className={cn(className, "rounded bg-zinc-800 px-1 py-0.5 text-base leading-relaxed text-blue-500")} {...props} />
+									// eslint-disable-next-line @typescript-eslint/no-unused-vars
+									code: ({ node: _, className, ...rest }) => (
+										<code className={cn(className, "rounded bg-zinc-800 px-1 py-0.5 text-base leading-relaxed text-blue-500")} {...rest} />
 									),
-									a: ({ node: _, className, ...props }: any) => <a className={`hover:underline ${className || ""}`} {...props} />
+									// eslint-disable-next-line @typescript-eslint/no-unused-vars
+									a: ({ node: _, className, ...rest }) => <a className={`hover:underline ${className || ""}`} {...rest} />
 								}}>
 								{post.content}
 							</ReactMarkdown>

@@ -13,4 +13,4 @@ interface Button {
 	textColor?: string;
 }
 
-export type ButtonProps<T extends Record<string, unknown> = {}> = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & Button & T;
+export type ButtonProps<T extends Record<string, unknown> = Record<string, unknown>> = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & Button & T;

@@ -1,6 +1,8 @@
+import React, { JSX, SVGProps } from "react";
+
 export interface Technology {
 	name: string;
-	icon: any;
+	icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
 }
 
 export type Technologies = Technology[];

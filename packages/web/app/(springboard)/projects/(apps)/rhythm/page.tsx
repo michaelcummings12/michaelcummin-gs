@@ -44,9 +44,6 @@ export default function Page() {
 				}
 			]}
 			description="Rhythm is the only streaming service where you can watch full concerts, built with performance and scalability in mind."
-			featureImages={[
-				{ description: "Rhythm platform displayed across multiple devices", aspectRatio: "video", src: "/assets/rhythm/devices.png", width: 939, height: 675 }
-			]}
 			features={[
 				"Full-stack architecture with Next.js",
 				"AI/ML-powered recommendation engine",
@@ -54,7 +51,7 @@ export default function Page() {
 				"GPU-accelerated FFmpeg transcoding (CUDA)",
 				"Real-time search, trending, and watch history"
 			]}
-			heroImage={{ description: "Demo of watching a concert of Rhythm", aspectRatio: "video", src: "/assets/rhythm/demo.jpg", width: 1200, height: 675 }}
+			heroImage={{ description: "Demo of watching a concert of Rhythm", aspectRatio: "video", src: "/assets/rhythm/devices.png", width: 939, height: 675 }}
 			logo={<RhythmLogo className="h-full w-full" />}
 			outcomes={[
 				"Achieved high performance and scalability by leveraging Vercel for frontend deployment and PostgreSQL for data management.",

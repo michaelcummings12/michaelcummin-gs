@@ -16,14 +16,14 @@ function getAbsoluteRotation(offset: number = 0) {
  * to perfectly sync time-based rotation across components.
  */
 export function useTimeBasedRotation(offset: number = 0) {
-	const [rotation, setRotation] = useState(() => getAbsoluteRotation(offset));
+	const [rotation, setRotation] = useState(offset);
 	useEffect(() => {
 		let frameId: number;
 		const updateRotation = () => {
 			setRotation(getAbsoluteRotation(offset));
 			frameId = requestAnimationFrame(updateRotation);
 		};
-		frameId = requestAnimationFrame(updateRotation);
+		updateRotation();
 		return () => cancelAnimationFrame(frameId);
 	}, [offset]);
 	return rotation;

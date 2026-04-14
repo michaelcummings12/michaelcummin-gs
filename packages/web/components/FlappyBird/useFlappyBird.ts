@@ -112,10 +112,10 @@ export const useFlappyBird = () => {
 	}, [score, highScore, setHighScore]);
 
 	const gameLoop = useCallback(
-		(timestamp: number) => {
+		function loop(timestamp: number) {
 			const { height, width } = dimensions;
 			if (height === 0 || width === 0) {
-				reqRef.current = requestAnimationFrame(gameLoop);
+				reqRef.current = requestAnimationFrame(loop);
 				return;
 			}
 
@@ -185,7 +185,7 @@ export const useFlappyBird = () => {
 			setRenderPipes([...pipes.current]);
 
 			if (gameState === "PLAYING") {
-				reqRef.current = requestAnimationFrame(gameLoop);
+				reqRef.current = requestAnimationFrame(loop);
 			}
 		},
 		[gameState, dimensions, spawnPipe, endGame]

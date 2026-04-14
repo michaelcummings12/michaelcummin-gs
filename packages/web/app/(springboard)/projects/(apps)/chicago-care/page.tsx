@@ -19,7 +19,6 @@ export const metadata: Metadata = {
 };
 
 const SITE_URL = "https://www.chicago.care/";
-const iconClass = "fill-sky-400 h-full w-full";
 
 export default function Page() {
 	return (

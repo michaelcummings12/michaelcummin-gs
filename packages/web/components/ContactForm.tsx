@@ -4,7 +4,7 @@ import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hoo
 import { submitContactFormAction } from "@web/app/actions/contact";
 import { cn } from "@web/lib/cn";
 import { contactFormSchema } from "@web/lib/schemas/contact";
-import { FunctionComponent, useRef } from "react";
+import { FunctionComponent, useEffect, useRef, useState } from "react";
 import Confetti from "react-confetti";
 import { toast } from "sonner";
 import { DefaultButton } from "./Button";
@@ -18,7 +18,7 @@ const ContactForm: FunctionComponent = () => {
 	const {
 		form: {
 			register,
-			formState: { errors, isDirty }
+			formState: { errors }
 		},
 		action: { isExecuting, status },
 		handleSubmitWithAction
@@ -31,6 +31,17 @@ const ContactForm: FunctionComponent = () => {
 		}
 	});
 	const isSuccess = status === "hasSucceeded";
+	const [confettiSize, setConfettiSize] = useState({ width: 0, height: 0 });
+
+	useEffect(() => {
+		if (isSuccess && formRef.current) {
+			setConfettiSize({
+				width: formRef.current.clientWidth,
+				height: formRef.current.clientHeight
+			});
+		}
+	}, [isSuccess]);
+
 	return (
 		<div ref={formRef} className="relative z-10 h-full w-full overflow-hidden rounded px-4 py-6 md:px-10 md:py-12">
 			<form onSubmit={handleSubmitWithAction} className="flex h-full flex-col justify-between md:h-auto md:gap-16">
@@ -52,7 +63,7 @@ const ContactForm: FunctionComponent = () => {
 				</div>
 				{isSuccess && (
 					<div className="absolute top-0 left-0 z-40 flex h-full w-full flex-col items-center justify-center gap-4 rounded bg-white/75 backdrop-blur-xl">
-						<Confetti width={formRef.current?.scrollHeight} height={formRef.current?.scrollWidth} recycle={false} />
+						<Confetti width={confettiSize.width} height={confettiSize.height} recycle={false} />
 						<p className="text-2xl font-bold">Thank you for your message 🙂</p>
 						<p className="text-lg font-light">I will get back to you shortly.</p>
 					</div>

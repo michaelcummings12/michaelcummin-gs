@@ -1,34 +1,6 @@
 "use client";
-
 import { domAnimation, LazyMotion, m } from "framer-motion";
 import { ReactNode } from "react";
-
-interface FadeInProps {
-	children: ReactNode;
-	delay?: number;
-	className?: string;
-	y?: number;
-	duration?: number;
-}
-
-const FadeIn = ({ children, delay = 0, className, y = 20, duration = 0.6 }: FadeInProps) => {
-	return (
-		<LazyMotion features={domAnimation}>
-			<m.div
-				initial={{ opacity: 0, y }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true }}
-				transition={{
-					duration,
-					delay,
-					ease: [0.4, 0, 0.25, 1]
-				}}
-				className={className}>
-				{children}
-			</m.div>
-		</LazyMotion>
-	);
-};
 
 export const FadeInStagger = ({ children, className }: { children: ReactNode; className?: string }) => {
 	return (

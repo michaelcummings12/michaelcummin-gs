@@ -50,7 +50,7 @@ export default function Page() {
 					<div className="w-full max-w-lg rounded-3xl bg-white shadow-2xl">
 						<div className="p-6 md:p-10">
 							<h2 className="font-heading text-2xl font-bold text-zinc-900">Send a message</h2>
-							<p className="mt-2 text-zinc-600">Fill out the form below and I'll get back to you within 24 hours.</p>
+							<p className="mt-2 text-zinc-600">Fill out the form below and I&apos;ll get back to you within 24 hours.</p>
 						</div>
 						<ContactForm />
 					</div>

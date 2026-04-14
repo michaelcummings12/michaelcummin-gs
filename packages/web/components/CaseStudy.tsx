@@ -37,7 +37,7 @@ const Section: FunctionComponent<PropsWithChildren<{ title: string; titleColor?:
 	</section>
 );
 
-const ImageBox: FunctionComponent<{ image: ProjectImage; accentColor: string }> = ({ image, accentColor }) => {
+const ImageBox: FunctionComponent<{ image: ProjectImage }> = ({ image }) => {
 	const aspectClasses = {
 		video: "aspect-video",
 		square: "aspect-square",
@@ -82,7 +82,7 @@ export const CaseStudy: FunctionComponent<CaseStudyProps> = ({
 					</div>
 				) : heroImage ? (
 					<div className="pt-16">
-						<ImageBox image={heroImage} accentColor={accentColorText} />
+						<ImageBox image={heroImage} />
 					</div>
 				) : null}
 				<div className="flex flex-col items-center gap-16 py-16">
@@ -136,7 +136,7 @@ export const CaseStudy: FunctionComponent<CaseStudyProps> = ({
 				{featureImages && featureImages.length > 0 && (
 					<div className="mb-16 grid gap-6">
 						{featureImages.map((img, i) => (
-							<ImageBox key={i} image={img} accentColor={accentColorText} />
+							<ImageBox key={i} image={img} />
 						))}
 					</div>
 				)}

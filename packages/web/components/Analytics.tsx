@@ -16,6 +16,6 @@ export const Analytics: FunctionComponent = () => {
 			}
 			tracker.current?.start();
 		}
-	}, [isDevelopment]);
+	}, []);
 	return isDevelopment ? null : <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />;
 };

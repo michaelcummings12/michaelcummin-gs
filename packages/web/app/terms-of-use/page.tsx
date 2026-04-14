@@ -11,13 +11,13 @@ export default function TermsOfUsePage() {
 				<div className="prose prose-invert prose-zinc max-w-none">
 					<h2 className="font-heading mt-12 mb-6 text-2xl font-semibold text-white"> 1. Acceptance of Terms </h2>
 					<p>
-						By accessing or using the website located at https://www.michaelcummin.gs (the "Site"), you agree to be bound by these Terms of Use and all applicable laws and
+						By accessing or using the website located at https://www.michaelcummin.gs (the &quot;Site&quot;), you agree to be bound by these Terms of Use and all applicable laws and
 						regulations. If you do not agree with any part of these Terms, you must not use this Site.
 					</p>
 					<p>
 						{" "}
 						These Terms constitute a legally binding agreement between you and Don&apos;t Stop, LLC, a limited liability company registered in the State of Illinois
-						("Owner", "we", "us", or "our").{" "}
+						(&quot;Owner&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;).{" "}
 					</p>
 					<h2 className="font-heading mt-12 mb-6 text-2xl font-semibold text-white"> 2. Intellectual Property Rights </h2>
 					<p> All content, materials, and intellectual property displayed on this Site, including but not limited to: </p>
@@ -74,7 +74,7 @@ export default function TermsOfUsePage() {
 					</p>
 					<p> We actively monitor and enforce protection of our intellectual property rights. </p>
 					<h2 className="font-heading mt-12 mb-6 text-2xl font-semibold text-white"> 8. Disclaimer </h2>
-					<p> The materials on this Site are provided on an "as is" and "as available" basis without warranties of any kind, express or implied. </p>
+					<p> The materials on this Site are provided on an &quot;as is&quot; and &quot;as available&quot; basis without warranties of any kind, express or implied. </p>
 					<p> Don&apos;t Stop, LLC disclaims all warranties including, without limitation: </p>
 					<ul className="list-disc space-y-2 py-4 pl-6">
 						<li>merchantability</li> <li>fitness for a particular purpose</li> <li>non-infringement</li> <li>accuracy or reliability of information</li>

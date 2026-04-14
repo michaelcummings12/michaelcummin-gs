@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
 					<p>
 						This Privacy Policy describes how information is collected, used, and protected when you visit
 						<strong> https://www.michaelcummin.gs </strong>
-						(the "Site"). Your privacy is important and this policy explains what data may be collected and how it is handled.
+						(the &quot;Site&quot;). Your privacy is important and this policy explains what data may be collected and how it is handled.
 					</p>
 					<h2 className="font-heading mt-12 mb-6 text-2xl font-semibold text-white">1. Information We Collect</h2>
 					<p>This Site may collect limited information automatically when you access it. This may include:</p>
@@ -74,7 +74,7 @@ export default function PrivacyPolicyPage() {
 					</p>
 					<h2 className="font-heading mt-12 mb-6 text-2xl font-semibold text-white">10. Changes to This Policy</h2>
 					<p>This Privacy Policy may be updated from time to time to reflect changes in legal requirements, infrastructure, or Site functionality.</p>
-					<p>Updates will be posted on this page with a revised "Last updated" date.</p>
+					<p>Updates will be posted on this page with a revised &quot;Last updated&quot; date.</p>
 					<h2 className="font-heading mt-12 mb-6 text-2xl font-semibold text-white">11. Contact</h2>
 					<p>If you have questions about this Privacy Policy or how information is handled, you may contact:</p>
 					<a href="mailto:hello@michaelcummin.gs" className="text-blue-400 underline hover:text-blue-300">
