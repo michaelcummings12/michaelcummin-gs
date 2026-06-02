@@ -8,12 +8,12 @@ export const metadata: Metadata = {
 	description: "Platform enabling accessible participation in Bitcoin mining infrastructure.",
 	keywords: ["Bitcoin", "Mining", "GraphQL", "AWS AppSync", "DynamoDB", "Next.js", "Serverless"],
 	openGraph: {
-		title: "GCN | Michael Cummings",
+		title: "GCN",
 		description: "Platform enabling accessible participation in Bitcoin mining infrastructure.",
 		url: "https://www.michaelcummin.gs/projects/gcn"
 	},
 	twitter: {
-		title: "GCN | Michael Cummings",
+		title: "GCN",
 		description: "Platform enabling accessible participation in Bitcoin mining infrastructure."
 	}
 };

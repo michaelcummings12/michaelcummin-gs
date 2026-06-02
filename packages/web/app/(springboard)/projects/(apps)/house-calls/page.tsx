@@ -8,12 +8,12 @@ export const metadata: Metadata = {
 	description: "Real-time AI concierge for a Chicago house music event brand.",
 	keywords: ["AI", "OpenAI Realtime API", "Next.js", "AWS Fargate", "Voice AI", "Event Concierge", "Chicago"],
 	openGraph: {
-		title: "House Calls | Michael Cummings",
+		title: "House Calls",
 		description: "Real-time AI concierge for a Chicago house music event brand.",
 		url: "https://www.michaelcummin.gs/projects/house-calls"
 	},
 	twitter: {
-		title: "House Calls | Michael Cummings",
+		title: "House Calls",
 		description: "Real-time AI concierge for a Chicago house music event brand."
 	}
 };

@@ -8,13 +8,13 @@ export const metadata: Metadata = {
 	description: "Thoughts on software engineering, AI, web development, and building great products. Written by Michael Cummings, a full-stack engineer.",
 	keywords: ["Blog", "Software Engineering", "AI", "Web Development", "Next.js", "React", "AWS", "Michael Cummings"],
 	openGraph: {
-		title: "Blog | Michael Cummings",
+		title: "Blog",
 		description: "Thoughts on software engineering, AI, web development, and building great products.",
 		type: "website",
 		url: "https://www.michaelcummin.gs/blog"
 	},
 	twitter: {
-		title: "Blog | Michael Cummings",
+		title: "Blog",
 		description: "Thoughts on software engineering, AI, web development, and building great products."
 	}
 };

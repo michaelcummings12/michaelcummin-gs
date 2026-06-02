@@ -8,12 +8,12 @@ export const metadata: Metadata = {
 	description: "Digital platform for the advertising industry media company Breaking & Entering.",
 	keywords: ["Advertising", "Media", "CMS", "Firestore", "Firebase Cloud Functions", "Next.js", "Podcasts"],
 	openGraph: {
-		title: "Breaking & Entering | Michael Cummings",
+		title: "Breaking & Entering",
 		description: "Digital platform for the advertising industry media company Breaking & Entering.",
 		url: "https://www.michaelcummin.gs/projects/breaking-entering"
 	},
 	twitter: {
-		title: "Breaking & Entering | Michael Cummings",
+		title: "Breaking & Entering",
 		description: "Digital platform for the advertising industry media company Breaking & Entering."
 	}
 };

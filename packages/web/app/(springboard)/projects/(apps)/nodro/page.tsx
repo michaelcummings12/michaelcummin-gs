@@ -8,12 +8,12 @@ export const metadata: Metadata = {
 	description: "A minimalist social scheduling platform designed around clarity and restraint.",
 	keywords: ["Scheduling", "Calendar", "Next.js", "PostgreSQL", "AWS Lambda", "Minimalist typography", "Event-driven"],
 	openGraph: {
-		title: "Nødro | Michael Cummings",
+		title: "Nødro",
 		description: "A minimalist social scheduling platform designed around clarity and restraint.",
 		url: "https://www.michaelcummin.gs/projects/nodro"
 	},
 	twitter: {
-		title: "Nødro | Michael Cummings",
+		title: "Nødro",
 		description: "A minimalist social scheduling platform designed around clarity and restraint."
 	}
 };
