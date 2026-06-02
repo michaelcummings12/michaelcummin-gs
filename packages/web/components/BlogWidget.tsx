@@ -19,12 +19,10 @@ export const BlogWidget = () => {
 		return () => clearInterval(interval);
 	}, [totalSteps]);
 
-	// Groups of 4: step 0 → indices 0,2 | step 1 → indices 1,3 | step 2 → indices 4,6 | step 3 → indices 5,7
-	const groupStart = Math.floor(step / 2) * 4;
-	const phase = step % 2;
+	const startIndex = (step * 2) % posts.length;
 	const currentPosts = [
-		posts[(groupStart + phase) % posts.length],
-		posts[(groupStart + phase + 2) % posts.length],
+		posts[startIndex],
+		posts[(startIndex + 1) % posts.length],
 	];
 	return (
 		<div className="flex h-full w-full flex-col text-left text-white">

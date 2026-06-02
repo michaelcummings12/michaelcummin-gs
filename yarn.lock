@@ -8575,15 +8575,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-wrap-balancer@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "react-wrap-balancer@npm:1.1.1"
-  peerDependencies:
-    react: ">=16.8.0 || ^17.0.0 || ^18"
-  checksum: 10c0/2045625cef0095eae9af9363052a0259a15e292d07e36ce8b085924ad65627a5807f986aeaf91068a9d384c6d2266787edb5d0eaba3ac021f8789437464e245d
-  languageName: node
-  linkType: hard
-
 "react@npm:^19.2.5":
   version: 19.2.5
   resolution: "react@npm:19.2.5"
@@ -10161,7 +10152,6 @@ __metadata:
     react-hook-form: "npm:^7.72.1"
     react-lite-youtube-embed: "npm:^3.5.1"
     react-markdown: "npm:^10.1.0"
-    react-wrap-balancer: "npm:^1.1.1"
     sonner: "npm:^2.0.7"
     tailwind-merge: "npm:^3.5.0"
     tailwindcss: "npm:^4.2.2"

@@ -1,18 +1,19 @@
 import { BackButton } from "@web/components/BackButton";
 import { Badge } from "@web/components/Badge";
 import { FadeInStagger, FadeInStaggerItem } from "@web/components/FadeIn";
+import { GitHubRepoCard } from "@web/components/GitHubRepoCard";
 import { Post } from "@web/components/Post";
 import Social from "@web/components/Social";
 import { YouTubeEmbed } from "@web/components/YouTubeEmbed";
 import { getAllPosts, getPostBySlug } from "@web/lib/blog";
 import { cn } from "@web/lib/cn";
+import { parseGithubRepo } from "@web/lib/parseGithubRepo";
 import { prettyDate } from "@web/lib/prettyDate";
 import { readingTime } from "@web/lib/readingTime";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
-import Balancer from "react-wrap-balancer";
 
 type Props = {
 	params: Promise<{ slug: string[] }>;
@@ -27,6 +28,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	if (!post) {
 		return { title: "Post Not Found" };
 	}
+
+	const jsonLd = {
+		"@context": "https://schema.org",
+		"@type": "Article",
+		"headline": post.title,
+		"description": post.excerpt,
+		"image": `https://www.michaelcummin.gs${post.heroImage}`,
+		"datePublished": post.publishedAt.toISOString(),
+		"author": {
+			"@type": "Person",
+			"name": "Michael Cummings",
+			"url": "https://www.michaelcummin.gs/"
+		}
+	};
 
 	return {
 		title: `${post.title} | Michael Cummings`,
@@ -51,6 +66,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 			title: post.title,
 			description: post.excerpt,
 			images: [post.heroImage]
+		},
+		other: {
+			"script:ld+json": JSON.stringify(jsonLd)
 		}
 	};
 }
@@ -65,35 +83,18 @@ export default async function BlogPostPage({ params }: Props) {
 		notFound();
 	}
 
-	const jsonLd = {
-		"@context": "https://schema.org",
-		"@type": "Article",
-		"headline": post.title,
-		"description": post.excerpt,
-		"image": `https://www.michaelcummin.gs${post.heroImage}`,
-		"datePublished": post.publishedAt.toISOString(),
-		"author": {
-			"@type": "Person",
-			"name": "Michael Cummings",
-			"url": "https://www.michaelcummin.gs/"
-		}
-	};
-
 	return (
 		<div className="min-h-full bg-zinc-900">
-			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 			<BackButton />
 			<FadeInStagger>
 				<article>
 					<FadeInStaggerItem>
 						<header className="mx-auto max-w-3xl px-6 pt-20 pb-10">
-							<Balancer as="h1" className="font-heading text-4xl leading-tight font-bold tracking-tight text-white md:text-6xl">
-								{post.title}
-							</Balancer>
+							<h1 className="font-heading text-4xl leading-tight font-bold tracking-tight text-balance text-white md:text-6xl">{post.title}</h1>
 							<p className="mt-6 text-xl leading-relaxed text-zinc-400">{post.excerpt}</p>
 							<div className="mt-8 flex items-center gap-4">
 								<div className="h-12 w-12 overflow-hidden rounded-full bg-zinc-800">
-									<div className="flex h-full w-full items-center justify-center text-sm font-bold text-zinc-400">MC</div>
+									<Image src="/assets/portrait.jpg" alt="Michael Cummings" width={96} height={96} className="h-full w-full object-cover" />
 								</div>
 								<div>
 									<p className="text-sm font-medium text-white">Michael Cummings</p>
@@ -128,6 +129,10 @@ export default async function BlogPostPage({ params }: Props) {
 									h2: ({ node: _, ...rest }) => <h2 className="font-heading mt-14 mb-4 text-2xl font-bold text-white" {...rest} />,
 									// eslint-disable-next-line @typescript-eslint/no-unused-vars
 									h3: ({ node: _, ...rest }) => <h3 className="font-heading mt-10 mb-4 text-xl font-bold text-white" {...rest} />,
+									// eslint-disable-next-line @typescript-eslint/no-unused-vars
+									blockquote: ({ node: _, ...rest }) => (
+										<blockquote className="my-8 rounded-r-xl border-l-4 border-blue-500/60 bg-blue-500/5 py-1 pr-5 pl-5 text-zinc-300 [&>p]:my-3" {...rest} />
+									),
 									p: ({ node, ...props }) => {
 										const hasImage =
 											node &&
@@ -148,17 +153,26 @@ export default async function BlogPostPage({ params }: Props) {
 									// eslint-disable-next-line @typescript-eslint/no-unused-vars
 									li: ({ node: _, ...rest }) => <li className="my-1.5" {...rest} />,
 									// eslint-disable-next-line @typescript-eslint/no-unused-vars
-									img: ({ node: _, alt, src, ...rest }) =>
-										alt === "youtube" && src ? (
-											<div className="my-8">
-												<YouTubeEmbed videoId={src as string} />
-											</div>
-										) : (
-											<figure className="my-10">
-												<img alt={(alt as string) || ""} src={src as string} className="w-full rounded-2xl bg-zinc-800 object-cover" {...rest} />
-												{alt ? <figcaption className="mt-4 text-center text-sm text-zinc-500">{alt as string}</figcaption> : null}
+									img: ({ node: _, alt, src, ...rest }) => {
+										if (alt === "youtube" && src) {
+											return (
+												<div className="my-8">
+													<YouTubeEmbed videoId={src as string} />
+												</div>
+											);
+										}
+
+										// Portrait screenshots (phone captures) — constrain width and center
+										const isScreenshot = typeof alt === "string" && alt.startsWith("screenshot:");
+										const displayAlt = isScreenshot ? (alt as string).replace("screenshot:", "").trim() : (alt as string) || "";
+
+										return (
+											<figure className={cn("my-10", isScreenshot && "flex flex-col items-center")}>
+												<img alt={displayAlt} src={src as string} className={cn("rounded-2xl bg-zinc-800 object-cover", isScreenshot ? "w-full max-w-sm" : "w-full")} {...rest} />
+												{displayAlt ? <figcaption className="mt-4 text-center text-sm text-zinc-500">{displayAlt}</figcaption> : null}
 											</figure>
-										),
+										);
+									},
 									// eslint-disable-next-line @typescript-eslint/no-unused-vars
 									pre: ({ node: _, ...rest }) => (
 										<div className="-mx-6 my-8 md:-mx-12 lg:-mx-20">
@@ -170,7 +184,23 @@ export default async function BlogPostPage({ params }: Props) {
 										<code className={cn(className, "rounded bg-zinc-800 px-1 py-0.5 text-base leading-relaxed text-blue-500")} {...rest} />
 									),
 									// eslint-disable-next-line @typescript-eslint/no-unused-vars
-									a: ({ node: _, className, ...rest }) => <a className={`hover:underline ${className || ""}`} {...rest} />
+									a: ({ node: _, href, children, ...rest }) => {
+										const githubRepo = href ? parseGithubRepo(href) : null;
+										if (githubRepo && href) {
+											return <GitHubRepoCard owner={githubRepo.owner} repo={githubRepo.repo} href={href} />;
+										}
+
+										return (
+											<a
+												href={href}
+												className="text-blue-400 underline decoration-blue-400/30 underline-offset-2 transition-colors duration-200 hover:text-blue-300 hover:decoration-blue-300/60"
+												target={href?.startsWith("http") ? "_blank" : undefined}
+												rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
+												{...rest}>
+												{children}
+											</a>
+										);
+									}
 								}}>
 								{post.content}
 							</ReactMarkdown>
@@ -193,7 +223,7 @@ export default async function BlogPostPage({ params }: Props) {
 							<div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
 								<div className="flex items-center gap-4">
 									<div className="h-14 w-14 overflow-hidden rounded-full bg-zinc-800">
-										<div className="flex h-full w-full items-center justify-center text-lg font-bold text-zinc-400">MC</div>
+										<Image src="/assets/portrait.jpg" alt="Michael Cummings" width={112} height={112} className="h-full w-full object-cover" />
 									</div>
 									<div>
 										<p className="font-semibold text-white">Michael Cummings</p>
