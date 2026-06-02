@@ -15,7 +15,7 @@ export const DATABASE_URL = process.env.DATABASE_URL!;
 /**
  * Domain name
  */
-export const DOMAIN_NAME = "michaelcummin-gs";
+export const DOMAIN_NAME = "michaelcummin.gs";
 
 /**
  * URLS for the application

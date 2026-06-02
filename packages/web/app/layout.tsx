@@ -1,8 +1,8 @@
 import { Analytics } from "@web/components/Analytics";
 import { Metadata, Viewport } from "next";
 import { Overpass } from "next/font/google";
-import "./globals.css";
 import { Toaster } from "sonner";
+import "./globals.css";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://www.michaelcummin.gs"),
