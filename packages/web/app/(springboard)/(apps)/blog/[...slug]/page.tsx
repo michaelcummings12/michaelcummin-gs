@@ -8,6 +8,7 @@ import Social from "@web/components/Social";
 import { YouTubeEmbed } from "@web/components/YouTubeEmbed";
 import { getAllPosts, getPostBySlug } from "@web/lib/blog";
 import { cn } from "@web/lib/cn";
+import { APP_URL } from "@web/lib/config";
 import { parseGithubRepo } from "@web/lib/parseGithubRepo";
 import { prettyDate } from "@web/lib/prettyDate";
 import { readingTime } from "@web/lib/readingTime";
@@ -30,17 +31,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		return { title: "Post Not Found" };
 	}
 
+	const image = `${APP_URL}${post.heroImage}`;
+	const canonical = `${APP_URL}/blog/${slug}`;
+
 	const jsonLd = {
 		"@context": "https://schema.org",
 		"@type": "Article",
 		"headline": post.title,
 		"description": post.excerpt,
-		"image": `https://www.michaelcummin.gs${post.heroImage}`,
+		"image": image,
 		"datePublished": post.publishedAt.toISOString(),
 		"author": {
 			"@type": "Person",
 			"name": "Michael Cummings",
-			"url": "https://www.michaelcummin.gs/"
+			"url": APP_URL
 		}
 	};
 
@@ -48,15 +52,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		title: post.title,
 		description: post.excerpt,
 		keywords: post.tags,
+		alternates: {
+			canonical
+		},
 		openGraph: {
 			title: post.title,
 			description: post.excerpt,
 			type: "article",
+			url: canonical,
 			publishedTime: post.publishedAt.toISOString(),
 			tags: post.tags,
 			images: [
 				{
-					url: post.heroImage,
+					url: image,
 					width: 1200,
 					height: 630,
 					alt: post.imageDescription
@@ -66,7 +74,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		twitter: {
 			title: post.title,
 			description: post.excerpt,
-			images: [post.heroImage]
+			images: [image]
 		},
 		other: {
 			"script:ld+json": JSON.stringify(jsonLd)
