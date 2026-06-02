@@ -271,15 +271,15 @@ But it was worth it 😄
 `
 	},
 	{
-		slug: "inside-nyc-building-permit-portal",
-		title: "Inside the New York City Building Permit Portal",
+		slug: "hacking-nyc-building-permit-portal",
+		title: "Hacking the New York City Building Permit Portal",
 		excerpt:
 			"While trying to find out if a music venue would reopen, I discovered a vulnerability that exposed restricted documents for every building in New York City.",
 		publishedAt: new Date("2026-04-16"),
 		tags: ["security", "bug bounty", "web security", "reverse engineering", "responsible disclosure", "idor"],
 		category: "Security",
 		imageDescription: "Photographed on 35mm Fujifilm 400 with my Nikon FE.",
-		heroImage: "/assets/blog/inside-nyc-building-permit-portal/hero.jpg",
+		heroImage: "/assets/blog/hacking-nyc-building-permit-portal/hero.jpg",
 		content: `
 > **Update — April 15, 2026:** The City of New York has confirmed the vulnerability described in this post has been fully resolved. I am now listed on their page of responsible security researchers. This post has been updated to include the full technical details of the exploit.
 
@@ -401,7 +401,7 @@ My report included:
 
 The City of New York resolved the vulnerability on April 15, 2026. I am now listed on the city's [Acknowledgements](https://nyc.responsibledisclosure.com/hc/en-us/articles/20413464091155-Acknowledgements) page as a responsible security researcher.
 
-![screenshot:NYC Responsible Disclosure Acknowledgements page](/assets/blog/inside-nyc-building-permit-portal/acknowledgements.jpg)
+![screenshot:NYC Responsible Disclosure Acknowledgements page](/assets/blog/hacking-nyc-building-permit-portal/acknowledgements.jpg)
 
 ## Why This Matters
 
