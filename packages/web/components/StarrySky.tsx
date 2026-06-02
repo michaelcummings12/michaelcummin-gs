@@ -18,7 +18,7 @@ const animateStars = () => {
 		],
 		easing: "linear",
 		loop: true,
-		delay: (_, i) => 500 * i
+		delay: (_: unknown, i: number) => 500 * i
 	});
 };
 
@@ -38,7 +38,7 @@ const animateShootingStars = () => {
 		],
 		easing: "linear",
 		loop: true,
-		delay: (_, i) => 2000 * i
+		delay: (_: unknown, i: number) => 2000 * i
 	});
 };
 
