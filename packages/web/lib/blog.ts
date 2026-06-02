@@ -466,11 +466,11 @@ A few months after launching it, the bot detected a major change.
 
 OpenAI had updated the GPT model version from 5.2 to 5.4 in the spec.
 
-I got the alert and quickly pulled up the [\`vercel/ai\`](https://github.com/vercel/ai) package. No open PRs, so far so good.
+I got the alert and quickly pulled up the \`vercel/ai\` repo. No open PRs, so far so good.
 
 Rapdily, I pulled up Antigravity and instructed Gemini to update the model definitions in the package.
 
-At the same time, I tasked my Clawdbot with crawling the [\`vercel/ai\` GitHub page](https://github.com/vercel/ai) to figure out what I had to name my branch, PR, and what description to add.
+At the same time, I tasked my Clawdbot with crawling the \`vercel/ai\` GitHub page to figure out what I had to name my branch, PR, and what description to add.
 
 Everything started coming together all at once. I quickly reviewed Gemini's work and created a branch based on what Openclawd found.
 
@@ -493,14 +493,14 @@ I'm looking forward to making more contributions in the future 🚀
 	},
 
 	{
-		slug: "tailwindcss-textbox-trim",
-		title: "Introducing tailwindcss-textbox-trim",
+		slug: "tailwindcss-text-box-trim",
+		title: "Introducing tailwindcss-text-box-trim",
 		excerpt: "A Tailwind CSS plugin that enables precise typographic alignment using the CSS text-box-trim specification.",
 		publishedAt: new Date("2026-01-30"),
 		tags: ["tailwind", "css", "open source", "typography"],
 		category: "Open Source",
 		imageDescription: "Doing some work while enjoying breakfast at Doma Cafe in Chicago.",
-		heroImage: "/assets/blog/tailwindcss-textbox-trim/hero.jpg",
+		heroImage: "/assets/blog/tailwindcss-text-box-trim/hero.jpg",
 		content: `
 One thing that has bothered me for years in web development is how difficult it is to align text *perfectly*.
 
@@ -523,6 +523,8 @@ never align quite how you'd expect.
 
 Even when using flexbox or grid, the text itself contains invisible padding.
 
+[GitHub Repo](https://github.com/michaelcummings12/tailwindcss-text-box-trim)
+
 ## The Solution: text-box-trim
 
 The CSS Text Box Trim specification solves this by allowing the browser to trim the excess space around text glyphs.
@@ -541,7 +543,7 @@ But after doing that a few times I realized:
 
 this should just be a package.
 
-So I built tailwindcss-textbox-trim.
+So I built tailwindcss-text-box-trim.
 
 ## What the Package Does
 
@@ -554,11 +556,13 @@ Example:
 
 \`\`\`html
 <p class="text-box-trim text-box-edge-cap">
-Perfectly aligned text
+	Perfectly aligned text
 </p>
 \`\`\`
 
 ## Before vs After
+
+![screenshot:Before and after comparison of text-box-trim](/assets/blog/tailwindcss-text-box-trim/example.png)
 
 Before: Standard text with excess space.
 

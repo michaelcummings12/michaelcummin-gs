@@ -1,5 +1,6 @@
 import { BackButton } from "@web/components/BackButton";
 import { Badge } from "@web/components/Badge";
+import { CodeBlock } from "@web/components/CodeBlock";
 import { FadeInStagger, FadeInStaggerItem } from "@web/components/FadeIn";
 import { GitHubRepoCard } from "@web/components/GitHubRepoCard";
 import { Post } from "@web/components/Post";
@@ -174,15 +175,50 @@ export default async function BlogPostPage({ params }: Props) {
 										);
 									},
 									// eslint-disable-next-line @typescript-eslint/no-unused-vars
-									pre: ({ node: _, ...rest }) => (
-										<div className="-mx-6 my-8 md:-mx-12 lg:-mx-20">
-											<pre className="overflow-x-auto rounded-xl bg-black p-6" {...rest} />
-										</div>
-									),
+									pre: ({ node: _, children }) => {
+										// react-markdown wraps fenced code in <pre><code>
+										// Grab the first React element child (the rendered <code>)
+										const child = Array.isArray(children) ? children[0] : children;
+
+										if (child && typeof child === "object" && "props" in child) {
+											const { className, children: codeChildren } = (child as React.ReactElement<{ className?: string; children?: React.ReactNode }>)
+												.props;
+											const match = /language-(\w+)/.exec(className || "");
+											const language = match ? match[1] : "text";
+											const codeString = String(codeChildren).replace(/\n$/, "");
+
+											return (
+												<div className="-mx-6 my-8 md:-mx-12 lg:-mx-20">
+													<CodeBlock language={language}>{codeString}</CodeBlock>
+												</div>
+											);
+										}
+
+										// Fallback for pre blocks without a recognizable code child
+										return (
+											<div className="-mx-6 my-8 md:-mx-12 lg:-mx-20">
+												<pre className="overflow-x-auto rounded-xl bg-[#1e1e1e] p-6 text-sm text-[#d4d4d4]">{children}</pre>
+											</div>
+										);
+									},
 									// eslint-disable-next-line @typescript-eslint/no-unused-vars
-									code: ({ node: _, className, ...rest }) => (
-										<code className={cn(className, "rounded bg-zinc-800 px-1 py-0.5 text-base leading-relaxed text-blue-500")} {...rest} />
-									),
+									code: ({ node: _, className, children, ...rest }) => {
+										// Only style inline code — fenced code blocks are handled by the `pre` renderer above
+										const isInline = !className || !className.includes("language-");
+										if (isInline) {
+											return (
+												<code className="rounded bg-zinc-800 px-1.5 py-0.5 text-[0.9em] leading-relaxed text-blue-400" {...rest}>
+													{children}
+												</code>
+											);
+										}
+										// Fenced code blocks: render raw children so the parent <pre> can extract them
+										return (
+											<code className={className} {...rest}>
+												{children}
+											</code>
+										);
+									},
 									// eslint-disable-next-line @typescript-eslint/no-unused-vars
 									a: ({ node: _, href, children, ...rest }) => {
 										const githubRepo = href ? parseGithubRepo(href) : null;
