@@ -21,7 +21,7 @@ export const DOMAIN_NAME = "michaelcummin.gs";
  * URLS for the application
  */
 export const BASE_URL = isDevelopment ? "localhost:3000" : isPreview ? process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL : DOMAIN_NAME;
-export const APP_URL = `${isDevelopment ? "http://" : isPreview ? "https://" : "https://www."}${BASE_URL}`;
+export const APP_URL = `${isDevelopment ? "http://" : "https://"}${BASE_URL}`;
 
 /**
  * Google Analytics

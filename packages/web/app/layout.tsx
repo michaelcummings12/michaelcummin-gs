@@ -5,7 +5,7 @@ import { Toaster } from "sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
-	metadataBase: new URL("https://www.michaelcummin.gs"),
+	metadataBase: new URL("https://michaelcummin.gs"),
 	openGraph: {
 		type: "website",
 		locale: "en-US",
@@ -17,6 +17,9 @@ export const metadata: Metadata = {
 		title: "Michael Cummings",
 		description: "Explore the work of Michael Cummings on his personal portfolio.",
 		images: ["/meta_image.jpg"]
+	},
+	alternates: {
+		canonical: "/"
 	},
 	robots: "all",
 	referrer: "origin",
