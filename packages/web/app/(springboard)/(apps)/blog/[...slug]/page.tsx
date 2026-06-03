@@ -94,7 +94,7 @@ export default async function BlogPostPage({ params }: Props) {
 
 	return (
 		<div className="min-h-full bg-zinc-900">
-			<BackButton />
+			<BackButton href="/blog" />
 			<FadeInStagger>
 				<article>
 					<FadeInStaggerItem>

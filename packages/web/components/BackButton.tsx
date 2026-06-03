@@ -4,9 +4,14 @@ import { useRouter } from "next/navigation";
 import { FunctionComponent } from "react";
 import { ChevronLeft } from "./Icons";
 
-export const BackButton: FunctionComponent = () => {
+type BackButtonProps = {
+	/** When provided, navigates to this path instead of calling router.back() */
+	href?: string;
+};
+
+export const BackButton: FunctionComponent<BackButtonProps> = ({ href }) => {
 	const router = useRouter();
-	const handleClick = () => router.back();
+	const handleClick = () => (href ? router.push(href) : router.back());
 	return (
 		<div className="fixed top-0 left-0 z-50 p-4">
 			<button
