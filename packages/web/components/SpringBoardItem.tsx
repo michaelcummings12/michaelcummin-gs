@@ -26,7 +26,7 @@ export const SpringBoardItem: FunctionComponent<SpringBoardItemProps> = ({ tile,
 					style={{ zIndex: isAnimating ? 50 : 1 }}
 					transition={morphTransition}
 					className={cn("h-full w-full", tile.colSpan === 2 ? "absolute inset-0" : "relative")}>
-					<AppIcon tile={tile} className="z-0 h-full w-full cursor-pointer rounded-3xl transition-transform hover:scale-105 active:scale-95" />
+					<AppIcon padding="p-4 md:p-6" tile={tile} className="z-0 h-full w-full cursor-pointer rounded-3xl transition-transform hover:scale-105 active:scale-95" />
 				</motion.div>
 			</Link>
 			<p className="truncate text-center text-xs md:text-sm lg:text-base">{tile.label}</p>

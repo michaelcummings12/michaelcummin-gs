@@ -38,12 +38,9 @@ export default function Page() {
 		<div className="h-full w-full overflow-y-auto bg-black text-white">
 			{/* Full-bleed cinematic hero */}
 			<section className="relative flex min-h-svh w-full items-end overflow-hidden">
-				<Image src={portrait} alt="Portrait of Michael Cummings" fill priority className="object-cover object-center" sizes="100vw" />
+				<Image placeholder="blur" src={portrait} alt="Portrait of Michael Cummings" fill priority className="object-cover object-center" sizes="100vw" />
 				<div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-black/10" />
 				<FadeInStagger className="relative z-10 mx-auto w-full max-w-5xl px-2 pb-16 md:px-6 md:pb-24">
-					<FadeInStaggerItem>
-						<p className="text-sm font-medium tracking-[0.2em] text-white/60 uppercase">Creator</p>
-					</FadeInStaggerItem>
 					<FadeInStaggerItem>
 						<h1 className="mt-4 text-5xl font-semibold tracking-tight text-balance md:text-8xl">I build the future.</h1>
 					</FadeInStaggerItem>
@@ -66,15 +63,9 @@ export default function Page() {
 						<p className="text-2xl leading-snug font-medium text-balance text-white md:text-3xl">
 							Most of what I make starts as my own idea and grows into a real business.
 						</p>
+						<p>As the founder, the designer, and the engineer, I can take something from an abstract idea to a market-ready polished product.</p>
 						<p>
-							I am the founder, the designer, and the engineer, which lets me take something from a sketch to a launched product without anything getting lost along the way.
-						</p>
-						<p>
-							I care about the whole thing, from the first interaction to the infrastructure it runs on. I work mostly in TypeScript across React, Next.js, Node, and AWS,
-							with a serverless, infrastructure-as-code approach that keeps me quick without cutting corners.
-						</p>
-						<p>
-							I am a Chicago native, currently living in Los Angeles. You can find me at music festivals, hanging out with friends, or probably at a coffee shop with my
+							I grew up in Chicago and am currently living in Los Angeles. Usually, you can find me at music festivals, hanging out with friends, or at a coffee shop with my
 							laptop, working on something new.
 						</p>
 					</section>
@@ -108,11 +99,11 @@ export default function Page() {
 				<FadeInStaggerItem>
 					<section className="pt-12">
 						<p className="max-w-2xl text-2xl font-medium tracking-tight text-white md:text-3xl">
-							I am always building something.{" "}
+							I love making new friends.{" "}
 							<Link href="/contact" className="underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white">
 								Say hello
-							</Link>
-							.
+							</Link>{" "}
+							:)
 						</p>
 					</section>
 				</FadeInStaggerItem>
