@@ -1,4 +1,5 @@
 import ContactForm from "@web/components/ContactForm";
+import { FadeInStagger, FadeInStaggerItem } from "@web/components/FadeIn";
 import Social from "@web/components/Social";
 import { Metadata } from "next";
 
@@ -19,41 +20,42 @@ export const metadata: Metadata = {
 
 export default function Page() {
 	return (
-		<div className="relative flex min-h-full w-full bg-black">
-			<div className="flex w-full flex-col lg:flex-row">
-				{/* Left side - Info */}
-				<div className="flex flex-col justify-center px-6 py-12 lg:w-1/2 lg:px-16 lg:py-0">
-					<div className="mx-auto max-w-md">
-						<h1 className="text-4xl font-bold text-white md:text-5xl">Get in touch</h1>
-						<p className="mt-4 text-lg leading-relaxed text-zinc-400">Have an idea, a question, or just want to say hello? My inbox is open.</p>
-
-						{/* Social Links */}
-						<div className="mt-10">
+		<div className="relative h-full w-full overflow-y-auto bg-black text-white">
+			<FadeInStagger className="relative mx-auto flex min-h-svh w-full max-w-5xl flex-col justify-center gap-12 px-6 py-24 lg:flex-row lg:items-center lg:gap-20 lg:py-0">
+				{/* Left - Info */}
+				<div className="flex flex-col lg:flex-1">
+					<FadeInStaggerItem>
+						<h1 className="text-5xl font-semibold tracking-tight text-balance md:text-6xl">Say hello.</h1>
+					</FadeInStaggerItem>
+					<FadeInStaggerItem>
+						<p className="mt-4 max-w-md text-lg leading-relaxed text-white/60">
+							Have an idea, a question, or just want to say hello? The inbox is open. I love making new friends {":)"}
+						</p>
+					</FadeInStaggerItem>
+					<FadeInStaggerItem>
+						<div className="mt-8">
 							<Social />
 						</div>
-
-						{/* Nodro Calendar */}
-						<div className="mt-8">
+					</FadeInStaggerItem>
+					<FadeInStaggerItem>
+						<div className="mt-10 flex flex-col gap-3">
+							<p className="text-sm font-medium text-white/40">Prefer to talk? Find a time.</p>
 							<iframe
 								src="https://www.nodro.com/embed/michael"
 								style={{ width: "100%", maxWidth: "400px", height: "72px", borderRadius: "1.5rem", overflow: "hidden" }}
 								title="Schedule with Nodro"
 							/>
 						</div>
-					</div>
+					</FadeInStaggerItem>
 				</div>
 
-				{/* Right side - Form */}
-				<div className="flex items-center justify-center p-6 lg:w-1/2 lg:p-12">
-					<div className="w-full max-w-lg rounded-3xl bg-white shadow-2xl">
-						<div className="p-6 md:p-10">
-							<h2 className="text-2xl font-bold text-zinc-900">Send a message</h2>
-							<p className="mt-2 text-zinc-600">Fill out the form below and I&apos;ll get back to you within 24 hours.</p>
-						</div>
+				{/* Right - Form */}
+				<FadeInStaggerItem className="w-full lg:flex-1">
+					<div className="w-full lg:ml-auto lg:max-w-md">
 						<ContactForm />
 					</div>
-				</div>
-			</div>
+				</FadeInStaggerItem>
+			</FadeInStagger>
 		</div>
 	);
 }

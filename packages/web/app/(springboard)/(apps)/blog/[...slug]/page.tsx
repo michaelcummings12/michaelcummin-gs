@@ -267,14 +267,14 @@ export default async function BlogPostPage({ params }: Props) {
 					<FadeInStaggerItem>
 						<div className="mx-auto max-w-3xl px-6 py-12">
 							<div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
-								<div className="flex items-center gap-4">
+								<Link href="/about" className="group flex items-center gap-4">
 									<div className="h-14 w-14 overflow-hidden rounded-full bg-zinc-800">
 										<Image src="/assets/avatar.jpg" alt="Michael Cummings" width={112} height={112} className="h-full w-full object-cover" />
 									</div>
 									<div>
-										<p className="font-semibold text-white">Michael Cummings</p>
+										<p className="font-semibold text-white transition-colors group-hover:text-zinc-300">Michael Cummings</p>
 									</div>
-								</div>
+								</Link>
 								<Social />
 							</div>
 						</div>

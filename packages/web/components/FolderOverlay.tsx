@@ -1,12 +1,13 @@
 "use client";
 
 import { AppIcon } from "@web/components/AppIcon";
+import { Close } from "@web/components/Icons";
 import { cn } from "@web/lib/cn";
 import { morphTransition } from "@web/lib/motion";
 import { SpringBoardTile } from "@web/types/springboard";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 
 export interface FolderGroup {
 	/** Optional heading shown above the group (e.g. "Founded & built") */
@@ -67,49 +68,74 @@ const Card: FunctionComponent<{ tile: SpringBoardTile; pathPrefix: string }> = (
 	</motion.div>
 );
 
-export const FolderOverlay: FunctionComponent<FolderOverlayProps> = ({ groups, isOpen, onClose, title = "Projects", morphId = "projects" }) => (
-	<AnimatePresence>
-		{isOpen && (
-			<div className="fixed inset-0 z-40" onClick={onClose}>
-				<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-black/50 backdrop-blur-xl" />
-				{/* Scroll lives on the full-screen layer (not the card) so the icon morph is never clipped to a small box. layoutScroll lets framer offset the morph by the scroll position. */}
-				<motion.div layoutScroll className="absolute inset-0 overflow-y-auto">
-					<div className="relative flex min-h-full items-center justify-center p-4">
-						<motion.div
-							layoutId={`card-${morphId}`}
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-							transition={morphTransition}
-							className="relative flex w-full max-w-3xl flex-col"
-							onClick={(e) => e.stopPropagation()}>
-							<h2 className="mb-5 shrink-0 text-center text-2xl font-semibold text-white md:text-3xl">{title}</h2>
+export const FolderOverlay: FunctionComponent<FolderOverlayProps> = ({ groups, isOpen, onClose, title = "Projects", morphId = "projects" }) => {
+	// Lock body scroll while the folder is open so touches only scroll the folder, not the page underneath.
+	useEffect(() => {
+		if (!isOpen) return;
+		const { overflow } = document.body.style;
+		document.body.style.overflow = "hidden";
+		return () => {
+			document.body.style.overflow = overflow;
+		};
+	}, [isOpen]);
+
+	return (
+		<AnimatePresence>
+			{isOpen && (
+				<div className="fixed inset-0 z-40" onClick={onClose}>
+					<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-black/50 backdrop-blur-xl" />
+					{/* Close button: on mobile the card fills the width, so tapping the backdrop isn't reliable. */}
+					<motion.button
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						onClick={onClose}
+						aria-label="Close projects"
+						className="fixed top-0 right-0 z-50 m-4 flex size-12 cursor-pointer items-center justify-center rounded-full border border-white/5 bg-gray-500/75 p-4 shadow backdrop-blur transition-all hover:scale-105 hover:shadow-lg active:scale-95 active:shadow">
+						<Close className="h-full w-full fill-white" />
+					</motion.button>
+					{/* Scroll lives on the full-screen layer (not the card) so the icon morph is never clipped to a small box.
+					    layoutScroll + layoutRoot make framer measure the morph relative to this scrolled container instead of
+					    the viewport, so closing an app while scrolled morphs back to the card's on-screen spot (not way down the
+					    content). overscroll-contain stops scroll chaining to the page underneath. */}
+					<motion.div layoutScroll layoutRoot className="absolute inset-0 overflow-y-auto overscroll-contain">
+						<div className="relative flex min-h-full items-center justify-center p-4">
 							<motion.div
-								initial={{ scale: 0.96, opacity: 0 }}
-								animate={{ scale: 1, opacity: 1 }}
-								exit={{ scale: 0.96, opacity: 0 }}
-								transition={{ type: "spring", duration: 0.5, bounce: 0 }}
-								className="flex flex-col gap-8 rounded-4xl border border-white/15 bg-white/10 p-4 backdrop-blur-xl md:p-6">
-								{groups.map((group, i) => (
-									<motion.div
-										key={i}
-										className="flex flex-col gap-3"
-										initial="initial"
-										animate="animate"
-										variants={{ animate: { transition: { staggerChildren: 0.05, delayChildren: 0.05 * i } } }}>
-										{group.title && <p className="px-1 text-xs font-semibold tracking-[0.2em] text-white/40 uppercase">{group.title}</p>}
-										<div className="grid gap-3 sm:grid-cols-2">
-											{group.items.map((tile) => (
-												<Card key={tile.id} tile={tile} pathPrefix={group.pathPrefix} />
-											))}
-										</div>
-									</motion.div>
-								))}
+								layoutId={`card-${morphId}`}
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0 }}
+								transition={morphTransition}
+								className="relative flex w-full max-w-3xl flex-col"
+								onClick={(e) => e.stopPropagation()}>
+								<h2 className="mb-5 shrink-0 text-center text-2xl font-semibold text-white md:text-3xl">{title}</h2>
+								<motion.div
+									initial={{ scale: 0.96, opacity: 0 }}
+									animate={{ scale: 1, opacity: 1 }}
+									exit={{ scale: 0.96, opacity: 0 }}
+									transition={{ type: "spring", duration: 0.5, bounce: 0 }}
+									className="flex flex-col gap-8 rounded-4xl border border-white/15 bg-white/10 p-4 backdrop-blur-xl md:p-6">
+									{groups.map((group, i) => (
+										<motion.div
+											key={i}
+											className="flex flex-col gap-3"
+											initial="initial"
+											animate="animate"
+											variants={{ animate: { transition: { staggerChildren: 0.05, delayChildren: 0.05 * i } } }}>
+											{group.title && <p className="px-1 text-xs font-semibold tracking-[0.2em] text-white/40 uppercase">{group.title}</p>}
+											<div className="grid gap-3 sm:grid-cols-2">
+												{group.items.map((tile) => (
+													<Card key={tile.id} tile={tile} pathPrefix={group.pathPrefix} />
+												))}
+											</div>
+										</motion.div>
+									))}
+								</motion.div>
 							</motion.div>
-						</motion.div>
-					</div>
-				</motion.div>
-			</div>
-		)}
-	</AnimatePresence>
-);
+						</div>
+					</motion.div>
+				</div>
+			)}
+		</AnimatePresence>
+	);
+};

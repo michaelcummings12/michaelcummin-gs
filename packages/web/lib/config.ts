@@ -18,6 +18,13 @@ export const DATABASE_URL = process.env.DATABASE_URL!;
 export const DOMAIN_NAME = "michaelcummin.gs";
 
 /**
+ * Email (Resend)
+ */
+export const RESEND_API_KEY = process.env.RESEND_API_KEY!;
+export const CONTACT_FROM_EMAIL = `contact@mail.${DOMAIN_NAME}`;
+export const CONTACT_TO_EMAIL = `hello@${DOMAIN_NAME}`;
+
+/**
  * URLS for the application
  */
 export const BASE_URL = isDevelopment ? "localhost:3000" : isPreview ? process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL : DOMAIN_NAME;

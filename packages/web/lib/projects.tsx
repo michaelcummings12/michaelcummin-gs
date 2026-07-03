@@ -26,7 +26,7 @@ export const ventures: SpringBoardTile[] = [
 	{
 		id: "fair-tickets",
 		label: "Fair.tickets",
-		category: "Ticketing",
+		category: "Entertainment",
 		date: "2026-05",
 		tagline: "The only fee-free ticketing platform built for creators.",
 		backgroundColor: "bg-slate-900",
@@ -54,7 +54,7 @@ export const ventures: SpringBoardTile[] = [
 	{
 		id: "gcn",
 		label: "GCN",
-		category: "Fintech",
+		category: "Cryptocurrency",
 		date: "2022-01",
 		tagline: "Platform opening up accessible participation in Bitcoin mining infrastructure.",
 		backgroundColor: "bg-slate-900",
@@ -85,7 +85,7 @@ export const clientWork: SpringBoardTile[] = [
 	{
 		id: "breaking-entering",
 		label: "Breaking & Entering",
-		category: "Media",
+		category: "Advertising",
 		date: "2021-09",
 		tagline: "Digital platform for the advertising-industry media company Breaking & Entering.",
 		backgroundColor: "bg-blue-600",

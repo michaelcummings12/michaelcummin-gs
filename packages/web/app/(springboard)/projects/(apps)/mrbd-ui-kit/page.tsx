@@ -5,7 +5,11 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
 	title: "mrbd-ui-kit",
 	description: "A UI framework for building Meta Ray-Ban Display web apps.",
-	openGraph: { title: "mrbd-ui-kit", description: "A UI framework for building Meta Ray-Ban Display web apps.", url: "https://www.michaelcummin.gs/projects/mrbd-ui-kit" },
+	openGraph: {
+		title: "mrbd-ui-kit",
+		description: "A UI framework for building Meta Ray-Ban Display web apps.",
+		url: "https://www.michaelcummin.gs/projects/mrbd-ui-kit"
+	},
 	twitter: { title: "mrbd-ui-kit", description: "A UI framework for building Meta Ray-Ban Display web apps." }
 };
 
