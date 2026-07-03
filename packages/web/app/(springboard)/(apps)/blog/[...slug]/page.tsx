@@ -14,6 +14,7 @@ import { prettyDate } from "@web/lib/prettyDate";
 import { readingTime } from "@web/lib/readingTime";
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 
@@ -99,18 +100,20 @@ export default async function BlogPostPage({ params }: Props) {
 				<article>
 					<FadeInStaggerItem>
 						<header className="mx-auto max-w-3xl px-6 pt-20 pb-10">
-							<h1 className="font-heading text-4xl leading-tight font-bold tracking-tight text-balance text-white md:text-6xl">{post.title}</h1>
+							<h1 className="text-4xl leading-tight font-bold tracking-tight text-balance text-white md:text-6xl">{post.title}</h1>
 							<p className="mt-6 text-xl leading-relaxed text-zinc-400">{post.excerpt}</p>
 							<div className="mt-8 flex items-center gap-4">
-								<div className="h-12 w-12 overflow-hidden rounded-full bg-zinc-800">
-									<Image src="/assets/portrait.jpg" alt="Michael Cummings" width={96} height={96} className="h-full w-full object-cover" />
-								</div>
-								<div>
-									<p className="text-sm font-medium text-white">Michael Cummings</p>
-									<p className="text-sm text-zinc-500">
-										{prettyDate(post.publishedAt)} &middot; {readingTime(post.content)}
-									</p>
-								</div>
+								<Link href="/about" className="group flex items-center gap-4">
+									<div className="h-12 w-12 overflow-hidden rounded-full bg-zinc-800">
+										<Image src="/assets/avatar.jpg" alt="Michael Cummings" width={96} height={96} className="h-full w-full object-cover" />
+									</div>
+									<div>
+										<p className="text-sm font-medium text-white transition-colors group-hover:text-zinc-300">Michael Cummings</p>
+										<p className="text-sm text-zinc-500">
+											{prettyDate(post.publishedAt)} &middot; {readingTime(post.content)}
+										</p>
+									</div>
+								</Link>
 							</div>
 						</header>
 					</FadeInStaggerItem>
@@ -135,9 +138,9 @@ export default async function BlogPostPage({ params }: Props) {
 							<ReactMarkdown
 								components={{
 									// eslint-disable-next-line @typescript-eslint/no-unused-vars
-									h2: ({ node: _, ...rest }) => <h2 className="font-heading mt-14 mb-4 text-2xl font-bold text-white" {...rest} />,
+									h2: ({ node: _, ...rest }) => <h2 className="mt-14 mb-4 text-2xl font-bold text-white" {...rest} />,
 									// eslint-disable-next-line @typescript-eslint/no-unused-vars
-									h3: ({ node: _, ...rest }) => <h3 className="font-heading mt-10 mb-4 text-xl font-bold text-white" {...rest} />,
+									h3: ({ node: _, ...rest }) => <h3 className="mt-10 mb-4 text-xl font-bold text-white" {...rest} />,
 									// eslint-disable-next-line @typescript-eslint/no-unused-vars
 									blockquote: ({ node: _, ...rest }) => (
 										<blockquote className="my-8 rounded-r-xl border-l-4 border-blue-500/60 bg-blue-500/5 py-1 pr-5 pl-5 text-zinc-300 [&>p]:my-3" {...rest} />
@@ -189,8 +192,7 @@ export default async function BlogPostPage({ params }: Props) {
 										const child = Array.isArray(children) ? children[0] : children;
 
 										if (child && typeof child === "object" && "props" in child) {
-											const { className, children: codeChildren } = (child as React.ReactElement<{ className?: string; children?: React.ReactNode }>)
-												.props;
+											const { className, children: codeChildren } = (child as React.ReactElement<{ className?: string; children?: React.ReactNode }>).props;
 											const match = /language-(\w+)/.exec(className || "");
 											const language = match ? match[1] : "text";
 											const codeString = String(codeChildren).replace(/\n$/, "");
@@ -267,7 +269,7 @@ export default async function BlogPostPage({ params }: Props) {
 							<div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
 								<div className="flex items-center gap-4">
 									<div className="h-14 w-14 overflow-hidden rounded-full bg-zinc-800">
-										<Image src="/assets/portrait.jpg" alt="Michael Cummings" width={112} height={112} className="h-full w-full object-cover" />
+										<Image src="/assets/avatar.jpg" alt="Michael Cummings" width={112} height={112} className="h-full w-full object-cover" />
 									</div>
 									<div>
 										<p className="font-semibold text-white">Michael Cummings</p>
@@ -279,7 +281,7 @@ export default async function BlogPostPage({ params }: Props) {
 					</FadeInStaggerItem>
 					<div className="bg-zinc-950">
 						<FadeInStagger className="mx-auto max-w-5xl px-6 py-16">
-							<h2 className="font-heading mb-8 text-2xl font-bold text-white">You might also like</h2>
+							<h2 className="mb-8 text-2xl font-bold text-white">You might also like</h2>
 							<div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
 								{getAllPosts()
 									.filter((p) => p.slug !== slug)

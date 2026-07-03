@@ -23,7 +23,7 @@ export const LegalModal: FunctionComponent<LegalModalProps> = ({ isOpen, onClose
 					className="relative flex w-full max-w-sm flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/90 shadow-2xl backdrop-blur-xl"
 					onClick={(e) => e.stopPropagation()}>
 					<div className="flex items-center justify-between border-b border-white/10 p-4">
-						<h3 className="font-heading text-lg font-semibold text-white">Legal</h3>
+						<h3 className="text-lg font-semibold text-white">Legal</h3>
 						<button onClick={onClose} className="rounded-full p-2 text-white/50 transition-colors hover:bg-white/10 hover:text-white" aria-label="Close modal">
 							<Close className="h-5 w-5 fill-current" />
 						</button>

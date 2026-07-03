@@ -110,7 +110,7 @@ export const FlappyBirdGame = ({ className }: FlappyBirdGameProps) => {
 	return (
 		<div
 			ref={containerRef}
-			className={`relative h-full w-full overflow-hidden bg-sky-300 select-none touch-none ${className}`}
+			className={`relative h-full w-full touch-none overflow-hidden bg-sky-300 select-none ${className}`}
 			onPointerDown={(e) => {
 				e.preventDefault();
 				jump();

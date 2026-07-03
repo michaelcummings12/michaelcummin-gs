@@ -11,14 +11,14 @@
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "aws-cdk": "2.1125.0",
+    "aws-cdk": "2.1128.1",
     "jest": "^30.4.2",
     "ts-jest": "^29.4.11",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0"
   },
   "dependencies": {
-    "aws-cdk-lib": "2.257.0",
+    "aws-cdk-lib": "2.260.0",
     "constructs": "^10.6.0"
   }
 }

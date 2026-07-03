@@ -20,10 +20,7 @@ export const BlogWidget = () => {
 	}, [totalSteps]);
 
 	const startIndex = (step * 2) % posts.length;
-	const currentPosts = [
-		posts[startIndex],
-		posts[(startIndex + 1) % posts.length],
-	];
+	const currentPosts = [posts[startIndex], posts[(startIndex + 1) % posts.length]];
 	return (
 		<div className="flex h-full w-full flex-col text-left text-white">
 			<div className="relative flex min-h-0 flex-1 flex-col gap-2 md:gap-4">
@@ -44,7 +41,7 @@ export const BlogWidget = () => {
 							style={{ transformOrigin: "top" }}>
 							<Image src={post.heroImage!} alt={post.title} width={1200} height={630} className="aspect-square h-full w-auto rounded-xl object-cover" />
 							<div className="flex flex-col gap-2">
-								<p className="font-heading line-clamp-3 text-sm leading-tight font-bold text-wrap md:text-xl">{post.title}</p>
+								<p className="line-clamp-3 text-sm leading-tight font-bold text-wrap md:text-xl">{post.title}</p>
 								<p className="text-xs text-white/50 md:text-base">{prettyDate(post.publishedAt)}</p>
 							</div>
 						</motion.div>
