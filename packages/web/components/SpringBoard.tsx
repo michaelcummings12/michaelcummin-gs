@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@web/lib/cn";
-import { projects } from "@web/lib/projects";
+import { featuredProjects } from "@web/lib/projects";
 import { motion, Variants } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import { FunctionComponent, useEffect } from "react";
@@ -24,8 +24,8 @@ const tiles: SpringBoardTile[] = [
 		padding: "p-2 md:p-4"
 	},
 	{
-		backgroundColor: "bg-gray-800",
-		children: <Folder tiles={projects} />,
+		backgroundColor: "bg-white/10",
+		children: <Folder tiles={featuredProjects} />,
 		label: "Projects",
 		id: "projects",
 		padding: "p-2 md:p-4"
@@ -36,7 +36,12 @@ const tiles: SpringBoardTile[] = [
 		label: "Flappy Bird",
 		id: "flappy-bird"
 	},
-	{ backgroundColor: "bg-gradient-to-br from-lime-500 to-green-700", children: <ContactLogo className={iconClass} />, label: "Contact", id: "contact" },
+	{
+		backgroundColor: "bg-gradient-to-br from-lime-500 to-green-700",
+		children: <ContactLogo className={iconClass} />,
+		label: "Contact",
+		id: "contact"
+	},
 	{
 		backgroundColor: "bg-gradient-to-br from-cyan-400 to-blue-700",
 		expandedBackgroundColor: "bg-white",

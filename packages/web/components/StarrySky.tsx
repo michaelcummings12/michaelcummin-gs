@@ -1,5 +1,5 @@
 "use client";
-import { animate } from "animejs";
+import { animate, stagger } from "animejs";
 import { FunctionComponent, useEffect, useMemo, useRef, useState } from "react";
 
 /**
@@ -18,7 +18,7 @@ const animateStars = () => {
 		],
 		easing: "linear",
 		loop: true,
-		delay: (_: unknown, i: number) => 500 * i
+		delay: stagger(500)
 	});
 };
 
@@ -38,7 +38,7 @@ const animateShootingStars = () => {
 		],
 		easing: "linear",
 		loop: true,
-		delay: (_: unknown, i: number) => 2000 * i
+		delay: stagger(2000)
 	});
 };
 

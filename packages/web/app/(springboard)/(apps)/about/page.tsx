@@ -1,196 +1,122 @@
-import { Message } from "@web/components/Icons";
-import { DefaultLink } from "@web/components/Link";
+import { FadeInStagger, FadeInStaggerItem } from "@web/components/FadeIn";
 import Social from "@web/components/Social";
 import portrait from "@web/public/assets/portrait.jpg";
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
 	title: "About",
 	description:
-		"Full Stack Software Engineer with 10+ years of experience building scalable systems and modern web applications. Startup founder, security researcher, and digital nomad.",
+		"Michael Cummings is a founder and builder who starts companies and ships the products himself, across healthcare, fintech, streaming, AI, and wearables.",
 	keywords: [
 		"Michael Cummings",
-		"Full-Stack Engineer",
+		"founder",
+		"builder",
+		"startup founder",
+		"full-stack engineer",
 		"Chicago",
 		"React",
 		"Next.js",
 		"TypeScript",
-		"AWS Lambda",
 		"AWS",
-		"Serverless",
-		"Security Research",
-		"Startup Founder"
+		"security research"
 	],
 	openGraph: {
 		title: "About Michael Cummings",
-		description: "Full Stack Engineer, startup founder, and digital nomad building scalable web systems.",
+		description: "Founder and builder. I start companies and ship the products myself.",
 		url: "https://www.michaelcummin.gs/about"
 	},
 	twitter: {
 		title: "About Michael Cummings",
-		description: "Full Stack Engineer, startup founder, and digital nomad building scalable web systems."
+		description: "Founder and builder. I start companies and ship the products myself."
 	}
-};
-
-const skills = {
-	frontend: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Framer Motion"],
-	backend: ["Node.js", "AWS Lambda", "API Gateway", "GraphQL", "PostgreSQL", "DynamoDB", "Postgres"],
-	cloud: ["AWS", "CloudFormation", "S3", "CloudFront", "Fargate", "Docker"],
-	design: ["Figma", "Adobe Illustrator", "Adobe Photoshop", "Adobe Lightroom"],
-	video: ["AV1", "H.264", "HEVC (H.265)", "Video Encoding Workflows", "Transcoding Pipelines", "Streaming Optimization"]
 };
 
 export default function Page() {
 	return (
-		<div className="min-h-full w-full overflow-y-auto bg-white">
-			{/* Hero Section */}
-			<section className="w-full">
-				<div className="mx-auto max-w-4xl px-6 pt-16 pb-8">
-					<div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
-						{/* Portrait */}
-						<div className="group relative mx-auto size-56 shrink-0 overflow-hidden rounded-3xl md:mx-0 md:size-64">
-							<Image
-								src={portrait}
-								className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-								width={600}
-								height={600}
-								placeholder="blur"
-								alt="Portrait of Michael Cummings, Full-Stack Engineer based in Chicago"
-								priority
-							/>
-						</div>
-
-						{/* Intro */}
-						<div className="flex flex-col gap-4">
-							<div className="flex flex-col gap-2">
-								<p className="text-sm font-medium tracking-wide text-neutral-500">Full-Stack Software Engineer</p>
-								<h1 className="font-heading mt-1 text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl">Michael Cummings</h1>
-							</div>
-							<p className="max-w-xl text-lg leading-relaxed text-neutral-600">Over ten years of experience building robust, scalable systems and modern applications.</p>
+		<div className="h-full w-full overflow-y-auto bg-black text-white">
+			{/* Full-bleed cinematic hero */}
+			<section className="relative flex min-h-svh w-full items-end overflow-hidden">
+				<Image src={portrait} alt="Portrait of Michael Cummings" fill priority className="object-cover object-center" sizes="100vw" />
+				<div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-black/10" />
+				<FadeInStagger className="relative z-10 mx-auto w-full max-w-5xl px-2 pb-16 md:px-6 md:pb-24">
+					<FadeInStaggerItem>
+						<p className="text-sm font-medium tracking-[0.2em] text-white/60 uppercase">Creator</p>
+					</FadeInStaggerItem>
+					<FadeInStaggerItem>
+						<h1 className="mt-4 text-5xl font-semibold tracking-tight text-balance md:text-8xl">I build the future.</h1>
+					</FadeInStaggerItem>
+					<FadeInStaggerItem>
+						<p className="mt-5 max-w-xl text-xl leading-relaxed text-white/70 md:text-xl">Find a problem, build a product, and ship it to the world.</p>
+					</FadeInStaggerItem>
+					<FadeInStaggerItem>
+						<div className="mt-8">
 							<Social />
 						</div>
-					</div>
-				</div>
+					</FadeInStaggerItem>
+				</FadeInStagger>
 			</section>
 
-			{/* About Section */}
-			<section className="w-full">
-				<div className="mx-auto max-w-4xl px-6 py-8">
-					<h2 className="font-heading text-sm font-medium tracking-wider text-neutral-400 uppercase">About</h2>
-					<div className="mt-6 flex flex-col gap-6 text-base leading-relaxed text-neutral-700">
-						<p>
-							I&apos;m a Chicago native and a Full Stack Software Engineer with over a decade of experience building reliable, scalable systems and modern web applications.
-							My work focuses on combining strong engineering fundamentals with modern frameworks like Next.js and React to build fast, maintainable, and highly performant
-							products.
+			{/* Body */}
+			<FadeInStagger className="mx-auto flex max-w-4xl flex-col gap-20 px-6 py-24 md:gap-28 md:py-28">
+				{/* Narrative */}
+				<FadeInStaggerItem>
+					<section className="flex max-w-2xl flex-col gap-6 text-lg leading-relaxed text-zinc-400 md:text-xl">
+						<p className="text-2xl leading-snug font-medium text-balance text-white md:text-3xl">
+							Most of what I make starts as my own idea and grows into a real business.
 						</p>
-
 						<p>
-							I&apos;m also a startup founder and security researcher. I enjoy exploring how systems work under the hood and continuously experiment with new technologies and
-							tools that improve productivity and performance.
+							I am the founder, the designer, and the engineer, which lets me take something from a sketch to a launched product without anything getting lost along the way.
 						</p>
-
 						<p>
-							My engineering approach is highly data-driven. I use metrics and operational data to guide architectural decisions, prioritize work, and validate whether
-							delivered systems achieve their intended impact. I&apos;m experienced designing serverless architectures, building CI/CD pipelines, and managing infrastructure
-							using infrastructure-as-code practices.
+							I care about the whole thing, from the first interaction to the infrastructure it runs on. I work mostly in TypeScript across React, Next.js, Node, and AWS,
+							with a serverless, infrastructure-as-code approach that keeps me quick without cutting corners.
 						</p>
-
 						<p>
-							I&apos;m also familiar with modern video encoding formats and workflows, including AV1, H.264, and HEVC (H.265), and understand their tradeoffs across
-							compression efficiency, performance, and compatibility.
+							I am a Chicago native, currently living in Los Angeles. You can find me at music festivals, hanging out with friends, or probably at a coffee shop with my
+							laptop, working on something new.
 						</p>
+					</section>
+				</FadeInStaggerItem>
 
-						<p>
-							Outside of engineering, I love traveling and experiencing new places. I&apos;m currently living as a digital nomad, spending time in cities around the world.
-							When I&apos;m not working, you&apos;ll usually find me at music festivals, outdoors, or hanging out with friends.
-						</p>
-
-						<p>
-							I&apos;m passionate about building great software, contributing to open-source projects, and continuously experimenting with emerging technologies that push the
-							boundaries of what&apos;s possible.
-						</p>
-					</div>
-				</div>
-			</section>
-
-			{/* Skills Section */}
-			<section className="w-full bg-neutral-100">
-				<div className="mx-auto max-w-4xl px-6 py-8">
-					<h2 className="font-heading text-sm font-medium tracking-wider text-neutral-400 uppercase">Skills</h2>
-					<div className="mt-8 grid gap-8 sm:grid-cols-2">
-						<div>
-							<h3 className="font-heading text-xs font-semibold tracking-wider text-neutral-500 uppercase">Frontend</h3>
-							<div className="mt-3 flex flex-wrap gap-2">
-								{skills.frontend.map((skill) => (
-									<span key={skill} className="rounded-full bg-white px-3 py-1.5 text-sm text-neutral-700 ring-1 ring-neutral-200">
-										{skill}
-									</span>
-								))}
-							</div>
+				{/* Selected work teaser */}
+				{/* <FadeInStaggerItem>
+					<section className="flex flex-col gap-8">
+						<Link href="/projects" className="group inline-flex w-fit items-center gap-1.5 self-end text-sm font-medium text-zinc-400 transition-colors hover:text-white">
+							See all
+							<svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+								<path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+							</svg>
+						</Link>
+						<div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4">
+							{featuredProjects.map((v) => (
+								<Link key={v.id} href={`/projects/${v.id}`} className="group flex flex-col items-center gap-2.5">
+									<AppIcon
+										tile={v}
+										padding="p-3.5"
+										className="aspect-square w-full rounded-[1.25rem] shadow-lg ring-1 ring-white/10 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl"
+									/>
+									<span className="text-center text-xs font-medium text-zinc-500 transition-colors group-hover:text-white">{v.label}</span>
+								</Link>
+							))}
 						</div>
+					</section>
+				</FadeInStaggerItem> */}
 
-						<div>
-							<h3 className="font-heading text-xs font-semibold tracking-wider text-neutral-500 uppercase">Backend</h3>
-							<div className="mt-3 flex flex-wrap gap-2">
-								{skills.backend.map((skill) => (
-									<span key={skill} className="rounded-full bg-white px-3 py-1.5 text-sm text-neutral-700 ring-1 ring-neutral-200">
-										{skill}
-									</span>
-								))}
-							</div>
-						</div>
-
-						<div>
-							<h3 className="font-heading text-xs font-semibold tracking-wider text-neutral-500 uppercase">Cloud & DevOps</h3>
-							<div className="mt-3 flex flex-wrap gap-2">
-								{skills.cloud.map((skill) => (
-									<span key={skill} className="rounded-full bg-white px-3 py-1.5 text-sm text-neutral-700 ring-1 ring-neutral-200">
-										{skill}
-									</span>
-								))}
-							</div>
-						</div>
-
-						<div>
-							<h3 className="font-heading text-xs font-semibold tracking-wider text-neutral-500 uppercase">Design</h3>
-							<div className="mt-3 flex flex-wrap gap-2">
-								{skills.design.map((skill) => (
-									<span key={skill} className="rounded-full bg-white px-3 py-1.5 text-sm text-neutral-700 ring-1 ring-neutral-200">
-										{skill}
-									</span>
-								))}
-							</div>
-						</div>
-
-						<div>
-							<h3 className="font-heading text-xs font-semibold tracking-wider text-neutral-500 uppercase">Video</h3>
-							<div className="mt-3 flex flex-wrap gap-2">
-								{skills.video.map((skill) => (
-									<span key={skill} className="rounded-full bg-white px-3 py-1.5 text-sm text-neutral-700 ring-1 ring-neutral-200">
-										{skill}
-									</span>
-								))}
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			{/* Contact CTA */}
-			<section className="w-full border-t border-neutral-200 bg-neutral-900">
-				<div className="mx-auto max-w-4xl px-6 py-16">
-					<p className="font-heading mt-4 text-2xl font-medium text-white md:text-3xl">Have a project in mind? Let&apos;s build something great together.</p>
-					<div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-						<DefaultLink
-							href="/contact"
-							icon={<Message />}
-							label="Get in touch"
-							className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-neutral-900 transition-all hover:bg-neutral-100"
-						/>
-					</div>
-				</div>
-			</section>
+				{/* Close */}
+				<FadeInStaggerItem>
+					<section className="pt-12">
+						<p className="max-w-2xl text-2xl font-medium tracking-tight text-white md:text-3xl">
+							I am always building something.{" "}
+							<Link href="/contact" className="underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white">
+								Say hello
+							</Link>
+							.
+						</p>
+					</section>
+				</FadeInStaggerItem>
+			</FadeInStagger>
 		</div>
 	);
 }

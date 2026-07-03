@@ -2,8 +2,7 @@
 @import "tailwindcss-text-box-trim";
 
 @theme {
-  --font-sans: Arial, Helvetica, sans-serif;
-  --font-heading: var(--font-overpass), sans-serif;
+  --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
 
   --color-error: #e00000;
   --color-nodro: #d2b08c;

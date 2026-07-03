@@ -1,6 +1,6 @@
 import { Analytics } from "@web/components/Analytics";
 import { Metadata, Viewport } from "next";
-import { Overpass } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import "./globals.css";
 
@@ -10,14 +10,32 @@ export const metadata: Metadata = {
 		type: "website",
 		locale: "en-US",
 		siteName: "Michael Cummings",
+		title: "Michael Cummings — Independent Full-Stack Engineer & App Developer",
+		description:
+			"Independent full-stack engineer. I design, build, and ship production web and mobile apps for startups and growing businesses. Currently taking on a few new projects.",
 		images: [{ url: "/meta_image.jpg", width: 1200, height: 630, type: "image/jpeg" }]
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Michael Cummings",
-		description: "Explore the work of Michael Cummings on his personal portfolio.",
+		title: "Michael Cummings — Independent Full-Stack Engineer & App Developer",
+		description: "Independent full-stack engineer. I design, build, and ship production web and mobile apps for startups and growing businesses.",
 		images: ["/meta_image.jpg"]
 	},
+	keywords: [
+		"Michael Cummings",
+		"freelance software engineer",
+		"freelance full-stack engineer",
+		"independent contractor",
+		"freelance app developer",
+		"freelance web developer",
+		"React",
+		"Next.js",
+		"TypeScript",
+		"AWS",
+		"serverless",
+		"Chicago",
+		"remote"
+	],
 	alternates: {
 		canonical: "/"
 	},
@@ -49,9 +67,10 @@ export const metadata: Metadata = {
 	],
 	title: {
 		template: "%s | Michael Cummings",
-		default: "Michael Cummings"
+		default: "Michael Cummings — Independent Full-Stack Engineer & App Developer"
 	},
-	description: "Explore the work of Michael Cummings on his personal portfolio."
+	description:
+		"Michael Cummings is an independent full-stack software engineer who designs, builds, and ships production web and mobile apps for startups and growing businesses. Based in Chicago, working worldwide."
 };
 
 export const viewport: Viewport = {
@@ -64,15 +83,15 @@ export const viewport: Viewport = {
 	themeColor: "#000000"
 };
 
-const overpass = Overpass({
+const inter = Inter({
 	subsets: ["latin"],
-	variable: "--font-overpass",
+	variable: "--font-inter",
 	display: "swap"
 });
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en" className={overpass.variable}>
+		<html lang="en" className={inter.variable}>
 			<Analytics />
 			<body id="body" className="bg-black font-sans">
 				{children}

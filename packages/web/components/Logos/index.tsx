@@ -1,6 +1,9 @@
 export { AboutLogo } from "./About";
 export { BreakingEnteringLogo } from "./BreakingEntering";
+export { ChatPepLogo } from "./ChatPep";
 export { ChicagoCareLogo } from "./ChicagoCare";
 export { ContactLogo } from "./Contact";
+export { DisplayListLogo } from "./DisplayList";
+export { FairTicketsLogo } from "./FairTickets";
 export { GcnLogo } from "./GCN";
 export { RhythmLogo } from "./Rhythm";
