@@ -1,7 +1,6 @@
 "use client";
 import { FolderOverlay } from "@web/components/FolderOverlay";
-import { openSource } from "@web/lib/openSource";
-import { clientWork, ventures } from "@web/lib/projects";
+import { clientWork, openSource, ventures } from "@web/lib/projects";
 import { SpringBoardTile } from "@web/types/springboard";
 import { useRouter } from "next/navigation";
 

@@ -42,15 +42,15 @@ export default function Page() {
 			<section className="relative flex min-h-svh w-full items-end overflow-hidden">
 				<Image placeholder="blur" src={portrait} alt="Portrait of Michael Cummings" fill priority className="object-cover object-center" sizes="100vw" />
 				<div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-black/10" />
-				<FadeInStagger className="relative z-10 mx-auto w-full max-w-5xl px-2 pb-16 md:px-6 md:pb-24">
+				<FadeInStagger className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-2 md:pb-24">
 					<FadeInStaggerItem>
-						<h1 className="mt-4 text-5xl font-semibold tracking-tight text-balance md:text-8xl">I build the future.</h1>
+						<h1 className="mt-4 text-4xl font-semibold tracking-tight text-balance md:text-8xl">Building our future.</h1>
 					</FadeInStaggerItem>
 					<FadeInStaggerItem>
-						<p className="mt-5 max-w-xl text-xl leading-relaxed text-white/70 md:text-xl">Find a problem, build a product, and ship it to the world.</p>
+						<p className="mt-2 max-w-xl text-xl leading-relaxed text-white/70 md:mt-6 md:text-xl">I find a problem, create a product, and ship it to the world.</p>
 					</FadeInStaggerItem>
 					<FadeInStaggerItem>
-						<div className="mt-8">
+						<div className="mt-4 md:mt-10">
 							<Social />
 						</div>
 					</FadeInStaggerItem>
@@ -58,7 +58,7 @@ export default function Page() {
 			</section>
 
 			{/* Body */}
-			<FadeInStagger className="mx-auto flex max-w-4xl flex-col gap-20 px-6 py-24 md:gap-28 md:py-28">
+			<FadeInStagger className="mx-auto flex max-w-5xl flex-col gap-20 px-6 py-24 md:gap-28 md:py-28">
 				{/* Narrative */}
 				<FadeInStaggerItem>
 					<section className="flex max-w-2xl flex-col gap-6 text-lg leading-relaxed text-zinc-400 md:text-xl">

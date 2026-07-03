@@ -2,7 +2,6 @@
 
 import { AppIcon } from "@web/components/AppIcon";
 import { Close } from "@web/components/Icons";
-import { cn } from "@web/lib/cn";
 import { morphTransition } from "@web/lib/motion";
 import { SpringBoardTile } from "@web/types/springboard";
 import { AnimatePresence, motion } from "framer-motion";
@@ -37,19 +36,8 @@ const Card: FunctionComponent<{ tile: SpringBoardTile; pathPrefix: string }> = (
 		<Link
 			href={`${pathPrefix}/${tile.id}`}
 			scroll={false}
-			className="group relative flex h-full flex-col gap-4 rounded-3xl border border-white/10 bg-white/10 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10 md:p-5">
-			{/* Ambient brand-color glow */}
-			<div
-				className={cn(
-					tile.backgroundColor,
-					"pointer-events-none absolute -top-10 -left-10 size-32 rounded-full opacity-25 blur-2xl transition-opacity duration-300 group-hover:opacity-45"
-				)}
-			/>
-
+			className="group relative flex h-full flex-col gap-4 rounded-3xl border border-white/10 bg-white/10 p-4 shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10 md:p-5">
 			<div className="relative flex items-center gap-4">
-				{/* Hover scale lives on this wrapper, not the AppIcon: the AppIcon is the layout
-				    morph element, and a CSS transition-transform on it fights framer's per-frame
-				    transform writes during the morph (smeared, laggy snap-back). */}
 				<div className="size-14 shrink-0 transition-transform duration-300 group-hover:scale-105 md:size-16">
 					<AppIcon tile={tile} layoutId={`card-${tile.id}`} className="size-full rounded-2xl shadow-lg" />
 				</div>
@@ -79,7 +67,7 @@ export const FolderOverlay: FunctionComponent<FolderOverlayProps> = ({ groups, i
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
 					onClick={onClose}
-					className="fixed inset-0 z-40 bg-black/50 backdrop-blur-xl"
+					className="fixed inset-0 z-40 bg-black/50 backdrop-blur-2xl"
 				/>
 				{/* Close button: on mobile the card fills the width, so tapping the backdrop isn't reliable. */}
 				<motion.button
@@ -105,13 +93,13 @@ export const FolderOverlay: FunctionComponent<FolderOverlayProps> = ({ groups, i
 						transition={morphTransition}
 						className="relative m-auto flex w-full max-w-3xl flex-col"
 						onClick={(e) => e.stopPropagation()}>
-						<h2 className="mb-5 shrink-0 text-center text-2xl font-semibold text-white md:text-3xl">{title}</h2>
+						<h2 className="my-8 shrink-0 text-center text-2xl font-semibold text-white md:text-3xl">{title}</h2>
 						<motion.div
 							initial={{ scale: 0.96, opacity: 0 }}
 							animate={{ scale: 1, opacity: 1 }}
 							exit={{ scale: 0.96, opacity: 0 }}
 							transition={{ type: "spring", duration: 0.5, bounce: 0 }}
-							className="flex flex-col gap-8 rounded-4xl border border-white/15 bg-white/10 p-4 backdrop-blur-xl md:p-6">
+							className="flex flex-col gap-10">
 							{groups.map((group, i) => (
 								<motion.div
 									key={i}

@@ -14,13 +14,13 @@ export const LegalModal: FunctionComponent<LegalModalProps> = ({ isOpen, onClose
 	<AnimatePresence>
 		{isOpen && (
 			<div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-				<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+				<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/50 backdrop-blur-2xl" onClick={onClose} />
 				<motion.div
 					initial={{ opacity: 0, scale: 0.95, y: 20 }}
 					animate={{ opacity: 1, scale: 1, y: 0 }}
 					exit={{ opacity: 0, scale: 0.95, y: 20 }}
 					transition={{ type: "spring", duration: 0.5, bounce: 0 }}
-					className="relative flex w-full max-w-sm flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/90 shadow-2xl backdrop-blur-xl"
+					className="relative flex w-full max-w-sm flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-2xl"
 					onClick={(e) => e.stopPropagation()}>
 					<div className="flex items-center justify-between border-b border-white/10 p-4">
 						<h3 className="text-lg font-semibold text-white">Legal</h3>
@@ -42,7 +42,7 @@ export const LegalModal: FunctionComponent<LegalModalProps> = ({ isOpen, onClose
 							</motion.span>
 						</Link>
 					</div>
-					<div className="border-t border-white/10 bg-zinc-900/50 p-4 text-center">
+					<div className="bg-black/20 p-4 text-center">
 						<p className="text-xs text-white/50">&copy; {new Date().getFullYear()} Don&apos;t Stop, LLC. All rights reserved.</p>
 					</div>
 				</motion.div>

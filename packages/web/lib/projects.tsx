@@ -1,7 +1,7 @@
 import { BreakingEnteringLogo, ChatPepLogo, ChicagoCareLogo, DisplayListLogo, FairTicketsLogo, GcnLogo, RhythmLogo } from "@web/components/Logos";
 import { HCLogo } from "@web/components/Logos/HC";
 import { NodroLogo } from "@web/components/Logos/Nodro";
-import { openSource } from "@web/lib/openSource";
+import { MonogramLogo } from "@web/components/Logos/Placeholder";
 import { SpringBoardTile } from "@web/types/springboard";
 
 /** Ventures Michael founded or co-founded and built himself */
@@ -11,7 +11,7 @@ export const ventures: SpringBoardTile[] = [
 		label: "Chicago.care",
 		category: "Healthcare",
 		date: "2022-08",
-		tagline: "Healthcare access platform built and launched in 24 hours, featured on NBC.",
+		tagline: "Healthcare access platform featured on NBC.",
 		backgroundColor: "bg-white",
 		children: <ChicagoCareLogo className="h-full w-full" />
 	},
@@ -20,7 +20,7 @@ export const ventures: SpringBoardTile[] = [
 		label: "ChatPEP",
 		category: "AI",
 		date: "2026-06",
-		tagline: "An AI research assistant for peptides.",
+		tagline: "The best AI research assistant for peptides.",
 		backgroundColor: "bg-black",
 		children: <ChatPepLogo className="h-full w-full fill-white" />
 	},
@@ -48,7 +48,7 @@ export const ventures: SpringBoardTile[] = [
 		label: "Rhythm",
 		category: "Entertainment",
 		date: "2023-02",
-		tagline: "The only streaming service where you can watch full-length concerts.",
+		tagline: "The only streaming service where you can watch full concerts.",
 		backgroundColor: "bg-zinc-950",
 		children: <RhythmLogo className="h-full w-full" />
 	},
@@ -57,7 +57,7 @@ export const ventures: SpringBoardTile[] = [
 		label: "GCN",
 		category: "Cryptocurrency",
 		date: "2022-01",
-		tagline: "Platform opening up accessible participation in Bitcoin mining infrastructure.",
+		tagline: "Accessible participation in Bitcoin mining.",
 		backgroundColor: "bg-slate-900",
 		children: <GcnLogo className="h-full w-full fill-blue-500" />
 	},
@@ -88,9 +88,39 @@ export const clientWork: SpringBoardTile[] = [
 		label: "Breaking & Entering",
 		category: "Advertising",
 		date: "2021-09",
-		tagline: "Digital platform for the advertising-industry media company Breaking & Entering.",
+		tagline: "Digital platform for the advertising-industry media company.",
 		backgroundColor: "bg-blue-600",
 		children: <BreakingEnteringLogo className="h-full w-full fill-white" />
+	}
+];
+
+export const openSource: SpringBoardTile[] = [
+	{
+		id: "mrbd-ui-kit",
+		label: "mrbd-ui-kit",
+		category: "Open Source",
+		date: "2026-06",
+		tagline: "A UI framework for building Meta Ray-Ban Display web apps.",
+		backgroundColor: "bg-violet-600",
+		children: <MonogramLogo text="UI" className="h-full w-full text-white" />
+	},
+	{
+		id: "name-to-gender",
+		label: "name-to-gender",
+		category: "Open Source",
+		date: "2026-07",
+		tagline: "Input a first name and get a predicted gender with a probability score.",
+		backgroundColor: "bg-emerald-600",
+		children: <MonogramLogo text="NG" className="h-full w-full text-white" />
+	},
+	{
+		id: "tailwindcss-text-box-trim",
+		label: "tailwindcss-text-box-trim",
+		category: "Open Source",
+		date: "2026-03",
+		tagline: "A Tailwind CSS plugin for trimming the whitespace around text.",
+		backgroundColor: "bg-sky-500",
+		children: <MonogramLogo text="TT" className="h-full w-full text-white" />
 	}
 ];
 

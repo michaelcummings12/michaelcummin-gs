@@ -15,11 +15,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 	useLayoutEffect(() => {
 		// eslint-disable-next-line react-hooks/set-state-in-effect
 		setTop(window.scrollY);
-		const { overflow } = document.body.style;
-		document.body.style.overflow = "hidden";
-		return () => {
-			document.body.style.overflow = overflow;
-		};
 	}, []);
 	return (
 		<motion.div
