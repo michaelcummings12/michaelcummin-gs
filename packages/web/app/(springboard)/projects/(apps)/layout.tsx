@@ -15,6 +15,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 	useLayoutEffect(() => {
 		// eslint-disable-next-line react-hooks/set-state-in-effect
 		setTop(window.scrollY);
+		// `overflow: hidden` keeps the current scroll offset, so the page stays aligned with `top` above. Restoring on
+		// unmount hands the untouched offset back to the folder, so closing morphs to the card you left.
+		const html = document.documentElement;
+		const previousOverflow = html.style.overflow;
+		html.style.overflow = "hidden";
+		return () => {
+			html.style.overflow = previousOverflow;
+		};
 	}, []);
 	return (
 		<motion.div
@@ -24,7 +32,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
 			transition={morphTransition}
-			className="absolute left-0 z-50 h-screen w-full">
+			className="absolute left-0 z-50 h-screen w-full overflow-y-auto overscroll-contain">
 			<CloseButton returnTo="/projects" />
 			{children}
 		</motion.div>
