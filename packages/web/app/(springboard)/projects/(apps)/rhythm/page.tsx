@@ -4,13 +4,14 @@ import { RhythmLogo } from "@web/components/Logos";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+	alternates: { canonical: "/projects/rhythm" },
 	title: "Rhythm",
 	description: "The only streaming service where you can watch full concerts.",
 	keywords: ["Video Streaming", "FFmpeg", "GPU Transcoding", "Next.js", "HLS streaming", "Concerts"],
 	openGraph: {
 		title: "Rhythm",
 		description: "The only streaming service where you can watch full concerts.",
-		url: "https://www.michaelcummin.gs/projects/rhythm"
+		url: "/projects/rhythm"
 	},
 	twitter: {
 		title: "Rhythm",

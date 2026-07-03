@@ -3,9 +3,10 @@ import { DisplayListLogo } from "@web/components/Logos";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+	alternates: { canonical: "/projects/displaylist" },
 	title: "DisplayList.fun",
 	description: "A list app for Meta Ray-Ban Display glasses.",
-	openGraph: { title: "DisplayList.fun", description: "A list app for Meta Ray-Ban Display glasses.", url: "https://www.michaelcummin.gs/projects/displaylist" },
+	openGraph: { title: "DisplayList.fun", description: "A list app for Meta Ray-Ban Display glasses.", url: "/projects/displaylist" },
 	twitter: { title: "DisplayList.fun", description: "A list app for Meta Ray-Ban Display glasses." }
 };
 

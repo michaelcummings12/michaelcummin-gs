@@ -5,13 +5,16 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	title: "Blog",
-	description: "Thoughts on software engineering, AI, web development, and building great products. Written by Michael Cummings, a full-stack engineer.",
+	description: "Thoughts on software engineering, AI, and building great products, by Michael Cummings.",
 	keywords: ["Blog", "Software Engineering", "AI", "Web Development", "Next.js", "React", "AWS", "Michael Cummings"],
+	alternates: {
+		canonical: "/blog"
+	},
 	openGraph: {
 		title: "Blog",
 		description: "Thoughts on software engineering, AI, web development, and building great products.",
 		type: "website",
-		url: "https://www.michaelcummin.gs/blog"
+		url: "/blog"
 	},
 	twitter: {
 		title: "Blog",

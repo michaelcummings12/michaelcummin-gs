@@ -1,6 +1,7 @@
 import { BreakingEnteringLogo, ChatPepLogo, ChicagoCareLogo, DisplayListLogo, FairTicketsLogo, GcnLogo, RhythmLogo } from "@web/components/Logos";
 import { HCLogo } from "@web/components/Logos/HC";
 import { NodroLogo } from "@web/components/Logos/Nodro";
+import { openSource } from "@web/lib/openSource";
 import { SpringBoardTile } from "@web/types/springboard";
 
 /** Ventures Michael founded or co-founded and built himself */
@@ -95,6 +96,9 @@ export const clientWork: SpringBoardTile[] = [
 
 /** All projects */
 export const projects: SpringBoardTile[] = [...ventures, ...clientWork];
+
+/** Every project with a page, including open source (used for the sitemap and crawlable index) */
+export const allProjects: SpringBoardTile[] = [...ventures, ...clientWork, ...openSource];
 
 /** The four highlighted on the home folder preview and the about page teaser */
 export const featuredProjects: SpringBoardTile[] = ["chatpep", "fair-tickets", "nodro", "rhythm"].map((id) => projects.find((p) => p.id === id)!);

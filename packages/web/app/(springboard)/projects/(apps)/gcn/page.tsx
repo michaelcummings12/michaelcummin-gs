@@ -4,13 +4,14 @@ import { GcnLogo } from "@web/components/Logos";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+	alternates: { canonical: "/projects/gcn" },
 	title: "GCN",
 	description: "Platform enabling accessible participation in Bitcoin mining infrastructure.",
 	keywords: ["Bitcoin", "Mining", "GraphQL", "AWS AppSync", "DynamoDB", "Next.js", "Serverless"],
 	openGraph: {
 		title: "GCN",
 		description: "Platform enabling accessible participation in Bitcoin mining infrastructure.",
-		url: "https://www.michaelcummin.gs/projects/gcn"
+		url: "/projects/gcn"
 	},
 	twitter: {
 		title: "GCN",

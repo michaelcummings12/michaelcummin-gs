@@ -4,13 +4,14 @@ import { HouseCallsLogo } from "@web/components/Logos/HouseCalls";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+	alternates: { canonical: "/projects/house-calls" },
 	title: "House Calls",
 	description: "Real-time AI concierge for a Chicago house music event brand.",
 	keywords: ["AI", "OpenAI Realtime API", "Next.js", "AWS Fargate", "Voice AI", "Event Concierge", "Chicago"],
 	openGraph: {
 		title: "House Calls",
 		description: "Real-time AI concierge for a Chicago house music event brand.",
-		url: "https://www.michaelcummin.gs/projects/house-calls"
+		url: "/projects/house-calls"
 	},
 	twitter: {
 		title: "House Calls",

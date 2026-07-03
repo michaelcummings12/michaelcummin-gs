@@ -5,16 +5,19 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	title: "Contact",
-	description: "Get in touch with Michael Cummings. Whether it's an idea, a question, or just a hello, the inbox is open.",
+	description: "Get in touch with Michael Cummings with an idea, a question, or just a hello.",
 	keywords: ["Contact", "Michael Cummings", "Get in touch", "Chicago", "Founder", "Builder"],
+	alternates: {
+		canonical: "/contact"
+	},
 	openGraph: {
 		title: "Contact Michael Cummings",
-		description: "Have an idea, a question, or just want to say hello? The inbox is open.",
-		url: "https://www.michaelcummin.gs/contact"
+		description: "Have an idea, a question, or just want to say hello?",
+		url: "/contact"
 	},
 	twitter: {
 		title: "Contact Michael Cummings",
-		description: "Have an idea, a question, or just want to say hello? The inbox is open."
+		description: "Have an idea, a question, or just want to say hello?"
 	}
 };
 
@@ -28,9 +31,7 @@ export default function Page() {
 						<h1 className="text-5xl font-semibold tracking-tight text-balance md:text-6xl">Say hello.</h1>
 					</FadeInStaggerItem>
 					<FadeInStaggerItem>
-						<p className="mt-4 max-w-md text-lg leading-relaxed text-white/60">
-							Have an idea, a question, or just want to say hello? The inbox is open. I love making new friends {":)"}
-						</p>
+						<p className="mt-4 max-w-md text-lg leading-relaxed text-white/60">Have an idea, a question, or just want to say hello? I love making new friends {":)"}</p>
 					</FadeInStaggerItem>
 					<FadeInStaggerItem>
 						<div className="mt-8">

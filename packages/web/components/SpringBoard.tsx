@@ -91,7 +91,7 @@ export const SpringBoard: FunctionComponent = () => {
 		};
 	});
 	return (
-		<div className="relative h-full max-h-screen w-full bg-black">
+		<div className="fixed inset-0 h-full w-full bg-black">
 			<div className="m-auto flex h-full max-h-225 w-full max-w-300 items-start justify-center p-4 md:items-center lg:max-h-full lg:p-8">
 				<motion.div variants={variants} initial="initial" animate="animate" exit="exit" className="grid max-h-full grid-cols-2 gap-x-8 gap-y-4 md:grid-cols-3">
 					{tiles.map((tile) => (

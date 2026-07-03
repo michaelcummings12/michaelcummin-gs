@@ -2,7 +2,8 @@ import { BackButton } from "@web/components/BackButton";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Privacy Policy"
+	title: "Privacy Policy",
+	alternates: { canonical: "/privacy-policy" }
 };
 
 export default function PrivacyPolicyPage() {

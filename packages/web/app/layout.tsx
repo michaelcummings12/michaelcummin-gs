@@ -10,31 +10,32 @@ export const metadata: Metadata = {
 		type: "website",
 		locale: "en-US",
 		siteName: "Michael Cummings",
-		title: "Michael Cummings — Independent Full-Stack Engineer & App Developer",
-		description:
-			"Independent full-stack engineer. I design, build, and ship production web and mobile apps for startups and growing businesses. Currently taking on a few new projects.",
+		url: "/",
+		title: "Michael Cummings, Founder & Full-Stack Engineer",
+		description: "Founder and full-stack engineer. I start companies and ship the products myself.",
 		images: [{ url: "/meta_image.jpg", width: 1200, height: 630, type: "image/jpeg" }]
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Michael Cummings — Independent Full-Stack Engineer & App Developer",
-		description: "Independent full-stack engineer. I design, build, and ship production web and mobile apps for startups and growing businesses.",
+		title: "Michael Cummings, Founder & Full-Stack Engineer",
+		description: "Founder and full-stack engineer. I start companies and ship the products myself.",
 		images: ["/meta_image.jpg"]
 	},
 	keywords: [
 		"Michael Cummings",
-		"freelance software engineer",
-		"freelance full-stack engineer",
-		"independent contractor",
-		"freelance app developer",
-		"freelance web developer",
+		"founder",
+		"builder",
+		"startup founder",
+		"full-stack engineer",
+		"software engineer",
+		"app developer",
 		"React",
 		"Next.js",
 		"TypeScript",
 		"AWS",
 		"serverless",
 		"Chicago",
-		"remote"
+		"Los Angeles"
 	],
 	alternates: {
 		canonical: "/"
@@ -67,10 +68,9 @@ export const metadata: Metadata = {
 	],
 	title: {
 		template: "%s | Michael Cummings",
-		default: "Michael Cummings — Independent Full-Stack Engineer & App Developer"
+		default: "Michael Cummings, Founder & Full-Stack Engineer"
 	},
-	description:
-		"Michael Cummings is an independent full-stack software engineer who designs, builds, and ships production web and mobile apps for startups and growing businesses. Based in Chicago, working worldwide."
+	description: "Michael Cummings is a founder and full-stack engineer who starts companies and ships the products himself."
 };
 
 export const viewport: Viewport = {
@@ -92,10 +92,10 @@ const inter = Inter({
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en" className={inter.variable}>
-			<Analytics />
 			<body id="body" className="bg-black font-sans">
 				{children}
 				<Toaster position="bottom-right" richColors theme="dark" />
+				<Analytics />
 			</body>
 		</html>
 	);

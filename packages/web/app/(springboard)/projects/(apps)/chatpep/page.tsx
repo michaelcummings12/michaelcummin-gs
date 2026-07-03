@@ -3,9 +3,10 @@ import { ChatPepLogo } from "@web/components/Logos";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+	alternates: { canonical: "/projects/chatpep" },
 	title: "ChatPEP",
 	description: "An AI research assistant for peptides.",
-	openGraph: { title: "ChatPEP", description: "An AI research assistant for peptides.", url: "https://www.michaelcummin.gs/projects/chatpep" },
+	openGraph: { title: "ChatPEP", description: "An AI research assistant for peptides.", url: "/projects/chatpep" },
 	twitter: { title: "ChatPEP", description: "An AI research assistant for peptides." }
 };
 

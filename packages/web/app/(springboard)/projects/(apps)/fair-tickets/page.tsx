@@ -3,12 +3,13 @@ import { FairTicketsLogo } from "@web/components/Logos";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+	alternates: { canonical: "/projects/fair-tickets" },
 	title: "Fair.tickets",
 	description: "The only fee-free ticketing platform built for creators.",
 	openGraph: {
 		title: "Fair.tickets",
 		description: "The only fee-free ticketing platform built for creators.",
-		url: "https://www.michaelcummin.gs/projects/fair-tickets"
+		url: "/projects/fair-tickets"
 	},
 	twitter: { title: "Fair.tickets", description: "The only fee-free ticketing platform built for creators." }
 };

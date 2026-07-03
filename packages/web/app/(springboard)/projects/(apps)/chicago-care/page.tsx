@@ -4,13 +4,14 @@ import { ChicagoCareLogo } from "@web/components/Logos";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+	alternates: { canonical: "/projects/chicago-care" },
 	title: "Chicago.care",
 	description: "Healthcare access platform helping Chicago residents find monkeypox vaccines and care providers.",
 	keywords: ["Healthcare", "Vaccine finder", "AWS Lambda", "Fargate", "MongoDB", "Chicago", "Serverless"],
 	openGraph: {
 		title: "Chicago.care",
 		description: "Healthcare access platform helping Chicago residents find monkeypox vaccines and care providers.",
-		url: "https://www.michaelcummin.gs/projects/chicago-care"
+		url: "/projects/chicago-care"
 	},
 	twitter: {
 		title: "Chicago.care",

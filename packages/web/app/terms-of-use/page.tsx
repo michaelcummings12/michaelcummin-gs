@@ -1,6 +1,6 @@
 import { BackButton } from "@web/components/BackButton";
 import { Metadata } from "next";
-export const metadata: Metadata = { title: "Terms of Use" };
+export const metadata: Metadata = { title: "Terms of Use", alternates: { canonical: "/terms-of-use" } };
 export default function TermsOfUsePage() {
 	return (
 		<main className="min-h-screen bg-black px-6 py-24 text-zinc-300 sm:py-32 lg:px-8">

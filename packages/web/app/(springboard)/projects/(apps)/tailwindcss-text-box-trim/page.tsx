@@ -3,12 +3,13 @@ import { MonogramLogo } from "@web/components/Logos/Placeholder";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+	alternates: { canonical: "/projects/tailwindcss-text-box-trim" },
 	title: "tailwindcss-text-box-trim",
 	description: "A Tailwind CSS plugin for trimming the whitespace around text.",
 	openGraph: {
 		title: "tailwindcss-text-box-trim",
 		description: "A Tailwind CSS plugin for trimming the whitespace around text.",
-		url: "https://www.michaelcummin.gs/projects/tailwindcss-text-box-trim"
+		url: "/projects/tailwindcss-text-box-trim"
 	},
 	twitter: { title: "tailwindcss-text-box-trim", description: "A Tailwind CSS plugin for trimming the whitespace around text." }
 };

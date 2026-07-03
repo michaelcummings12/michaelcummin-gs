@@ -7,8 +7,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
 	title: "About",
-	description:
-		"Michael Cummings is a founder and builder who starts companies and ships the products himself, across healthcare, fintech, streaming, AI, and wearables.",
+	description: "Founder and builder. I start companies and ship the products myself.",
 	keywords: [
 		"Michael Cummings",
 		"founder",
@@ -22,10 +21,13 @@ export const metadata: Metadata = {
 		"AWS",
 		"security research"
 	],
+	alternates: {
+		canonical: "/about"
+	},
 	openGraph: {
 		title: "About Michael Cummings",
 		description: "Founder and builder. I start companies and ship the products myself.",
-		url: "https://www.michaelcummin.gs/about"
+		url: "/about"
 	},
 	twitter: {
 		title: "About Michael Cummings",
