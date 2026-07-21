@@ -29,7 +29,7 @@ export const SpringBoardItem: FunctionComponent<SpringBoardItemProps> = ({ tile,
 					<AppIcon padding="p-4 md:p-6" tile={tile} className="z-0 h-full w-full cursor-pointer rounded-3xl transition-transform hover:scale-105 active:scale-95" />
 				</motion.div>
 			</Link>
-			<p className="truncate text-center text-xs md:text-sm lg:text-base">{tile.label}</p>
+			<p className="truncate text-center text-xs drop-shadow-xl md:text-sm lg:text-base">{tile.label}</p>
 		</div>
 	);
 };
