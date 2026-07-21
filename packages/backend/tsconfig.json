@@ -21,7 +21,11 @@
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "skipLibCheck": true,
-    "baseUrl": ".",
+    // Declared explicitly: pnpm's non-hoisted layout defeats implicit @types discovery.
+    "types": [
+      "node",
+      "jest"
+    ],
     "paths": {
       "@backend/*": ["./*"],
       "@web/*": ["../web/*"]

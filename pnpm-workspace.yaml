@@ -1,0 +1,8 @@
+packages:
+  - packages/backend
+  - packages/web
+allowBuilds:
+  '@prisma/engines': true
+  prisma: true
+  sharp: true
+  unrs-resolver: true

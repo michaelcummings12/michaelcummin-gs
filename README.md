@@ -4,7 +4,7 @@ Hey there! This is the source code that powers my personal portfolio, [michaelcu
 
 ## Project Structure
 
-This repository is organized as a monorepo using [Yarn Workspaces](https://yarnpkg.com/features/workspaces). It allows for shared configuration and dependencies across multiple packages while keeping the codebase modular and organized.
+This repository is organized as a monorepo using [pnpm Workspaces](https://pnpm.io/workspaces). It allows for shared configuration and dependencies across multiple packages while keeping the codebase modular and organized.
 
 ### Packages
 
@@ -20,7 +20,7 @@ Follow these steps to set up the project locally on your machine.
 ### Prerequisites
 
 -   **Node.js**: Ensure you have Node.js installed.
--   **Yarn**: This project uses Yarn as the package manager.
+-   **pnpm**: This project uses pnpm as the package manager. Run `corepack enable` and it will be provisioned automatically.
 
 ### Installation
 
@@ -36,7 +36,7 @@ Follow these steps to set up the project locally on your machine.
     This will install dependencies for the root and all workspaces.
 
     ```bash
-    yarn install
+    pnpm install
     ```
 
 ## Development
@@ -48,14 +48,14 @@ You can run scripts for individual packages from the root directory or by naviga
 To start the Next.js development server:
 
 ```bash
-yarn workspace web dev
+pnpm --filter web dev
 ```
 
 Or navigate to the directory:
 
 ```bash
 cd packages/web
-yarn dev
+pnpm dev
 ```
 
 The application will be available at `http://localhost:3000`.
@@ -71,14 +71,14 @@ To deploy the AWS CDK backend infrastructure:
     Run the deployment command from the root:
 
     ```bash
-    yarn workspace backend cdk deploy
+    pnpm --filter backend cdk deploy
     ```
 
     Or from the package directory:
 
     ```bash
     cd packages/backend
-    yarn cdk deploy --all
+    pnpm cdk deploy --all
     ```
 
 # License
